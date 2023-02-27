@@ -3,14 +3,17 @@
 #include "Zoo.h"
 #include "Menu.h"
 
+
 using namespace std;
 
 int main()
 {
-    cout << "Hello world!" << endl;
+    Zoo* zoo = new Zoo("Zoodyssey", 80000);
+    zoo->Stats();
 
     Menu menu;
     menu.show();
+
 
     return 0;
 }
