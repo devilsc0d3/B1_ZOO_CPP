@@ -13,6 +13,4 @@ int main()
     menu.show();
 
     return 0;
-
-    return 0;
 }
