@@ -13,24 +13,26 @@ using namespace  std;
 class Zoo {
     string name;
     int money;
-    int seed, meat;
     int nbrMaxVisitor, nbrVisitor;
     int nbrPet;
     int nbrEnclosure;
     int time;
 
 public:
-    Zoo() {
-        name = "ZoOdyssey";
-        money = 80000;
-        seed = 0; meat = 0;
+    Zoo(string m_name, int m_money):name(m_name), money(m_money) {
         nbrMaxVisitor = 200;
         nbrVisitor = 0;
         nbrPet = 0;
         nbrEnclosure = 0;
-        time = 0;
+    }
+
+    void Stats() {
+        cout << "name : " << name << endl;
+        cout << "money : " << money << endl;
+        cout << "number of pets : " << nbrPet << endl;
+        cout << "number maximum of people : " << nbrVisitor << endl;
     }
 };
 
 
-#endif //B1_CPP_ZOO_ZOO_H
+#endif //B;1_CPP_ZOO_ZOO_H
