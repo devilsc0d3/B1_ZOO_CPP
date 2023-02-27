@@ -6,15 +6,20 @@
 #define B1_CPP_ZOO_MENU_H
 
 #include <iostream>
+#include <string>
+#include "Time.h"
 
 using namespace std;
 
 class Menu {
 private:
     int choice;
+    Time time;
 
 public:
+
     void show() {
+        cout << time.toString() << endl;
         cout << "Menu :" << endl;
         cout << "1. Market" << endl;
         cout << "2. Skip Month" << endl;
@@ -29,23 +34,24 @@ public:
     }
 
     void execute() {
-        switch(choice) {
-            case 1:
-                cout << "You have chosen the market." << endl;
-                // Action à exécuter pour l'option 1
-                break;
-            case 2:
-                cout << "You have chosen to skip the month." << endl;
-                // Action à exécuter pour l'option 2
-                break;
-            case 3:
-                cout << "You have chosen to leave the game." << endl;
-                // Action à exécuter pour l'option 3
-                break;
-            default:
+        if (choice == 1) {
+            cout << "You have chosen the market." << endl;
+
+        } else if (choice == 2) {
+            cout << "You have chosen to skip the month." << endl;
+            time.skip();
+            cout << time.toString() << endl;
+        } else if (choice == 3) {
+            cout << "You have chosen to leave the game." << endl;
+            return;
+        } else {
                 cout << "Invalid choice. Please enter a number between 1 and 3." << endl;
                 return choose();
         }
+    }
+
+    string GetTime(){
+        return time.toString();
     }
 };
 
