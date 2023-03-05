@@ -1,6 +1,3 @@
-//
-// Created by Utilisateur on 27/02/2023.
-//
 
 #ifndef B1_CPP_ZOO_MENU_H
 #define B1_CPP_ZOO_MENU_H
@@ -15,7 +12,7 @@ using namespace std;
 
 class Menu {
 private:
-    int choice;
+    int choice{};
     Zoo* zoo;
     Time* time;
     bool quit = false;
@@ -28,9 +25,9 @@ public:
             cout << "Current time: " << time->toString() << endl;
             zoo->Stats();
             cout << "Menu :" << endl;
-            cout << "1. Market" << endl;
-            cout << "2. Skip Month" << endl;
-            cout << "3. Quit Game" << endl;
+            cout << "   1. Market" << endl;
+            cout << "   2. Skip Month" << endl;
+            cout << "   3. Quit Game\n" << endl;
             choose();
         }
     }
@@ -43,10 +40,9 @@ public:
     }
 
     void execute() {
-
         if (choice == 1) {
-            cout << "You have chosen the market." << endl;
-
+            showMarket();
+//            quit = true;
         } else if (choice == 2) {
             cout << "You have chosen to skip the month." << endl;
             time->skip();
@@ -61,8 +57,65 @@ public:
         }
     }
 
-    string GetTime(){
-        return time->toString();
+    //------------------------------------------- MARKET ------------------------------------------------------//
+
+    void marketChoices() {
+        cout << "Enter your choice (1-4): ";
+        cin >> choice;
+        marketType();
+    }
+
+    void showMarket() {
+        while (!quit) {
+            cout << "\nMarket :" << endl;
+            cout << "   1. Habitat" << endl;
+            cout << "   2. Animals" << endl;
+            cout << "   3. Food" << endl;
+            cout << "   4. Cancel\n" << endl;
+            marketChoices();
+        }
+    }
+
+
+    void marketType() {
+        if (choice == 1) {
+            marketHabitat();
+        } else if (choice == 2) {
+            marketAnimals();
+        } else if (choice == 3) {
+            marketFood();
+        } else if (choice == 4) {
+            show();
+        } else {
+            cout << "Invalid choice. Please enter a number between 1 and 4." << endl;
+            marketChoices();
+        }
+    }
+
+    void marketFood() {
+        cout << "\nMarket Food :" << endl;
+        cout << "   1. Seed" << endl;
+        cout << "   2. Meal" << endl;
+        cout << "   3. Cancel\n" << endl;
+    }
+
+    void marketAnimals() {
+        cout << "\nMarket Habitat :" << endl;
+        cout << "   1. poule" << endl;
+        cout << "   2. poule" << endl;
+        cout << "   2. aigle" << endl;
+        cout << "   4. aigle" << endl;
+        cout << "   5. tiger\n" << endl;
+        cout << "   6. tiger" << endl;
+        cout << "   7. Cancel\n" << endl;
+    }
+
+    void marketHabitat() {
+        cout << "\nMarket Habitat:" << endl;
+        cout << "   1. aigle" << endl;
+        cout << "   2. poule" << endl;
+        cout << "   3. tiger" << endl;
+        cout << "   4. Cancel\n" << endl;
     }
 };
 
