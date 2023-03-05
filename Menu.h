@@ -58,12 +58,7 @@ public:
     }
 
     //------------------------------------------- MARKET ------------------------------------------------------//
-
-    void marketChoices() {
-        cout << "Enter your choice (1-4): ";
-        cin >> choice;
-        marketType();
-    }
+    //TODO : garde fou --> money ; habitat existent ;
 
     void showMarket() {
         while (!quit) {
@@ -74,6 +69,12 @@ public:
             cout << "   4. Cancel\n" << endl;
             marketChoices();
         }
+    }
+
+    void marketChoices() {
+        cout << "Enter your choice (1-4): ";
+        cin >> choice;
+        marketType();
     }
 
 
@@ -92,30 +93,101 @@ public:
         }
     }
 
+    //FOOD
     void marketFood() {
         cout << "\nMarket Food :" << endl;
         cout << "   1. Seed" << endl;
         cout << "   2. Meal" << endl;
         cout << "   3. Cancel\n" << endl;
+        marketChoicesFood();
     }
 
+    void marketChoicesFood() {
+        cout << "Enter your choice (1-3): ";
+        cin >> choice;
+        marketTypeFood();
+    }
+
+    void marketTypeFood() {
+        if (choice == 1) {
+        } else if (choice == 2) {
+        } else if (choice == 3) {
+        } else {
+            cout << "Invalid choice. Please enter a number between 1 and 3." << endl;
+            marketChoicesFood();
+        }
+    }
+
+    //ANIMALS
     void marketAnimals() {
         cout << "\nMarket Habitat :" << endl;
         cout << "   1. poule" << endl;
         cout << "   2. poule" << endl;
         cout << "   2. aigle" << endl;
         cout << "   4. aigle" << endl;
-        cout << "   5. tiger\n" << endl;
+        cout << "   5. tiger" << endl;
         cout << "   6. tiger" << endl;
         cout << "   7. Cancel\n" << endl;
+        marketChoicesAnimals();
     }
 
+    void marketChoicesAnimals() {
+        cout << "Enter your choice (1-7): ";
+        cin >> choice;
+        marketTypeAnimals();
+    }
+
+    void marketTypeAnimals() {
+        int genre = marketGenre();
+        if (choice == 1) {
+        } else if (choice == 2) {
+        } else if (choice == 3) {
+        } else if (choice == 4) {
+        } else if (choice == 5) {
+        } else if (choice == 6) {
+        } else if (choice == 7) {
+            showMarket();
+        } else {
+            cout << "Invalid choice. Please enter a number between 1 and 7." << endl;
+            marketChoicesFood();
+        }
+    }
+
+    int marketGenre() {
+        cout << "\nMarket Animals Genre:" << endl;
+        cout << "   1. male" << endl;
+        cout << "   2. female" << endl;
+        cin >> choice;
+        return choice;
+    }
+
+
+    //HABITAT
     void marketHabitat() {
         cout << "\nMarket Habitat:" << endl;
         cout << "   1. aigle" << endl;
         cout << "   2. poule" << endl;
         cout << "   3. tiger" << endl;
         cout << "   4. Cancel\n" << endl;
+        marketChoicesHabitat();
+    }
+
+    void marketChoicesHabitat() {
+        cout << "Enter your choice (1-4): ";
+        cin >> choice;
+        marketTypeHabitat();
+    }
+
+    void marketTypeHabitat() {
+        if (choice == 1) {
+        } else if (choice == 2) {
+        } else if (choice == 3) {
+        } else if (choice == 4) {
+            showMarket();
+        } else {
+            cout << "Invalid choice. Please enter a number between 1 and 4." << endl;
+            marketChoicesHabitat();
+        }
     }
 };
 

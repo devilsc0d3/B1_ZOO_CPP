@@ -1,7 +1,3 @@
-//
-// Created by faure on 21/02/2023.
-//
-
 #ifndef B1_CPP_ZOO_ZOO_H
 #define B1_CPP_ZOO_ZOO_H
 #include <vector>
