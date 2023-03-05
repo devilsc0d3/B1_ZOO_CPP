@@ -37,8 +37,8 @@ public:
 
     }
 
-    void getMoney() {
-
+    int getMoney() {
+        return money;
     }
 };
 
