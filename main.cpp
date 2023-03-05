@@ -1,20 +1,17 @@
 #include <iostream>
-#include "Market.h"
 #include "Zoo.h"
 #include "Menu.h"
-
+#include "Time.h"
 
 using namespace std;
 
 int main()
 {
     Zoo* zoo = new Zoo("Zoodyssey", 80000);
-    zoo->Stats();
 
-    Menu menu;
+    Time time;
+    Menu menu(zoo, &time);
     menu.show();
 
-
     return 0;
-
 }
