@@ -58,7 +58,7 @@ public:
     }
 
     //------------------------------------------- MARKET ------------------------------------------------------//
-    //TODO : garde fou --> money ; habitat existent ;
+    //TODO : garde fou --> habitat existent ;
 
     void showMarket() {
         while (!quit) {
