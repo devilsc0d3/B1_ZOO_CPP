@@ -180,8 +180,11 @@ public:
 
     void marketTypeHabitat() {
         if (choice == 1) {
+            zoo->AddHabitatAigle();
         } else if (choice == 2) {
+            zoo->AddHabitatPoule();
         } else if (choice == 3) {
+            zoo->AddHabitatTiger();
         } else if (choice == 4) {
             showMarket();
         } else {

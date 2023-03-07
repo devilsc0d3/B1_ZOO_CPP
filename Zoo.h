@@ -12,7 +12,9 @@ class Zoo {
     int nbrMaxVisitor;
     int nbrPet;
     int nbrHabitat;
-    vector <Habitat> arrayHabitat;
+    vector <Habitat> arrayAigle;
+    vector <Habitat> arrayTiger;
+    vector <Habitat> arrayPoule;
 
 public:
     Zoo(string m_name, int m_money):name(m_name), money(m_money) {
@@ -36,6 +38,54 @@ public:
     int getMoney() {
         return money;
     }
+
+    void AddHabitatAigle() {
+        int price = 2000;
+        if (money > price) {
+            money -= price;
+            Habitat newHabitat;
+            arrayAigle.push_back(newHabitat);
+            cout << "you got a good deal !" << endl;
+        } else {
+        cout << "NO Money, You're too poor !!!" << endl;
+        }
+
+        cout << "\n     --test aigle --" << endl;
+        cout << money << endl;
+        cout << arrayAigle.size() << endl;
+    };
+
+    void AddHabitatPoule() {
+        int price = 2000;
+        if (money > price) {
+            money -= price;
+            Habitat newHabitat;
+            arrayPoule.push_back(newHabitat);
+            cout << "you got a good deal !" << endl;
+        } else {
+        cout << "NO Money, You're too poor !!!" << endl;
+        }
+
+        cout << "\n     --test Poule --" << endl;
+        cout << money << endl;
+        cout << arrayPoule.size() << endl;
+    };
+
+    void AddHabitatTiger() {
+        int price = 2000;
+        if (money > price) {
+            money -= price;
+            Habitat newHabitat;
+            arrayTiger.push_back(newHabitat);
+            cout << "you got a good deal !" << endl;
+        } else {
+        cout << "NO Money, You're too poor !!!" << endl;
+        }
+
+        cout << "\n     --test tiger -- " << endl;
+        cout << money << endl;
+        cout << arrayTiger.size() << endl;
+    };
 };
 
 
