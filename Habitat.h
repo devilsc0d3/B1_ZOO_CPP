@@ -11,13 +11,11 @@ using namespace  std;
 
 class Habitat {
     int capacity;
-    int overcrowding;
     int probabilityOfDisease;
     vector <Habitat> arrayAnimals;
 
 public:
-    Habitat()  {
-    }
+    Habitat( int m_capacity, int m_probabilityOfDisease):capacity(m_capacity), probabilityOfDisease(m_probabilityOfDisease) {}
 
     void addEagle(){
         //TODO : fill parameter of function
@@ -27,6 +25,11 @@ public:
     }
     void addTiger(){
 
+    }
+
+    void SetCapacity(int nbr) {
+        capacity += nbr;
+        cout << "capacity : " << capacity << endl;
     }
 
 };

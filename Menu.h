@@ -89,7 +89,6 @@ public:
         } else if (choice == 4) {
 
             cout << " welcome to selling " << endl;
-            zoo.t
 
         } else if (choice == 5) {
             show();

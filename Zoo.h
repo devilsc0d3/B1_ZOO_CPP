@@ -12,9 +12,9 @@ class Zoo{
     int nbrMaxVisitor;
     int nbrPet;
     int nbrHabitat;
-    Habitat* hen = new Habitat();
-    Habitat* eagle = new Habitat();
-    Habitat* tiger = new Habitat();
+    Habitat* hen = new Habitat(10,4);
+    Habitat* eagle = new Habitat(4,1);
+    Habitat* tiger = new Habitat(2,1);
 
 public:
     Zoo(string m_name, int m_money):name(m_name), money(m_money) {
@@ -43,7 +43,7 @@ public:
         int price = 2000;
         if (money > price) {
             money -= price;
-            eagle->addEagle();
+            eagle->SetCapacity(4);
             cout << "you got a good deal !" << endl;
         } else {
         cout << "NO Money, You're too poor !!!" << endl;
@@ -57,7 +57,7 @@ public:
         int price = 2000;
         if (money > price) {
             money -= price;
-            hen->addHen();
+            hen->SetCapacity(10);
             cout << "you got a good deal !" << endl;
         } else {
         cout << "NO Money, You're too poor !!!" << endl;
@@ -71,7 +71,7 @@ public:
         int price = 2000;
         if (money > price) {
             money -= price;
-            tiger->addTiger();
+            tiger->SetCapacity(2);
             cout << "you got a good deal !" << endl;
         } else {
         cout << "NO Money, You're too poor !!!" << endl;
