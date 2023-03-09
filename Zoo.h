@@ -6,15 +6,15 @@
 
 using namespace  std;
 
-class Zoo {
+class Zoo{
     string name;
     int money;
     int nbrMaxVisitor;
     int nbrPet;
     int nbrHabitat;
-    vector <Habitat> arrayAigle;
-    vector <Habitat> arrayTiger;
-    vector <Habitat> arrayPoule;
+    Habitat* hen = new Habitat();
+    Habitat* eagle = new Habitat();
+    Habitat* tiger = new Habitat();
 
 public:
     Zoo(string m_name, int m_money):name(m_name), money(m_money) {
@@ -39,12 +39,11 @@ public:
         return money;
     }
 
-    void AddHabitatAigle() {
+    void AddHabitatEagle() {
         int price = 2000;
         if (money > price) {
             money -= price;
-            Habitat newHabitat;
-            arrayAigle.push_back(newHabitat);
+            eagle->addEagle();
             cout << "you got a good deal !" << endl;
         } else {
         cout << "NO Money, You're too poor !!!" << endl;
@@ -52,15 +51,13 @@ public:
 
         cout << "\n     --test aigle --" << endl;
         cout << money << endl;
-        cout << arrayAigle.size() << endl;
     };
 
     void AddHabitatPoule() {
         int price = 2000;
         if (money > price) {
             money -= price;
-            Habitat newHabitat;
-            arrayPoule.push_back(newHabitat);
+            hen->addHen();
             cout << "you got a good deal !" << endl;
         } else {
         cout << "NO Money, You're too poor !!!" << endl;
@@ -68,15 +65,13 @@ public:
 
         cout << "\n     --test Poule --" << endl;
         cout << money << endl;
-        cout << arrayPoule.size() << endl;
     };
 
     void AddHabitatTiger() {
         int price = 2000;
         if (money > price) {
             money -= price;
-            Habitat newHabitat;
-            arrayTiger.push_back(newHabitat);
+            tiger->addTiger();
             cout << "you got a good deal !" << endl;
         } else {
         cout << "NO Money, You're too poor !!!" << endl;
@@ -84,7 +79,6 @@ public:
 
         cout << "\n     --test tiger -- " << endl;
         cout << money << endl;
-        cout << arrayTiger.size() << endl;
     };
 };
 

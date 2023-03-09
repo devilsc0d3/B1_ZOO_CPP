@@ -66,7 +66,8 @@ public:
             cout << "   1. Habitat" << endl;
             cout << "   2. Animals" << endl;
             cout << "   3. Food" << endl;
-            cout << "   4. Cancel\n" << endl;
+            cout << "   4. Sell" << endl;
+            cout << "   5. Cancel\n" << endl;
             marketChoices();
         }
     }
@@ -86,6 +87,11 @@ public:
         } else if (choice == 3) {
             marketFood();
         } else if (choice == 4) {
+
+            cout << " welcome to selling " << endl;
+            zoo.t
+
+        } else if (choice == 5) {
             show();
         } else {
             cout << "Invalid choice. Please enter a number between 1 and 4." << endl;
@@ -180,7 +186,7 @@ public:
 
     void marketTypeHabitat() {
         if (choice == 1) {
-            zoo->AddHabitatAigle();
+            zoo->AddHabitatEagle();
         } else if (choice == 2) {
             zoo->AddHabitatPoule();
         } else if (choice == 3) {

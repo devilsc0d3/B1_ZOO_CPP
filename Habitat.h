@@ -10,13 +10,19 @@
 using namespace  std;
 
 class Habitat {
+    int capacity;
+    int overcrowding;
+    int probabilityOfDisease;
     vector <Habitat> arrayAnimals;
 
 public:
-    void addAigle(int age, string name,string sexe){
+    Habitat()  {
+    }
+
+    void addEagle(){
         //TODO : fill parameter of function
     }
-    void addPoule(){
+    void addHen(){
 
     }
     void addTiger(){
