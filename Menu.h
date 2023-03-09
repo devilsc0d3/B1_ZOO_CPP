@@ -87,9 +87,7 @@ public:
         } else if (choice == 3) {
             marketFood();
         } else if (choice == 4) {
-
-            cout << " welcome to selling " << endl;
-
+            marketSell();
         } else if (choice == 5) {
             show();
         } else {
@@ -126,10 +124,10 @@ public:
     //ANIMALS
     void marketAnimals() {
         cout << "\nMarket Habitat :" << endl;
-        cout << "   1. poule" << endl;
-        cout << "   2. poule" << endl;
-        cout << "   2. aigle" << endl;
-        cout << "   4. aigle" << endl;
+        cout << "   1. hen" << endl;
+        cout << "   2. hen" << endl;
+        cout << "   2. eagle" << endl;
+        cout << "   4. eagle" << endl;
         cout << "   5. tiger" << endl;
         cout << "   6. tiger" << endl;
         cout << "   7. Cancel\n" << endl;
@@ -143,7 +141,7 @@ public:
     }
 
     void marketTypeAnimals() {
-        int genre = marketGenre();
+//        int genre = marketGenre();
         if (choice == 1) {
         } else if (choice == 2) {
         } else if (choice == 3) {
@@ -170,8 +168,8 @@ public:
     //HABITAT
     void marketHabitat() {
         cout << "\nMarket Habitat:" << endl;
-        cout << "   1. aigle" << endl;
-        cout << "   2. poule" << endl;
+        cout << "   1. eagle" << endl;
+        cout << "   2. hen" << endl;
         cout << "   3. tiger" << endl;
         cout << "   4. Cancel\n" << endl;
         marketChoicesHabitat();
@@ -190,6 +188,37 @@ public:
             zoo->AddHabitatPoule();
         } else if (choice == 3) {
             zoo->AddHabitatTiger();
+        } else if (choice == 4) {
+            showMarket();
+        } else {
+            cout << "Invalid choice. Please enter a number between 1 and 4." << endl;
+            marketChoicesHabitat();
+        }
+    }
+
+    //SELL
+    void marketSell() {
+        cout << "\nMarket sell Habitat:" << endl;
+        cout << "   1. Habitat eagle" << endl;
+        cout << "   2. Habitat hen" << endl;
+        cout << "   3. Habitat tiger" << endl;
+        cout << "   4. Cancel\n" << endl;
+        marketChoicesSellHabitat();
+    }
+
+    void marketChoicesSellHabitat() {
+        cout << "Enter your choice (1-4): ";
+        cin >> choice;
+        marketSellHabitat();
+    }
+
+    void marketSellHabitat() {
+        if (choice == 1) {
+            zoo->SellHabitatEagle();
+        } else if (choice == 2) {
+            zoo->SellHabitatHen();
+        } else if (choice == 3) {
+            zoo->SellHabitatTiger();
         } else if (choice == 4) {
             showMarket();
         } else {

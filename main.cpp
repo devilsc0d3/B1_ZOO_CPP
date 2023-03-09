@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-    Zoo* zoo = new Zoo("Tri Zoo Mie", 80000);
+    Zoo* zoo = new Zoo("Try-Zoo-Mie", 80000);
 
     Time time;
     Menu menu(zoo, &time);

@@ -32,6 +32,10 @@ public:
         cout << "capacity : " << capacity << endl;
     }
 
+    int GetCapacity() {
+        return capacity;
+    };
+
 };
 
 

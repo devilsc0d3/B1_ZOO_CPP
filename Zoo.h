@@ -80,6 +80,51 @@ public:
         cout << "\n     --test tiger -- " << endl;
         cout << money << endl;
     };
+
+    void SellHabitatTiger() {
+        if (tiger->GetCapacity() > 1) {
+            //TODO if len de animaux = 0 pour vendre
+            money += 500;
+            tiger->SetCapacity(-2);
+            cout << "you got a good deal !" << endl;
+        }  else if (eagle->GetCapacity() == 0) {
+            cout << "Crii crii crii, there is no more habitat" << endl;
+        } else {
+        cout << "NO, NO to animals on the street !!!" << endl;
+        }
+    };
+
+    void SellHabitatEagle() {
+        if (eagle->GetCapacity() > 1) {
+            //TODO if len de animaux = 0 pour vendre
+            money += 500;
+            eagle->SetCapacity(-4);
+            cout << "you got a good deal !" << endl;
+        } else if (eagle->GetCapacity() == 0) {
+            cout << "Crii crii crii, there is no more habitat" << endl;
+        } else {
+        cout << "NO, NO to animals on the street !!!" << endl;
+        }
+    };
+
+    void SellHabitatHen() {
+        cout << "argent : " << money << endl;
+        if (hen->GetCapacity() > 1) {
+            //TODO if len de animaux = 0 pour vendre
+            money += 50;
+            hen->SetCapacity(-10);
+            cout << "you got a good deal !" << endl;
+        }  else if (eagle->GetCapacity() == 0) {
+            cout << "Crii crii crii, there is no more habitat" << endl;
+        } else {
+        cout << "NO, NO to animals on the street !!!" << endl;
+        }
+
+        cout << "argent : " << money << endl;
+    };
+
+
+
 };
 
 
