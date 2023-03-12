@@ -113,8 +113,11 @@ public:
 
     void marketTypeFood() {
         if (choice == 1) {
+            zoo->addSeed();
         } else if (choice == 2) {
+            zoo->addMeal();
         } else if (choice == 3) {
+            showMarket();
         } else {
             cout << "Invalid choice. Please enter a number between 1 and 3." << endl;
             marketChoicesFood();

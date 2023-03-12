@@ -7,7 +7,7 @@ using namespace std;
 
 int Level() {
     int choice;
-    cout << "1. Easy \n2. Normal \n3. Hard \n\nEnter your choice (1-3): ";
+    cout << "-Level menu-\n1. Easy \n2. Normal \n3. Hard \n\nEnter your choice (1-3): ";
     cin >> choice;
     if (choice == 1) {
         return 150000;
@@ -22,7 +22,7 @@ int Level() {
 
 int main()
 {
-    Zoo* zoo = new Zoo("Try-Zoo-Mie", Level());
+    Zoo* zoo = new Zoo("Try-Zoo-Mix", Level());
 
     Time time;
     Menu menu(zoo, &time);

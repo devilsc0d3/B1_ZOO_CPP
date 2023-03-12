@@ -8,7 +8,7 @@ using namespace  std;
 
 class Zoo{
     string name;
-    int money;
+    float money;
     int nbrMaxVisitor;
     int nbrPet;
     int nbrHabitat;
@@ -80,6 +80,33 @@ public:
         cout << "\n     --test tiger -- " << endl;
         cout << money << endl;
     };
+
+    void addSeed() {
+        int kilos;
+        float price = 2.5;
+        cout << "How many kilos do you want sir ?" << endl;
+        cin >> kilos;
+        if (kilos * price < money) {
+            money -= kilos * price;
+                    //add seed
+        } else {
+            cout << "NO Money, You're too poor !!!" << endl;
+        }
+
+    }
+    void addMeal() {
+        int kilos;
+        int price = 5;
+        cout << "How many kilos do you want sir ?" << endl;
+        cin >> kilos;
+        if (kilos * price < money) {
+            money -= kilos * price;
+                    //add meal
+        } else {
+            cout << "NO Money, You're too poor !!!" << endl;
+        }
+
+    }
 
     void SellHabitatTiger() {
         if (tiger->GetCapacity() > 1) {
