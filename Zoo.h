@@ -17,7 +17,7 @@ class Zoo{
     Habitat* tiger = new Habitat(2,1);
 
 public:
-    Zoo(string m_name, int m_money):name(m_name), money(m_money) {
+    Zoo(string m_name, float m_money):name(m_name), money(m_money) {
         nbrMaxVisitor = 200;
         nbrMaxVisitor = 0;
         nbrPet = 0;
@@ -35,12 +35,8 @@ public:
 
     }
 
-    int getMoney() {
-        return money;
-    }
-
     void AddHabitatEagle() {
-        int price = 2000;
+        float price = 2000;
         if (money > price) {
             money -= price;
             eagle->SetCapacity(4);
@@ -48,13 +44,10 @@ public:
         } else {
         cout << "NO Money, You're too poor !!!" << endl;
         }
-
-        cout << "\n     --test aigle --" << endl;
-        cout << money << endl;
     };
 
-    void AddHabitatPoule() {
-        int price = 2000;
+    void AddHabitatHen() {
+        float price = 2000;
         if (money > price) {
             money -= price;
             hen->SetCapacity(10);
@@ -62,13 +55,10 @@ public:
         } else {
         cout << "NO Money, You're too poor !!!" << endl;
         }
-
-        cout << "\n     --test Poule --" << endl;
-        cout << money << endl;
     };
 
     void AddHabitatTiger() {
-        int price = 2000;
+        float price = 2000;
         if (money > price) {
             money -= price;
             tiger->SetCapacity(2);
@@ -76,13 +66,10 @@ public:
         } else {
         cout << "NO Money, You're too poor !!!" << endl;
         }
-
-        cout << "\n     --test tiger -- " << endl;
-        cout << money << endl;
     };
 
     void addSeed() {
-        int kilos;
+        float kilos;
         float price = 2.5;
         cout << "How many kilos do you want sir ?" << endl;
         cin >> kilos;
@@ -95,8 +82,8 @@ public:
 
     }
     void addMeal() {
-        int kilos;
-        int price = 5;
+        float kilos;
+        float price = 5;
         cout << "How many kilos do you want sir ?" << endl;
         cin >> kilos;
         if (kilos * price < money) {
@@ -105,12 +92,11 @@ public:
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
         }
-
     }
 
     void SellHabitatTiger() {
         if (tiger->GetCapacity() > 1) {
-            //TODO if len de animaux = 0 pour vendre
+            //TODO if animal is present no selling
             money += 500;
             tiger->SetCapacity(-2);
             cout << "you got a good deal !" << endl;
@@ -123,7 +109,7 @@ public:
 
     void SellHabitatEagle() {
         if (eagle->GetCapacity() > 1) {
-            //TODO if len de animaux = 0 pour vendre
+            //TODO if animal is present no selling
             money += 500;
             eagle->SetCapacity(-4);
             cout << "you got a good deal !" << endl;
@@ -137,7 +123,7 @@ public:
     void SellHabitatHen() {
         cout << "argent : " << money << endl;
         if (hen->GetCapacity() > 1) {
-            //TODO if len de animaux = 0 pour vendre
+            //TODO if animal is present no selling
             money += 50;
             hen->SetCapacity(-10);
             cout << "you got a good deal !" << endl;
@@ -149,9 +135,6 @@ public:
 
         cout << "argent : " << money << endl;
     };
-
-
-
 };
 
 

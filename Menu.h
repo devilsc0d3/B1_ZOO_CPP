@@ -188,7 +188,7 @@ public:
         if (choice == 1) {
             zoo->AddHabitatEagle();
         } else if (choice == 2) {
-            zoo->AddHabitatPoule();
+            zoo->AddHabitatHen();
         } else if (choice == 3) {
             zoo->AddHabitatTiger();
         } else if (choice == 4) {
