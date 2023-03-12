@@ -12,6 +12,8 @@ class Zoo{
     int nbrMaxVisitor;
     int nbrPet;
     int nbrHabitat;
+    float seed;
+    float meal;
     Habitat* hen = new Habitat(10,4);
     Habitat* eagle = new Habitat(4,1);
     Habitat* tiger = new Habitat(2,1);
@@ -20,6 +22,8 @@ public:
     Zoo(string m_name, float m_money):name(m_name), money(m_money) {
         nbrMaxVisitor = 200;
         nbrMaxVisitor = 0;
+        seed = 0;
+        meal = 0;
         nbrPet = 0;
         nbrHabitat = 0;
     }
@@ -75,7 +79,7 @@ public:
         cin >> kilos;
         if (kilos * price < money) {
             money -= kilos * price;
-                    //add seed
+            seed += kilos;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
         }
@@ -88,7 +92,7 @@ public:
         cin >> kilos;
         if (kilos * price < money) {
             money -= kilos * price;
-                    //add meal
+            meal += kilos;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
         }
