@@ -24,6 +24,10 @@ public:
         //TODO : fill parameter of function
     }
 
+    int GetNbrAnimals() {
+        return arrayAnimals.size();
+    };
+
     void SetCapacity(int nbr) {
         capacity += nbr;
         cout << "capacity : " << capacity << endl;

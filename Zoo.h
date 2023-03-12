@@ -99,8 +99,7 @@ public:
     }
 
     void SellHabitatTiger() {
-        if (tiger->GetCapacity() > 1) {
-            //TODO if animal is present no selling
+        if (tiger->GetCapacity() > 1 || (tiger->GetCapacity() >= 2 && tiger->GetNbrAnimals() == 0)) {
             money += 500;
             tiger->SetCapacity(-2);
             cout << "you got a good deal !" << endl;
@@ -112,8 +111,7 @@ public:
     };
 
     void SellHabitatEagle() {
-        if (eagle->GetCapacity() > 1) {
-            //TODO if animal is present no selling
+        if (eagle->GetCapacity() > 4 || (eagle->GetCapacity() >= 4 && eagle->GetNbrAnimals() == 0)) {
             money += 500;
             eagle->SetCapacity(-4);
             cout << "you got a good deal !" << endl;
@@ -126,8 +124,7 @@ public:
 
     void SellHabitatHen() {
         cout << "argent : " << money << endl;
-        if (hen->GetCapacity() > 1) {
-            //TODO if animal is present no selling
+        if (hen->GetCapacity() > 1 || (hen->GetCapacity() >= 10 && hen->GetNbrAnimals() == 0)) {
             money += 50;
             hen->SetCapacity(-10);
             cout << "you got a good deal !" << endl;
