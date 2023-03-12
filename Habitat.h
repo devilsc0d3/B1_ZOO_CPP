@@ -18,10 +18,10 @@ public:
         //TODO : fill parameter of function
     }
     void addHen(){
-
+        //TODO : fill parameter of function
     }
     void addTiger(){
-
+        //TODO : fill parameter of function
     }
 
     void SetCapacity(int nbr) {

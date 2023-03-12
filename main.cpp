@@ -5,8 +5,8 @@
 
 using namespace std;
 
-int Level() {
-    int choice;
+float Level() {
+    float choice;
     cout << "-Level menu-\n1. Easy \n2. Normal \n3. Hard \n\nEnter your choice (1-3): ";
     cin >> choice;
     if (choice == 1) {
