@@ -5,9 +5,24 @@
 
 using namespace std;
 
+int Level() {
+    int choice;
+    cout << "1. Easy \n2. Normal \n3. Hard \n\nEnter your choice (1-3): ";
+    cin >> choice;
+    if (choice == 1) {
+        return 150000;
+    } else if (choice == 2) {
+        return 80000;
+    } else if (choice == 3) {
+        return 20000;
+    } else {
+        return 80000;
+    }
+}
+
 int main()
 {
-    Zoo* zoo = new Zoo("Try-Zoo-Mie", 80000);
+    Zoo* zoo = new Zoo("Try-Zoo-Mie", Level());
 
     Time time;
     Menu menu(zoo, &time);
