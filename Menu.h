@@ -201,16 +201,22 @@ public:
 
     //SELL
     void marketSell() {
-        cout << "\nMarket sell Habitat:" << endl;
+        cout << "\nMarket sell :" << endl;
         cout << "   1. Habitat eagle" << endl;
         cout << "   2. Habitat hen" << endl;
         cout << "   3. Habitat tiger" << endl;
-        cout << "   4. Cancel\n" << endl;
+        cout << "   4. hen" << endl;
+        cout << "   5. hen" << endl;
+        cout << "   6. eagle" << endl;
+        cout << "   7. eagle" << endl;
+        cout << "   8. tiger" << endl;
+        cout << "   9. tiger" << endl;
+        cout << "   10. Cancel\n" << endl;
         marketChoicesSellHabitat();
     }
 
     void marketChoicesSellHabitat() {
-        cout << "Enter your choice (1-4): ";
+        cout << "Enter your choice (1-10): ";
         cin >> choice;
         marketSellHabitat();
     }
@@ -223,6 +229,12 @@ public:
         } else if (choice == 3) {
             zoo->SellHabitatTiger();
         } else if (choice == 4) {
+        } else if (choice == 5) {
+        } else if (choice == 6) {
+        } else if (choice == 7) {
+        } else if (choice == 8) {
+        } else if (choice == 9) {
+        } else if (choice == 10) {
             showMarket();
         } else {
             cout << "Invalid choice. Please enter a number between 1 and 4." << endl;
