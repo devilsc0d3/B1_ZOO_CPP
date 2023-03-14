@@ -107,6 +107,7 @@ public:
     void SellHabitatTiger() {
         if (tiger->GetCapacity() > 1 || (tiger->GetCapacity() >= 2 && tiger->GetNbrAnimals() == 0)) {
             money += 500;
+            nbrHabitat--;
             tiger->SetCapacity(-2);
             cout << "you got a good deal !" << endl;
         }  else if (eagle->GetCapacity() == 0) {
@@ -119,6 +120,7 @@ public:
     void SellHabitatEagle() {
         if (eagle->GetCapacity() > 4 || (eagle->GetCapacity() >= 4 && eagle->GetNbrAnimals() == 0)) {
             money += 500;
+            nbrHabitat--;
             eagle->SetCapacity(-4);
             cout << "you got a good deal !" << endl;
         } else if (eagle->GetCapacity() == 0) {
@@ -132,6 +134,7 @@ public:
         cout << "argent : " << money << endl;
         if (hen->GetCapacity() > 1 || (hen->GetCapacity() >= 10 && hen->GetNbrAnimals() == 0)) {
             money += 50;
+            nbrHabitat--;
             hen->SetCapacity(-10);
             cout << "you got a good deal !" << endl;
         }  else if (eagle->GetCapacity() == 0) {
