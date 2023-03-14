@@ -10,6 +10,7 @@ class Zoo{
     string name;
     float money;
     int nbrMaxVisitor;
+    int nbrVisitor;
     int nbrPet;
     int nbrHabitat;
     float seed;
@@ -21,7 +22,7 @@ class Zoo{
 public:
     Zoo(string m_name, float m_money):name(m_name), money(m_money) {
         nbrMaxVisitor = 200;
-        nbrMaxVisitor = 0;
+        nbrVisitor = 0;
         seed = 0;
         meal = 0;
         nbrPet = 0;
@@ -32,17 +33,20 @@ public:
         cout << "\n=---------- STATS -----------=" << endl;
         cout << "name : " << name << endl;
         cout << "money : " << money << endl;
+        cout << "seed in kg : " << seed << endl;
+        cout << "meal in kg : " << meal << endl;
         cout << "number of pets : " << nbrPet << endl;
         cout << "number of habitat : " << nbrHabitat << endl;
         cout << "number maximum of people : " << nbrMaxVisitor << endl;
+        cout << "number of people in the month : " << nbrVisitor << endl;
         cout << "=----------------------------=\n" << endl;
-
     }
 
     void AddHabitatEagle() {
         float price = 2000;
         if (money > price) {
             money -= price;
+            nbrHabitat++;
             eagle->SetCapacity(4);
             cout << "you got a good deal !" << endl;
         } else {
@@ -54,6 +58,7 @@ public:
         float price = 2000;
         if (money > price) {
             money -= price;
+            nbrHabitat++;
             hen->SetCapacity(10);
             cout << "you got a good deal !" << endl;
         } else {
@@ -65,6 +70,7 @@ public:
         float price = 2000;
         if (money > price) {
             money -= price;
+            nbrHabitat++;
             tiger->SetCapacity(2);
             cout << "you got a good deal !" << endl;
         } else {
