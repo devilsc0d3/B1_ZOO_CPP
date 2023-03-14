@@ -23,7 +23,9 @@ public:
         //TODO : fill parameter of function
     }
     void addTiger(){
-        arrayTiger.push_back(*new Tiger("castor"));
+        string nickname;
+        cin >> nickname;
+        arrayTiger.push_back(*new Tiger(nickname));
         cout << arrayTiger[0].GetName() << endl;
         //TODO : fill parameter of function
     }
