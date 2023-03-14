@@ -126,36 +126,107 @@ public:
 
     //ANIMALS
     void marketAnimals() {
-        cout << "\nMarket Habitat :" << endl;
+        cout << "\nMarket Animals :" << endl;
         cout << "   1. hen" << endl;
-        cout << "   2. hen" << endl;
         cout << "   2. eagle" << endl;
-        cout << "   4. eagle" << endl;
-        cout << "   5. tiger" << endl;
-        cout << "   6. tiger" << endl;
-        cout << "   7. Cancel\n" << endl;
+        cout << "   3. tiger" << endl;
+        cout << "   4. Cancel\n" << endl;
         marketChoicesAnimals();
     }
 
     void marketChoicesAnimals() {
-        cout << "Enter your choice (1-7): ";
+        cout << "Enter your choice (1-4): ";
         cin >> choice;
         marketTypeAnimals();
     }
 
     void marketTypeAnimals() {
-//        int genre = marketGenre();
         if (choice == 1) {
+            marketGenreHen();
         } else if (choice == 2) {
+            marketAgeAnimalEagle();
         } else if (choice == 3) {
+            marketAgeAnimalTiger();
         } else if (choice == 4) {
-        } else if (choice == 5) {
-        } else if (choice == 6) {
-        } else if (choice == 7) {
             showMarket();
         } else {
-            cout << "Invalid choice. Please enter a number between 1 and 7." << endl;
-            marketChoicesFood();
+            cout << "Invalid choice. Please enter a number between 1 and 4." << endl;
+            marketChoicesAnimals();
+        }
+    }
+
+    void marketAgeAnimalTiger() {
+        cout << "\nMarket Animals Age :" << endl;
+        cout << "   1. 6 Month" << endl;
+        cout << "   2. 4 Years" << endl;
+        cout << "   3. 14 Years" << endl;
+        cout << "   4. Cancel\n" << endl;
+        marketChoicesAgeAnimalTiger();
+    }
+
+    void marketChoicesAgeAnimalTiger() {
+        if (choice == 1) {
+            marketGenre();
+            zoo->AddTiger6month();
+        } else if (choice == 2) {
+            marketGenre();
+            zoo->AddTiger4years();
+        } else if (choice == 3) {
+            marketGenre();
+            zoo->AddTiger14years();
+        } else if (choice == 4) {
+            showMarket();
+        } else {
+            cout << "Invalid choice. Please enter a number between 1 and 4." << endl;
+            marketChoicesAgeAnimalTiger();
+        }
+    }
+
+    void marketAgeAnimalEagle() {
+        cout << "\nMarket Animals Age :" << endl;
+        cout << "   1. 6 Month" << endl;
+        cout << "   2. 4 Years" << endl;
+        cout << "   3. 14 Years" << endl;
+        cout << "   4. Cancel\n" << endl;
+        marketChoicesAgeAnimalEagle();
+    }
+
+    void marketChoicesAgeAnimalEagle() {
+        if (choice == 1) {
+            marketGenre();
+            zoo->AddEagle6month();
+        } else if (choice == 2) {
+            marketGenre();
+            zoo->AddEagle4years();
+        } else if (choice == 3) {
+            marketGenre();
+            zoo->AddEagle14years();
+        } else if (choice == 4) {
+            showMarket();
+        } else {
+            cout << "Invalid choice. Please enter a number between 1 and 4." << endl;
+            marketChoicesAgeAnimalEagle();
+        }
+    }
+
+    void marketGenreHen() {
+        cout << "\nMarket Animals Genre:" << endl;
+        cout << "   1. male" << endl;
+        cout << "   2. female" << endl;
+        cout << "   3. Cancel\n" << endl;
+        marketChoicesGenreAnimalHen();
+    }
+
+    void marketChoicesGenreAnimalHen() {
+        if (choice == 1) {
+            zoo->AddHenMale();
+        } else if (choice == 2) {
+            zoo->AddHenFemale();
+        } else if (choice == 3) {
+            showMarket();
+        } else {
+            cout << "Invalid choice. Please enter a number between 1 and 4." << endl;
+            marketChoicesGenreAnimalHen();
         }
     }
 
