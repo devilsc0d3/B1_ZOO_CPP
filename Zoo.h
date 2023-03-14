@@ -3,8 +3,9 @@
 #include <vector>
 #include <iostream>
 #include "Habitat.h"
+#include "Tiger.h"
 
-using namespace  std;
+using namespace std;
 
 class Zoo{
     string name;
@@ -20,6 +21,7 @@ class Zoo{
 
 public:
     Zoo(string m_name, float m_money):name(m_name), money(m_money) {
+        tiger->addTiger();
         nbrMaxVisitor = 200;
         nbrMaxVisitor = 0;
         seed = 0;
@@ -99,7 +101,7 @@ public:
     }
 
     void SellHabitatTiger() {
-        if (tiger->GetCapacity() > 1 || (tiger->GetCapacity() >= 2 && tiger->GetNbrAnimals() == 0)) {
+        if (tiger->GetCapacity() > 1 || (tiger->GetCapacity() >= 2 && tiger->GetNbrTiger() == 0)) {
             money += 500;
             tiger->SetCapacity(-2);
             cout << "you got a good deal !" << endl;
@@ -111,7 +113,7 @@ public:
     };
 
     void SellHabitatEagle() {
-        if (eagle->GetCapacity() > 4 || (eagle->GetCapacity() >= 4 && eagle->GetNbrAnimals() == 0)) {
+        if (eagle->GetCapacity() > 4 || (eagle->GetCapacity() >= 4 && eagle->GetNbrTiger() == 0)) {
             money += 500;
             eagle->SetCapacity(-4);
             cout << "you got a good deal !" << endl;
@@ -124,7 +126,7 @@ public:
 
     void SellHabitatHen() {
         cout << "argent : " << money << endl;
-        if (hen->GetCapacity() > 1 || (hen->GetCapacity() >= 10 && hen->GetNbrAnimals() == 0)) {
+        if (hen->GetCapacity() > 1 || (hen->GetCapacity() >= 10 && hen->GetNbrTiger() == 0)) {
             money += 50;
             hen->SetCapacity(-10);
             cout << "you got a good deal !" << endl;
@@ -136,6 +138,7 @@ public:
 
         cout << "argent : " << money << endl;
     };
+
 };
 
 
