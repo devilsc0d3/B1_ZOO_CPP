@@ -344,10 +344,10 @@ public:
     void marketChoicesSell() {
         cout << "Enter your choice (1-7): ";
         cin >> choice;
-        marketSellHabitat();
+        marketTypeSell();
     }
 
-    void marketSellHabitat() {
+    void marketTypeSell() {
         if (choice == 1) {
             zoo->SellHabitatEagle();
         } else if (choice == 2) {
@@ -360,8 +360,8 @@ public:
         } else if (choice == 7) {
             showMarket();
         } else {
-            cout << "Invalid choice. Please enter a number between 1 and 4." << endl;
-            marketChoices();
+            cout << "Invalid choice. Please enter a number between 1 and 7." << endl;
+            marketChoicesSell();
         }
     }
 };
