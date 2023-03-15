@@ -9,8 +9,10 @@
 #include <string>
 
 #include "Zoo.h"
+#include "Menu.h"
 
 class MenuMarket {
+    private:
     int choice{};
     Zoo* zoo;
     bool quit = false;
@@ -20,7 +22,7 @@ class MenuMarket {
     //------------------------------------------- MARKET ------------------------------------------------------//
     //TODO : garde fou --> habitat existent ;
 
-    void showMarket() {
+   /* void showMarket() {
         while (!quit) {
             cout << "\nMarket :" << endl;
             cout << "   1. Habitat" << endl;
@@ -265,6 +267,7 @@ class MenuMarket {
             marketChoices();
         }
     }
+    */
 };
 
 
