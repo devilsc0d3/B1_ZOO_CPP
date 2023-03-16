@@ -50,6 +50,16 @@ public:
         cout << "=----------------------------=\n" << endl;
     }
 
+
+    int subvention(){
+        if (habitat->GetNbrTiger()>0){
+            money += (habitat->GetNbrTiger()*3650);
+        } else if(habitat->GetNbrEagle()>0) {
+            money += (habitat->GetNbrEagle()*182.5);
+        }
+    }
+
+    //------------------------------------------- VISITOR ------------------------------------------------------//
     double getRandomNumber(int) {
         random_device rd;
         mt19937 gen(rd());

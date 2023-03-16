@@ -16,7 +16,6 @@ private:
     int choice{};
     Zoo* zoo;
     Time* time;
-    MenuMarket* MenuMarket;
     bool quit = false;
 
 public:
@@ -46,6 +45,8 @@ public:
             showMarket();
         } else if (choice == 2) {
             cout << "You have chosen to skip the month." << endl;
+            zoo -> subvention();
+            zoo -> VisitorforAnimals();
             time->skip();
             cout << time->toString() << endl;
         } else if (choice == 3) {
