@@ -2,8 +2,11 @@
 #define B1_CPP_ZOO_ZOO_H
 #include <vector>
 #include <iostream>
+#include <random>
+#include <cmath>
 #include "Habitat.h"
 #include "Tiger.h"
+#include "Time.h"
 
 using namespace std;
 
@@ -14,11 +17,14 @@ class Zoo{
     int nbrVisitor;
     int nbrPet;
     int nbrHabitat;
+    int numberOfVisiTor;
     float seed;
     float meal;
     Habitat* hen = new Habitat(10,4);
     Habitat* eagle = new Habitat(4,1);
     Habitat* tiger = new Habitat(2,1);
+    Time* time;
+    Habitat* habitat;
 
 public:
     Zoo(string m_name, float m_money):name(m_name), money(m_money) {
@@ -39,10 +45,67 @@ public:
         cout << "meal in kg : " << meal << endl;
         cout << "number of pets : " << nbrPet << endl;
         cout << "number of habitat : " << nbrHabitat << endl;
-        cout << "maximum number of visitors per day : " << nbrMaxVisitor << endl;
-        cout << "average number of visitors per day : " << nbrVisitor << endl;
+        cout << "maximum number of visitors per month : " << nbrMaxVisitor << endl;
+        cout << "average number of visitors per month : " << nbrVisitor << endl;
         cout << "=----------------------------=\n" << endl;
     }
+
+    double getRandomNumber(int) {
+        random_device rd;
+        mt19937 gen(rd());
+        double lowerBound = numberOfVisiTor - 0.2*numberOfVisiTor;
+        double upperBound = numberOfVisiTor + 0.2*numberOfVisiTor;
+        uniform_real_distribution<double> dis(lowerBound, upperBound);
+        double randomNumber = dis(gen);
+        if (fmod(randomNumber, 1.0) != 0) {
+            randomNumber = round(randomNumber);
+        }
+        return randomNumber;
+    }
+
+    void Visitor(int visitorNumber) {
+        if (visitorNumber % 2 == 0) {
+            money += ((visitorNumber / 2)*17);
+            money += ((visitorNumber / 2)*13);
+        } else {
+            visitorNumber -= 1;
+            money += ((visitorNumber / 2)*17);
+            money += ((visitorNumber / 2)*13);
+            money += 17;
+        }
+    }
+
+    void VisitorforAnimals() {
+        if (time->getMonth()>=4 && time->getMonth()<=8){
+            if(habitat->GetNbrTiger()>0){
+                numberOfVisiTor = 30*habitat->GetNbrTiger();
+                nbrVisitor += getRandomNumber(numberOfVisiTor);
+                Visitor(getRandomNumber(numberOfVisiTor));
+            } else if(habitat->GetNbrEagle()>0) {
+                numberOfVisiTor = 15*habitat->GetNbrEagle();
+                nbrVisitor += getRandomNumber(numberOfVisiTor);
+                Visitor(getRandomNumber(numberOfVisiTor));
+            } else if(habitat->GetNbrHen()>0) {
+                numberOfVisiTor = 2*habitat->GetNbrHen();
+                nbrVisitor += getRandomNumber(numberOfVisiTor);
+                Visitor(getRandomNumber(numberOfVisiTor));
+            }
+        } else if ((time->getMonth()<4 || time->getMonth()>8)){
+            if(habitat->GetNbrTiger()>0){
+                numberOfVisiTor = 5*habitat->GetNbrTiger();
+                nbrVisitor += getRandomNumber(numberOfVisiTor);
+                Visitor(getRandomNumber(numberOfVisiTor));
+            } else if(habitat->GetNbrEagle()>0) {
+                numberOfVisiTor = 7*habitat->GetNbrEagle();
+                nbrVisitor += getRandomNumber(numberOfVisiTor);
+                Visitor(getRandomNumber(numberOfVisiTor));
+            } else if(habitat->GetNbrHen()>0) {
+                numberOfVisiTor = 0.5*habitat->GetNbrHen();
+                nbrVisitor += getRandomNumber(numberOfVisiTor);
+                Visitor(getRandomNumber(numberOfVisiTor));
+            }
+        }
+    };
 
     //------------------------------------------- BUY ------------------------------------------------------//
     //HABITAT
@@ -290,9 +353,6 @@ public:
          cout << "argent : " << money << endl;
      };
  */
-    void AddVisitor() {
-
-    };
 };
 
 

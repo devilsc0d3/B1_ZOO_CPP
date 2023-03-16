@@ -17,9 +17,17 @@ public:
     Habitat( int m_capacity, int m_probabilityOfDisease):capacity(m_capacity), probabilityOfDisease(m_probabilityOfDisease) {}
 
     void addEagle(){
+        string nickname;
+        cin >> nickname;
+        arrayEagle.push_back(*new Eagle(nickname));
+        cout << arrayEagle[0].GetName() << endl;
         //TODO : fill parameter of function
     }
     void addHen(){
+        string nickname;
+        cin >> nickname;
+        arrayHen.push_back(*new Hen(nickname));
+        cout << arrayHen[0].GetName() << endl;
         //TODO : fill parameter of function
     }
     void addTiger(){
@@ -32,6 +40,14 @@ public:
 
     int GetNbrTiger() {
         return arrayTiger.size();
+    };
+
+    int GetNbrEagle() {
+        return arrayEagle.size();
+    };
+
+    int GetNbrHen() {
+        return arrayHen.size();
     };
 
     void SetCapacity(int nbr) {
