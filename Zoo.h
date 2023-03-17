@@ -31,13 +31,12 @@ public:
         tiger->addTiger();
         hen->addHen();
         eagle->addEagle();
-        nbrPet += 3;
-        nbrMaxVisitor = 200;
+        nbrMaxVisitor = 6200;
         nbrVisitor = 0;
         seed = 0;
         meal = 0;
-        nbrPet = 0;
-        nbrHabitat = 0;
+        nbrPet = 3;
+        nbrHabitat = 3;
     }
 
     void Stats() {
@@ -207,6 +206,7 @@ public:
         if (money > price) {
             money -= price;
             nbrPet++;
+            tiger->addTiger();
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
@@ -218,6 +218,7 @@ public:
         if (money > price) {
             money -= price;
             nbrPet++;
+            tiger->addTiger();
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
@@ -242,6 +243,7 @@ public:
         if (money > price) {
             money -= price;
             nbrPet++;
+            eagle->addEagle();
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
@@ -253,6 +255,7 @@ public:
         if (money > price) {
             money -= price;
             nbrPet++;
+            eagle->addEagle();
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
@@ -264,6 +267,7 @@ public:
         if (money > price) {
             money -= price;
             nbrPet++;
+            eagle->addEagle();
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
