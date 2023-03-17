@@ -45,6 +45,7 @@ public:
             showMarket();
         } else if (choice == 2) {
             cout << "You have chosen to skip the month." << endl;
+            zoo->subvention();
             time->skip();
 
             cout << "eagle"<< zoo->getHabitatEagle()->GetNbrEagle()<< endl;
@@ -368,6 +369,7 @@ public:
             marketChoicesSell();
         }
     }
+
 };
 
 #endif //B1_CPP_ZOO_MENU_H

@@ -12,7 +12,7 @@ using namespace std;
 
 class Zoo{
     string name;
-    float money;
+    double money;
     int nbrMaxVisitor;
     int nbrVisitor;
     int nbrPet;
@@ -23,20 +23,19 @@ class Zoo{
     Habitat* hen = new Habitat(10,4);
     Habitat* eagle = new Habitat(4,1);
     Habitat* tiger = new Habitat(2,1);
+//    TODO refactor code habitat all in one
     Time* time;
-    Habitat* habitat;
 
 public:
     Zoo(string m_name, float m_money):name(m_name), money(m_money) {
         tiger->addTiger();
         hen->addHen();
         eagle->addEagle();
-        nbrPet += 3;
+        nbrPet = 3;
         nbrMaxVisitor = 200;
         nbrVisitor = 0;
         seed = 0;
         meal = 0;
-        nbrPet = 0;
         nbrHabitat = 0;
     }
 
@@ -55,15 +54,15 @@ public:
 
 //SUBVENTION
     void subvention(){
-        if (habitat->GetNbrTiger()>0){
-            money += (habitat->GetNbrTiger()*3650);
-        } else if(habitat->GetNbrEagle()>0) {
-            money += (habitat->GetNbrEagle()*182.5);
+        if (tiger->GetNbrTiger()>0){
+            money += (tiger->GetNbrTiger()*3650);
+        } else if(eagle->GetNbrEagle()>0) {
+            money += (eagle->GetNbrEagle()*182.5);
         }
     }
 
     //------------------------------------------- VISITOR ------------------------------------------------------//
-    double getRandomNumber(int) {
+    double getRandomNumber(int) const {
         random_device rd;
         mt19937 gen(rd());
         double lowerBound = numberOfVisiTor - 0.2*numberOfVisiTor;
@@ -77,9 +76,13 @@ public:
     }
 
     void Visitor(int visitorNumber) {
+
         if (visitorNumber % 2 == 0) {
             money += ((visitorNumber / 2)*17);
             money += ((visitorNumber / 2)*13);
+            money += 55;
+
+
         } else {
             visitorNumber -= 1;
             money += ((visitorNumber / 2)*17);
@@ -88,37 +91,37 @@ public:
         }
     }
 
-    void VisitorforAnimals() {
-        if (time->getMonth()>=4 && time->getMonth()<=8){
-            if(habitat->GetNbrTiger()>0){
-                numberOfVisiTor = 30*habitat->GetNbrTiger();
-                nbrVisitor += getRandomNumber(numberOfVisiTor);
-                Visitor(getRandomNumber(numberOfVisiTor));
-            } else if(habitat->GetNbrEagle()>0) {
-                numberOfVisiTor = 15*habitat->GetNbrEagle();
-                nbrVisitor += getRandomNumber(numberOfVisiTor);
-                Visitor(getRandomNumber(numberOfVisiTor));
-            } else if(habitat->GetNbrHen()>0) {
-                numberOfVisiTor = 2*habitat->GetNbrHen();
-                nbrVisitor += getRandomNumber(numberOfVisiTor);
-                Visitor(getRandomNumber(numberOfVisiTor));
-            }
-        } else if ((time->getMonth()<4 || time->getMonth()>8)){
-            if(habitat->GetNbrTiger()>0){
-                numberOfVisiTor = 5*habitat->GetNbrTiger();
-                nbrVisitor += getRandomNumber(numberOfVisiTor);
-                Visitor(getRandomNumber(numberOfVisiTor));
-            } else if(habitat->GetNbrEagle()>0) {
-                numberOfVisiTor = 7*habitat->GetNbrEagle();
-                nbrVisitor += getRandomNumber(numberOfVisiTor);
-                Visitor(getRandomNumber(numberOfVisiTor));
-            } else if(habitat->GetNbrHen()>0) {
-                numberOfVisiTor = 0.5*habitat->GetNbrHen();
-                nbrVisitor += getRandomNumber(numberOfVisiTor);
-                Visitor(getRandomNumber(numberOfVisiTor));
-            }
-        }
-    };
+//    void VisitorforAnimals() {
+//        if (time->getMonth()>=4 && time->getMonth()<=8){
+//            if(habitat->GetNbrTiger()>0){
+//                numberOfVisiTor = 30*habitat->GetNbrTiger();
+//                nbrVisitor += getRandomNumber(numberOfVisiTor);
+//                Visitor(getRandomNumber(numberOfVisiTor));
+//            } else if(habitat->GetNbrEagle()>0) {
+//                numberOfVisiTor = 15*habitat->GetNbrEagle();
+//                nbrVisitor += getRandomNumber(numberOfVisiTor);
+//                Visitor(getRandomNumber(numberOfVisiTor));
+//            } else if(habitat->GetNbrHen()>0) {
+//                numberOfVisiTor = 2*habitat->GetNbrHen();
+//                nbrVisitor += getRandomNumber(numberOfVisiTor);
+//                Visitor(getRandomNumber(numberOfVisiTor));
+//            }
+//        } else if ((time->getMonth()<4 || time->getMonth()>8)){
+//            if(habitat->GetNbrTiger()>0){
+//                numberOfVisiTor = 5*habitat->GetNbrTiger();
+//                nbrVisitor += getRandomNumber(numberOfVisiTor);
+//                Visitor(getRandomNumber(numberOfVisiTor));
+//            } else if(habitat->GetNbrEagle()>0) {
+//                numberOfVisiTor = 7*habitat->GetNbrEagle();
+//                nbrVisitor += getRandomNumber(numberOfVisiTor);
+//                Visitor(getRandomNumber(numberOfVisiTor));
+//            } else if(habitat->GetNbrHen()>0) {
+//                numberOfVisiTor = 0.5*habitat->GetNbrHen();
+//                nbrVisitor += getRandomNumber(numberOfVisiTor);
+//                Visitor(getRandomNumber(numberOfVisiTor));
+//            }
+//        }
+//    };
 
     //------------------------------------------- BUY ------------------------------------------------------//
     //HABITAT
