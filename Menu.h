@@ -48,6 +48,15 @@ public:
             zoo -> subvention();
             zoo -> VisitorforAnimals();
             time->skip();
+            for(int i = 0; i < 31 ; i++) {
+                cout << i << endl;
+            }
+
+
+//            test
+            cout << "tiger :" << zoo->getHabitatTiger()->GetNbrTiger() << endl;
+            cout << "hen :" << zoo->getHabitatHen()->GetNbrHen() << endl;
+            cout << "eagle :" << zoo->getHabitatEagle()->GetNbrEagle() << endl;
             cout << time->toString() << endl;
         } else if (choice == 3) {
             cout << "You chose to give up cowardly." << endl;

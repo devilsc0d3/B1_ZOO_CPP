@@ -29,6 +29,8 @@ class Zoo{
 public:
     Zoo(string m_name, float m_money):name(m_name), money(m_money) {
         tiger->addTiger();
+        hen->addHen();
+        eagle->addEagle();
         nbrMaxVisitor = 200;
         nbrVisitor = 0;
         seed = 0;
@@ -125,6 +127,8 @@ public:
             money -= price;
             nbrHabitat++;
             eagle->SetCapacity(4);
+            eagle->addEagle();
+
             cout << "you got a good deal !" << endl;
         } else {
         cout << "NO Money, You're too poor !!!" << endl;
@@ -137,6 +141,8 @@ public:
             money -= price;
             nbrHabitat++;
             hen->SetCapacity(10);
+            hen->addHen();
+
             cout << "you got a good deal !" << endl;
         } else {
         cout << "NO Money, You're too poor !!!" << endl;
@@ -153,6 +159,18 @@ public:
         } else {
         cout << "NO Money, You're too poor !!!" << endl;
         }
+    };
+
+    Habitat * getHabitatTiger() {
+        return tiger;
+    };
+
+    Habitat * getHabitatEagle() {
+        return eagle;
+    };
+
+    Habitat * getHabitatHen() {
+        return hen;
     };
 
     //FOOD
@@ -210,6 +228,7 @@ public:
         if (money > price) {
             money -= price;
             nbrPet++;
+            tiger->addTiger();
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
@@ -256,6 +275,7 @@ public:
         if (money > price) {
             money -= price;
             nbrPet++;
+            hen->addHen();
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
@@ -267,6 +287,7 @@ public:
         if (money > price) {
             money -= price;
             nbrPet++;
+            hen->addHen();
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
@@ -280,7 +301,7 @@ public:
             nbrHabitat--;
             tiger->SetCapacity(-2);
             cout << "you got a good deal !" << endl;
-        }  else if (eagle->GetCapacity() == 0) {
+        } else if (eagle->GetCapacity() == 0) {
             cout << "Crii crii crii, there is no more habitat" << endl;
         } else {
             cout << "NO, NO to animals on the street !!!" << endl;
@@ -316,12 +337,10 @@ public:
         cout << "argent : " << money << endl;
     };
 
-    //SELL - ANIMALS
-    /*
-    void SellTiger() {
+    /* void SellTiger6month() {
         cout << "argent : " << money << endl;
         if (hen->GetCapacity() > 1 || (hen->GetCapacity() >= 10 && hen->GetNbrAnimals() == 0)) {
-            money += 10000;
+            money += 1500;
             nbrPet--;
             cout << "you got a good deal !" << endl;
         }  else if (eagle->GetCapacity() == 0) {
@@ -333,7 +352,61 @@ public:
         cout << "argent : " << money << endl;
     };
 
-    void SellEagle() {
+    void SellTiger4years() {
+        cout << "argent : " << money << endl;
+        if (hen->GetCapacity() > 1 || (hen->GetCapacity() >= 10 && hen->GetNbrAnimals() == 0)) {
+            money += 60000;
+            nbrPet--;
+            cout << "you got a good deal !" << endl;
+        }  else if (eagle->GetCapacity() == 0) {
+            cout << "Crii crii crii, there is no more habitat" << endl;
+        } else {
+            cout << "NO, NO to animals on the street !!!" << endl;
+        }
+
+        cout << "argent : " << money << endl;
+    };
+
+    void SellTiger14years() {
+        cout << "argent : " << money << endl;
+        if (hen->GetCapacity() > 1 || (hen->GetCapacity() >= 10 && hen->GetNbrAnimals() == 0)) {
+            money += 10000;
+            nbrPet--;
+
+        cout << "argent : " << money << endl;
+    };
+
+    void SellEagle6month() {
+        cout << "argent : " << money << endl;
+        if (hen->GetCapacity() > 1 || (hen->GetCapacity() >= 10 && hen->GetNbrAnimals() == 0)) {
+            money += 500;
+            nbrPet--;
+            cout << "you got a good deal !" << endl;
+        }  else if (eagle->GetCapacity() == 0) {
+            cout << "Crii crii crii, there is no more habitat" << endl;
+        } else {
+            cout << "NO, NO to animals on the street !!!" << endl;
+        }
+
+        cout << "argent : " << money << endl;
+    };
+
+    void SellEagle4years() {
+        cout << "argent : " << money << endl;
+        if (hen->GetCapacity() > 1 || (hen->GetCapacity() >= 10 && hen->GetNbrAnimals() == 0)) {
+            money += 2000;
+            nbrPet--;
+            cout << "you got a good deal !" << endl;
+        }  else if (eagle->GetCapacity() == 0) {
+            cout << "Crii crii crii, there is no more habitat" << endl;
+        } else {
+            cout << "NO, NO to animals on the street !!!" << endl;
+        }
+
+        cout << "argent : " << money << endl;
+    };
+
+    void SellEagle14years() {
         cout << "argent : " << money << endl;
         if (hen->GetCapacity() > 1 || (hen->GetCapacity() >= 10 && hen->GetNbrAnimals() == 0)) {
             money += 400;
@@ -347,6 +420,22 @@ public:
 
         cout << "argent : " << money << endl;
     };
+
+     void SellHenFemale() {
+         cout << "argent : " << money << endl;
+         if (hen->GetCapacity() > 1 || (hen->GetCapacity() >= 10 && hen->GetNbrAnimals() == 0)) {
+             money += 10;
+             nbrPet--;
+             hen->SetCapacity(-10);
+             cout << "you got a good deal !" << endl;
+         }  else if (eagle->GetCapacity() == 0) {
+             cout << "Crii crii crii, there is no more habitat" << endl;
+         } else {
+             cout << "NO, NO to animals on the street !!!" << endl;
+         }
+
+         cout << "argent : " << money << endl;
+     };
 
      void SellHenMale() {
          cout << "argent : " << money << endl;
