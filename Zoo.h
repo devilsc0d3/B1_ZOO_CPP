@@ -50,7 +50,7 @@ public:
         cout << "=----------------------------=\n" << endl;
     }
 
-
+//SUBVENTION
     int subvention(){
         if (habitat->GetNbrTiger()>0){
             money += (habitat->GetNbrTiger()*3650);
