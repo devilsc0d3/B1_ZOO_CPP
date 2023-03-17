@@ -53,7 +53,7 @@ public:
     }
 
 //SUBVENTION
-    int subvention(){
+    void subvention(){
         if (habitat->GetNbrTiger()>0){
             money += (habitat->GetNbrTiger()*3650);
         } else if(habitat->GetNbrEagle()>0) {
