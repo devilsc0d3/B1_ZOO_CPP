@@ -1,77 +1,28 @@
+//
+// Created by Utilisateur on 14/03/2023.
+//
 
-#ifndef B1_CPP_ZOO_MENU_H
-#define B1_CPP_ZOO_MENU_H
+#ifndef B1_CPP_ZOO_MENUMARKET_H
+#define B1_CPP_ZOO_MENUMARKET_H
 
 #include <iostream>
 #include <string>
 
 #include "Zoo.h"
-#include "Time.h"
-#include "MenuMarket.h"
+#include "Menu.h"
 
-using namespace std;
-
-class Menu {
-private:
+class MenuMarket {
+    private:
     int choice{};
     Zoo* zoo;
-    Time* time;
     bool quit = false;
 
-public:
-    Menu(Zoo* zoo, Time* time) : zoo(zoo), time(time) {}
-
-    void show() {
-        while (!quit) {
-            cout << "Current time: " << time->toString() << endl;
-            zoo->Stats();
-            cout << "Menu :" << endl;
-            cout << "   1. Market" << endl;
-            cout << "   2. Skip Month" << endl;
-            cout << "   3. Quit Game\n" << endl;
-            choose();
-        }
-    }
-
-
-    void choose() {
-        cout << "Enter your choice (1-3): ";
-        cin >> choice;
-        execute();
-    }
-
-    void execute() {
-        if (choice == 1) {
-            showMarket();
-        } else if (choice == 2) {
-            cout << "You have chosen to skip the month." << endl;
-            zoo -> subvention();
-            zoo -> VisitorforAnimals();
-            time->skip();
-            for(int i = 0; i < 31 ; i++) {
-                cout << i << endl;
-            }
-
-
-//            test
-            cout << "tiger :" << zoo->getHabitatTiger()->GetNbrTiger() << endl;
-            cout << "hen :" << zoo->getHabitatHen()->GetNbrHen() << endl;
-            cout << "eagle :" << zoo->getHabitatEagle()->GetNbrEagle() << endl;
-            cout << time->toString() << endl;
-        } else if (choice == 3) {
-            cout << "You chose to give up cowardly." << endl;
-            quit = true;
-            return;
-        } else {
-                cout << "Invalid choice. Please enter a number between 1 and 3." << endl;
-                return choose();
-        }
-    }
+    public:
 
     //------------------------------------------- MARKET ------------------------------------------------------//
     //TODO : garde fou --> habitat existent ;
 
-    void showMarket() {
+   /* void showMarket() {
         while (!quit) {
             cout << "\nMarket :" << endl;
             cout << "   1. Habitat" << endl;
@@ -84,7 +35,7 @@ public:
     }
 
     void marketChoices() {
-        cout << "Enter your choice (1-5): ";
+        cout << "Enter your choice (1-4): ";
         cin >> choice;
         marketType();
     }
@@ -102,7 +53,7 @@ public:
         } else if (choice == 5) {
             show();
         } else {
-            cout << "Invalid choice. Please enter a number between 1 and 5." << endl;
+            cout << "Invalid choice. Please enter a number between 1 and 4." << endl;
             marketChoices();
         }
     }
@@ -155,9 +106,9 @@ public:
         if (choice == 1) {
             marketGenreHen();
         } else if (choice == 2) {
-            marketGenreTiger();
+            marketAgeAnimalEagle();
         } else if (choice == 3) {
-            marketGenreEagle();
+            marketAgeAnimalTiger();
         } else if (choice == 4) {
             showMarket();
         } else {
@@ -176,17 +127,14 @@ public:
     }
 
     void marketChoicesAgeAnimalTiger() {
-        cout << "Enter your choice (1-4): ";
-        cin >> choice;
-        marketTypeAgeAnimalTiger();
-    }
-
-    void marketTypeAgeAnimalTiger() {
         if (choice == 1) {
+            marketGenre();
             zoo->AddTiger6month();
         } else if (choice == 2) {
+            marketGenre();
             zoo->AddTiger4years();
         } else if (choice == 3) {
+            marketGenre();
             zoo->AddTiger14years();
         } else if (choice == 4) {
             showMarket();
@@ -206,17 +154,14 @@ public:
     }
 
     void marketChoicesAgeAnimalEagle() {
-        cout << "Enter your choice (1-3): ";
-        cin >> choice;
-        marketTypeAgeAnimalEagle();
-    }
-
-    void marketTypeAgeAnimalEagle() {
         if (choice == 1) {
+            marketGenre();
             zoo->AddEagle6month();
         } else if (choice == 2) {
+            marketGenre();
             zoo->AddEagle4years();
         } else if (choice == 3) {
+            marketGenre();
             zoo->AddEagle14years();
         } else if (choice == 4) {
             showMarket();
@@ -235,12 +180,6 @@ public:
     }
 
     void marketChoicesGenreAnimalHen() {
-        cout << "Enter your choice (1-3): ";
-        cin >> choice;
-        marketTypeGenreAnimalHen();
-    }
-
-    void marketTypeGenreAnimalHen() {
         if (choice == 1) {
             zoo->AddHenMale();
         } else if (choice == 2) {
@@ -248,63 +187,17 @@ public:
         } else if (choice == 3) {
             showMarket();
         } else {
-            cout << "Invalid choice. Please enter a number between 1 and 3." << endl;
+            cout << "Invalid choice. Please enter a number between 1 and 4." << endl;
             marketChoicesGenreAnimalHen();
         }
     }
 
-    void marketGenreTiger() {
+    int marketGenre() {
         cout << "\nMarket Animals Genre:" << endl;
         cout << "   1. male" << endl;
         cout << "   2. female" << endl;
-        cout << "   3. Cancel\n" << endl;
-        marketChoicesGenreAnimalTiger();
-    }
-
-    void marketChoicesGenreAnimalTiger() {
-        cout << "Enter your choice (1-4): ";
         cin >> choice;
-        marketTypeGenreAnimalTiger();
-    }
-
-    void marketTypeGenreAnimalTiger() {
-        if (choice == 1) {
-            marketAgeAnimalTiger();
-        } else if (choice == 2) {
-            marketAgeAnimalTiger();
-        } else if (choice == 3) {
-            showMarket();
-        } else {
-            cout << "Invalid choice. Please enter a number between 1 and 4." << endl;
-            marketChoicesGenreAnimalTiger();
-        }
-    }
-
-    void marketGenreEagle() {
-        cout << "\nMarket Animals Genre:" << endl;
-        cout << "   1. male" << endl;
-        cout << "   2. female" << endl;
-        cout << "   3. Cancel\n" << endl;
-        marketChoicesGenreAnimalEagle();
-    }
-
-    void marketChoicesGenreAnimalEagle() {
-        cout << "Enter your choice (1-3): ";
-        cin >> choice;
-        marketTypeGenreAnimalEagle();
-    }
-
-    void marketTypeGenreAnimalEagle() {
-        if (choice == 1) {
-            marketAgeAnimalEagle();
-        } else if (choice == 2) {
-            marketAgeAnimalEagle();
-        } else if (choice == 3) {
-            showMarket();
-        } else {
-            cout << "Invalid choice. Please enter a number between 1 and 3." << endl;
-            marketChoicesGenreAnimalEagle();
-        }
+        return choice;
     }
 
     //HABITAT
@@ -354,10 +247,10 @@ public:
     void marketChoicesSell() {
         cout << "Enter your choice (1-7): ";
         cin >> choice;
-        marketTypeSell();
+        marketSellHabitat();
     }
 
-    void marketTypeSell() {
+    void marketSellHabitat() {
         if (choice == 1) {
             zoo->SellHabitatEagle();
         } else if (choice == 2) {
@@ -370,10 +263,12 @@ public:
         } else if (choice == 7) {
             showMarket();
         } else {
-            cout << "Invalid choice. Please enter a number between 1 and 7." << endl;
-            marketChoicesSell();
+            cout << "Invalid choice. Please enter a number between 1 and 4." << endl;
+            marketChoices();
         }
     }
+    */
 };
 
-#endif //B1_CPP_ZOO_MENU_H
+
+#endif //B1_CPP_ZOO_MENUMARKET_H

@@ -29,6 +29,11 @@ public:
                                         "August", "September", "October", "November", "December"};
         return months[month - 1] + " " + to_string(year);
     }
+
+    int getMonth() {
+        return month;
+    }
+    };
 };
 
 #endif //B1_CPP_ZOO_TIME_H
