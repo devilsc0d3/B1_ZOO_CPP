@@ -31,6 +31,7 @@ public:
         tiger->addTiger();
         hen->addHen();
         eagle->addEagle();
+        nbrPet += 3;
         nbrMaxVisitor = 200;
         nbrVisitor = 0;
         seed = 0;

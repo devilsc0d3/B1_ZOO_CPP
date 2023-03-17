@@ -46,6 +46,11 @@ public:
         } else if (choice == 2) {
             cout << "You have chosen to skip the month." << endl;
             time->skip();
+
+            cout << "eagle"<< zoo->getHabitatEagle()->GetNbrEagle()<< endl;
+            cout << "hen"<< zoo->getHabitatHen()->GetNbrHen()<< endl;
+            cout << "tigre"<< zoo->getHabitatTiger()->GetNbrTiger()<< endl;
+
             cout << time->toString() << endl;
         } else if (choice == 3) {
             cout << "You chose to give up cowardly." << endl;
