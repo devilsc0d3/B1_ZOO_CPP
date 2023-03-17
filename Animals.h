@@ -5,28 +5,55 @@
 #ifndef B1_CPP_ZOO_ANIMALS_H
 #define B1_CPP_ZOO_ANIMALS_H
 #include <iostream>
+#include <tuple>
+#include "time.h"
 
 using namespace  std;
 
 class Animals {
     string name;
-    int age;
+    tuple <int,int> age;
     int genre;
-    string food;
+    int food;
     int quantityFood;
+
     int maturity;
     int dayBeforeHunger;
     int beginReproduction;
     int endReproduction;
+
     int life;
-    string fidelity;
 public:
-    Animals(string m_name):name(m_name) {
+    Animals(string m_name,int m_genre,std::tuple<int, int>  m_age, int m_food, int m_quantity) : name(m_name), age(m_age), food(m_food), genre(m_genre), quantityFood(m_quantity){
     }
 
     string GetName() {
         return name;
     }
+
+    int GetYears() {
+        return get<0>(age);
+    }
+
+    int GetMonth() {
+        return get<1>(age);
+    }
+
+
+    void TheTime() {
+        if (get<1>(age) % 12 == 0) {
+            get<0>(age) += 1;
+            get<1>(age) = 0;
+        }
+        get<1>(age) += 1;
+
+        if (get<0>(age) == 25) {
+            cout << "mort" << endl;
+        }
+
+    }
+
+
 
 };
 
