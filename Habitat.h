@@ -18,22 +18,16 @@ class Habitat {
 public:
     Habitat( int m_capacity, int m_probabilityOfDisease):capacity(m_capacity), probabilityOfDisease(m_probabilityOfDisease) {}
 
-    void addEagle(){
-        string nickname;
-        cout << "choose a nickname for the eagle : " << endl;
-        cin >> nickname;
-        animals.push_back(new Eagle(nickname = "gerard",1,std::make_tuple(0, 0)));
+    void addEagle(string nickname){
+        animals.push_back(new Eagle(nickname,1,std::make_tuple(0, 0)));
     }
 
-    void addHen(){
-        string nickname;
-        cout << "choose a nickname for the hen : " << endl;
-        cin >> nickname;
-        animals.push_back(new Hen(nickname = "gerard",1,std::make_tuple(0, 0)));
+    void addHen(string nickname){
+        animals.push_back(new Hen(nickname,1,std::make_tuple(0, 0)));
     }
 
-    void addTiger(string name){
-        animals.push_back(new Tiger(name,1,std::make_tuple(0, 0)));
+    void addTiger(string nickname){
+        animals.push_back(new Tiger(nickname,1,std::make_tuple(0, 0)));
     }
 
     int GetNbr() {
@@ -62,9 +56,9 @@ public:
         }
     }
 
-    void NameOfAnimals() {
+    void NameOfAnimals(string type) {
         for (int i = 0 ; i < GetNbr(); i++) {
-            cout << "tigre "<< i << " :" << animals[i]->GetName() << "test" << endl;
+            cout << type << i << " :" << animals[i]->GetName() << endl;
         }
     }
 

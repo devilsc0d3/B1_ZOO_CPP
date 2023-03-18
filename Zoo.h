@@ -1,5 +1,6 @@
 #ifndef B1_CPP_ZOO_ZOO_H
 #define B1_CPP_ZOO_ZOO_H
+#include <utility>
 #include <vector>
 #include <iostream>
 #include <random>
@@ -16,7 +17,7 @@ class Zoo{
     int nbrVisitor;
     int nbrPet;
     int nbrHabitat;
-    int numberOfVisitor;
+    int numberOfVisitor{};
     float seed;
     float meal;
     Habitat* hen = new Habitat(10,4);
@@ -25,10 +26,10 @@ class Zoo{
 
 
 public:
-    Zoo(string m_name, float m_money):name(m_name), money(m_money) {
+    Zoo(string m_name, float m_money):name(std::move(m_name)), money(m_money) {
         tiger->addTiger("roger");
-        hen->addHen();
-        eagle->addEagle();
+        hen->addHen("Marine");
+        eagle->addEagle("Gertrude");
         nbrPet = 4;
         nbrMaxVisitor = 200;
         nbrVisitor = 0;
@@ -39,7 +40,10 @@ public:
     }
 
     void Stats() {
-        tiger->NameOfAnimals();
+        tiger->NameOfAnimals("tiger :");
+        hen->NameOfAnimals("hen :");
+        eagle->NameOfAnimals("eagle :");
+
         cout << "\n=---------- STATS -----------=" << endl;
         cout << "name : " << name << endl;
         cout << "money : " << money << endl;
@@ -78,15 +82,13 @@ public:
 
     void Visitor(int visitorNumber) {
         if (visitorNumber % 2 == 0) {
-            money += ((visitorNumber / 2)*17);
-            money += ((visitorNumber / 2)*13);
+            money += (visitorNumber / 2 * 17);
+            money += (visitorNumber / 2 * 13);
             money += 55;
-
-
         } else {
             visitorNumber -= 1;
-            money += ((visitorNumber / 2)*17);
-            money += ((visitorNumber / 2)*13);
+            money += (visitorNumber / 2 * 17);
+            money += (visitorNumber / 2 * 13);
             money += 17;
         }
     }
@@ -135,8 +137,6 @@ public:
             money -= price;
             nbrHabitat++;
             eagle->SetCapacity(4);
-            eagle->addEagle();
-
             cout << "you got a good deal !" << endl;
         } else {
         cout << "NO Money, You're too poor !!!" << endl;
@@ -149,8 +149,6 @@ public:
             money -= price;
             nbrHabitat++;
             hen->SetCapacity(10);
-            hen->addHen();
-
             cout << "you got a good deal !" << endl;
         } else {
         cout << "NO Money, You're too poor !!!" << endl;
@@ -240,7 +238,7 @@ public:
             money -= price;
             nbrPet++;
             cout << "you got a good deal !" << endl;
-            eagle->addEagle();
+            eagle->addEagle(eagle->SetAName());
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
         }
@@ -251,7 +249,7 @@ public:
         if (money > price) {
             money -= price;
             nbrPet++;
-            eagle->addEagle();
+            eagle->addEagle(eagle->SetAName());
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
@@ -263,7 +261,7 @@ public:
         if (money > price) {
             money -= price;
             nbrPet++;
-            eagle->addEagle();
+            eagle->addEagle(eagle->SetAName());
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
@@ -276,7 +274,7 @@ public:
         if (money > price) {
             money -= price;
             nbrPet++;
-            hen->addHen();
+            hen->addHen(hen->SetAName());
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
@@ -288,7 +286,7 @@ public:
         if (money > price) {
             money -= price;
             nbrPet++;
-            hen->addHen();
+            hen->addHen(hen->SetAName());
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
@@ -303,7 +301,7 @@ public:
             tiger->SetCapacity(-2);
             cout << "you got a good deal !" << endl;
         } else if (eagle->GetCapacity() == 0) {
-            cout << "Crii crii crii, there is no more habitat" << endl;
+            cout << "Cri cri cri, there is no more habitat" << endl;
         } else {
             cout << "NO, NO to animals on the street !!!" << endl;
         }
