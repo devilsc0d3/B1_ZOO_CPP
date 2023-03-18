@@ -1,4 +1,3 @@
-
 #ifndef B1_CPP_ZOO_MENU_H
 #define B1_CPP_ZOO_MENU_H
 
@@ -47,11 +46,6 @@ public:
             cout << "You have chosen to skip the month." << endl;
             zoo->subvention();
             time->skip();
-
-            cout << "eagle"<< zoo->getHabitatEagle()->GetNbrEagle()<< endl;
-            cout << "hen"<< zoo->getHabitatHen()->GetNbrHen()<< endl;
-            cout << "tigre"<< zoo->getHabitatTiger()->GetNbrTiger()<< endl;
-
             cout << time->toString() << endl;
         } else if (choice == 3) {
             cout << "You chose to give up cowardly." << endl;
@@ -150,9 +144,9 @@ public:
         if (choice == 1) {
             marketGenreHen();
         } else if (choice == 2) {
-            marketGenreTiger();
-        } else if (choice == 3) {
             marketGenreEagle();
+        } else if (choice == 3) {
+            marketGenreTiger();
         } else if (choice == 4) {
             showMarket();
         } else {

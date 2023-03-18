@@ -23,23 +23,26 @@ class Zoo{
     Habitat* hen = new Habitat(10,4);
     Habitat* eagle = new Habitat(4,1);
     Habitat* tiger = new Habitat(2,1);
-//    TODO refactor code habitat all in one
     Time* time;
+
 
 public:
     Zoo(string m_name, float m_money):name(m_name), money(m_money) {
-        tiger->addTiger();
+        AddTiger4years();
         hen->addHen();
         eagle->addEagle();
-        nbrPet = 3;
+        nbrPet = 4;
         nbrMaxVisitor = 200;
         nbrVisitor = 0;
         seed = 0;
         meal = 0;
         nbrHabitat = 0;
+
     }
 
     void Stats() {
+        cout << "info" << tiger->GetNbr() << endl;
+
         cout << "\n=---------- STATS -----------=" << endl;
         cout << "name : " << name << endl;
         cout << "money : " << money << endl;
@@ -54,10 +57,11 @@ public:
 
 //SUBVENTION
     void subvention(){
-        if (tiger->GetNbrTiger()>0){
-            money += (tiger->GetNbrTiger()*3650);
-        } else if(eagle->GetNbrEagle()>0) {
-            money += (eagle->GetNbrEagle()*182.5);
+        if (tiger->GetNbr()>0){
+            money += (tiger->GetNbr()*3650);
+        }
+        if(eagle->GetNbr()>0) {
+            money += (eagle->GetNbr()*182.5);
         }
     }
 
@@ -76,7 +80,6 @@ public:
     }
 
     void Visitor(int visitorNumber) {
-
         if (visitorNumber % 2 == 0) {
             money += ((visitorNumber / 2)*17);
             money += ((visitorNumber / 2)*13);
@@ -90,18 +93,20 @@ public:
             money += 17;
         }
     }
-
+//
 //    void VisitorforAnimals() {
 //        if (time->getMonth()>=4 && time->getMonth()<=8){
 //            if(habitat->GetNbrTiger()>0){
 //                numberOfVisiTor = 30*habitat->GetNbrTiger();
 //                nbrVisitor += getRandomNumber(numberOfVisiTor);
 //                Visitor(getRandomNumber(numberOfVisiTor));
-//            } else if(habitat->GetNbrEagle()>0) {
+//            }
+//            if(habitat->GetNbrEagle()>0) {
 //                numberOfVisiTor = 15*habitat->GetNbrEagle();
 //                nbrVisitor += getRandomNumber(numberOfVisiTor);
 //                Visitor(getRandomNumber(numberOfVisiTor));
-//            } else if(habitat->GetNbrHen()>0) {
+//            }
+//            if(habitat->GetNbrHen()>0) {
 //                numberOfVisiTor = 2*habitat->GetNbrHen();
 //                nbrVisitor += getRandomNumber(numberOfVisiTor);
 //                Visitor(getRandomNumber(numberOfVisiTor));
@@ -111,11 +116,13 @@ public:
 //                numberOfVisiTor = 5*habitat->GetNbrTiger();
 //                nbrVisitor += getRandomNumber(numberOfVisiTor);
 //                Visitor(getRandomNumber(numberOfVisiTor));
-//            } else if(habitat->GetNbrEagle()>0) {
+//            }
+//            if(habitat->GetNbrEagle()>0) {
 //                numberOfVisiTor = 7*habitat->GetNbrEagle();
 //                nbrVisitor += getRandomNumber(numberOfVisiTor);
 //                Visitor(getRandomNumber(numberOfVisiTor));
-//            } else if(habitat->GetNbrHen()>0) {
+//            }
+//            if(habitat->GetNbrHen()>0) {
 //                numberOfVisiTor = 0.5*habitat->GetNbrHen();
 //                nbrVisitor += getRandomNumber(numberOfVisiTor);
 //                Visitor(getRandomNumber(numberOfVisiTor));
@@ -165,18 +172,6 @@ public:
         }
     };
 
-    Habitat * getHabitatTiger() {
-        return tiger;
-    };
-
-    Habitat * getHabitatEagle() {
-        return eagle;
-    };
-
-    Habitat * getHabitatHen() {
-        return hen;
-    };
-
     //FOOD
     void addSeed() {
         float kilos;
@@ -210,6 +205,7 @@ public:
         if (money > price) {
             money -= price;
             nbrPet++;
+            tiger->addTiger();
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
@@ -221,6 +217,7 @@ public:
         if (money > price) {
             money -= price;
             nbrPet++;
+            tiger->addTiger();
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
@@ -246,6 +243,7 @@ public:
             money -= price;
             nbrPet++;
             cout << "you got a good deal !" << endl;
+            eagle->addEagle();
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
         }
@@ -256,6 +254,7 @@ public:
         if (money > price) {
             money -= price;
             nbrPet++;
+            eagle->addEagle();
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
@@ -267,6 +266,7 @@ public:
         if (money > price) {
             money -= price;
             nbrPet++;
+            eagle->addEagle();
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
@@ -300,7 +300,7 @@ public:
 
     //SELL - HABITAT
     void SellHabitatTiger() {
-        if (tiger->GetCapacity() > 1 || (tiger->GetCapacity() >= 2 && tiger->GetNbrTiger() == 0)) {
+        if (tiger->GetCapacity() > 1 || (tiger->GetCapacity() >= 2 && tiger->GetNbr() == 0)) {
             money += 500;
             nbrHabitat--;
             tiger->SetCapacity(-2);
@@ -313,7 +313,7 @@ public:
     };
 
     void SellHabitatEagle() {
-        if (eagle->GetCapacity() > 4 || (eagle->GetCapacity() >= 4 && eagle->GetNbrTiger() == 0)) {
+        if (eagle->GetCapacity() > 4 || (eagle->GetCapacity() >= 4 && eagle->GetNbr() == 0)) {
             money += 500;
             nbrHabitat--;
             eagle->SetCapacity(-4);
@@ -327,7 +327,7 @@ public:
 
     void SellHabitatHen() {
         cout << "argent : " << money << endl;
-        if (hen->GetCapacity() > 1 || (hen->GetCapacity() >= 10 && hen->GetNbrTiger() == 0)) {
+        if (hen->GetCapacity() > 1 || (hen->GetCapacity() >= 10 && hen->GetNbr() == 0)) {
             money += 50;
             nbrHabitat--;
             hen->SetCapacity(-10);
