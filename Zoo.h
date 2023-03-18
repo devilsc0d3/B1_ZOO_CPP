@@ -25,7 +25,7 @@ class Zoo{
     Habitat* hen = new Habitat(10,4);
     Habitat* eagle = new Habitat(4,1);
     Habitat* tiger = new Habitat(2,1);
-
+    vector<Habitat*> veterinary;
 
 public:
     Zoo(string m_name, float m_money):name(std::move(m_name)), money(m_money) {
