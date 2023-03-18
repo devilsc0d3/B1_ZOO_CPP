@@ -65,6 +65,13 @@ public:
     void eventExceptional() {
         GrillingZoo();
         kidnapping();
+        loophole();
+    }
+
+    void loophole() {
+       hen->GetArray().push_back(std::move(tiger->GetArray().back()));
+       tiger->GetArray().pop_back();
+       // detruit tout les poulet
     }
 
 //SUBVENTION

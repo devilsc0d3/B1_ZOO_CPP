@@ -57,6 +57,12 @@ public:
         }
     }
 
+
+
+    vector<Animals*>& GetArray() {
+        return animals;
+    }
+
     void AgeOfAnimals() {
         for (int i = 0 ; i < GetNbr(); i++) {
             cout << "years : "<< animals[i]->GetYears() << "month :" << animals[i]->GetMonth() << "test" << endl;

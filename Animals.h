@@ -17,8 +17,6 @@ class Animals {
     int dayBeforeHunger;
     int beginReproduction;
     int endReproduction;
-
-    int life;
 public:
     Animals(string m_name,int m_genre,std::tuple<int, int>  m_age, int m_food, int m_quantity) : name(m_name), age(m_age), food(m_food), genre(m_genre), quantityFood(m_quantity){
     }
@@ -35,7 +33,6 @@ public:
         return get<1>(age);
     }
 
-
     void TheTime() {
         if (get<1>(age) % 12 == 0) {
             get<0>(age) += 1;
@@ -45,6 +42,7 @@ public:
 
         if (get<0>(age) == 25) {
             cout << "mort" << endl;
+            this->~Animals();
         }
 
     }
