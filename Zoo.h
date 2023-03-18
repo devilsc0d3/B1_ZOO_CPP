@@ -7,6 +7,8 @@
 #include <cmath>
 #include "Habitat.h"
 #include "Tiger.h"
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -30,20 +32,22 @@ public:
         tiger->addTiger("roger");
         hen->addHen("Marine");
         eagle->addEagle("Gertrude");
+
         nbrPet = 4;
         nbrMaxVisitor = 200;
         nbrVisitor = 0;
         seed = 0;
         meal = 0;
         nbrHabitat = 0;
-
     }
 
     void Stats() {
-        tiger->NameOfAnimals("tiger :");
-        hen->NameOfAnimals("hen :");
-        eagle->NameOfAnimals("eagle :");
-
+//        tiger->NameOfAnimals("tiger :");
+//        hen->NameOfAnimals("hen :");
+//        eagle->NameOfAnimals("eagle :");
+//        cout << tiger->GetCapacity() << endl;
+//        cout << eagle->GetCapacity() << endl;
+//        cout << hen->GetCapacity() << endl;
         cout << "\n=---------- STATS -----------=" << endl;
         cout << "name : " << name << endl;
         cout << "money : " << money << endl;
@@ -54,6 +58,13 @@ public:
         cout << "maximum number of visitors per month : " << nbrMaxVisitor << endl;
         cout << "average number of visitors per month : " << nbrVisitor << endl;
         cout << "=----------------------------=\n" << endl;
+    }
+
+    //event
+
+    void eventExceptional() {
+        GrillingZoo();
+        kidnapping();
     }
 
 //SUBVENTION
@@ -78,6 +89,55 @@ public:
             randomNumber = round(randomNumber);
         }
         return randomNumber;
+    }
+
+    void GrillingZoo(){
+        srand(time(nullptr));
+        int random_num = rand() % 100 + 1;
+        if (random_num == 1) {
+            cout << "light the fire" << endl;
+            int random_habitat = rand() % 3 + 1;
+            if (random_habitat == 1 && tiger->GetCapacity() >= 2) {
+                tiger->SetCapacity(-2);
+                cout << "tiger habitat..." << endl;
+            }
+            else if (random_habitat == 2 && eagle->GetCapacity() >= 4) {
+                eagle->SetCapacity(-4);
+                cout << "eagle habitat..." << endl;
+            }
+            else if (random_habitat == 3 && hen->GetCapacity() >= 10) {
+                hen->SetCapacity(-10);
+
+                cout << "hen habitat..." << endl;
+            }
+        }
+    }
+
+    void kidnapping(){
+        srand(time(nullptr));
+        int random_num = rand() % 100 + 1;
+        if (random_num > 1) {
+            string response;
+            cout << "We have kidnapped an animal from your zoo, Pay and it will come back to you!" << endl;
+            cout << "Ransom is $6500\n\nPAY : YES or NO" << endl;
+            cin >> response;
+            if (response == "Yes") {
+                money -= 6500;
+                cout << "Thanks !" << endl;
+            } else {
+                int random_habitat = rand() % 3 + 1;
+                if (random_habitat == 1) {
+                    tiger->removeLast();
+                }
+                else if (random_habitat == 2) {
+                    eagle->removeLast();
+                }
+                else if (random_habitat == 3) {
+                    hen->removeLast();
+                }
+                cout << "Too bad" << endl;
+            }
+        }
     }
 
     void Visitor(int visitorNumber) {

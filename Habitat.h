@@ -50,6 +50,13 @@ public:
         return nickname;
     }
 
+    void removeLast(){
+        if (!animals.empty()) {
+           delete animals.back();
+            animals.pop_back();
+        }
+    }
+
     void AgeOfAnimals() {
         for (int i = 0 ; i < GetNbr(); i++) {
             cout << "years : "<< animals[i]->GetYears() << "month :" << animals[i]->GetMonth() << "test" << endl;
