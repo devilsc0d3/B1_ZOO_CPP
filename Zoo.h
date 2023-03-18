@@ -9,6 +9,7 @@
 #include "Tiger.h"
 #include <cstdlib>
 #include <ctime>
+#include "Time.h"
 
 using namespace std;
 
@@ -26,6 +27,7 @@ class Zoo{
     Habitat* eagle = new Habitat(4,1);
     Habitat* tiger = new Habitat(2,1);
     vector<Habitat*> veterinary;
+    Time* timePassed;
 
 public:
     Zoo(string m_name, float m_money):name(std::move(m_name)), money(m_money) {
@@ -66,6 +68,9 @@ public:
         GrillingZoo();
         kidnapping();
         loophole();
+//        if (timePassed->getYears() == 10) {
+//            cout << "Congrats !!! "<< "name" << "celebrates these 20 years" << endl;
+//        }
     }
 
     void loophole() {
@@ -123,12 +128,12 @@ public:
     void kidnapping(){
         srand(time(nullptr));
         int random_num = rand() % 100 + 1;
-        if (random_num > 1) {
-            string response;
+        if (random_num == 1) {
+            int response;
             cout << "We have kidnapped an animal from your zoo, Pay and it will come back to you!" << endl;
-            cout << "Ransom is $6500\n\nPAY : YES or NO" << endl;
+            cout << "Ransom is $6500\n\nPAY : 1.YES or 2.NO" << endl;
             cin >> response;
-            if (response == "Yes") {
+            if (response == 1) {
                 money -= 6500;
                 cout << "Thanks !" << endl;
             } else {

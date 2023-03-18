@@ -12,8 +12,7 @@ class Animals {
     int genre;
     int food;
     int quantityFood;
-
-    int maturity;
+    int powerSex;
     int dayBeforeHunger;
     int beginReproduction;
     int endReproduction;
