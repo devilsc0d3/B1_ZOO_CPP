@@ -32,11 +32,8 @@ public:
         animals.push_back(new Hen(nickname = "gerard",1,std::make_tuple(0, 0)));
     }
 
-    void addTiger(){
-        string nickname;
-        cout << "choose a nickname for the tiger: " << endl;
-        cin >> nickname;
-        animals.push_back(new Tiger(nickname,1,std::make_tuple(0, 0)));
+    void addTiger(string name){
+        animals.push_back(new Tiger(name,1,std::make_tuple(0, 0)));
     }
 
     int GetNbr() {
@@ -51,6 +48,13 @@ public:
     int GetCapacity() {
         return capacity;
     };
+
+    string SetAName() {
+        string nickname;
+        cout << "choose a nickname for the tiger: " << endl;
+        cin >> nickname;
+        return nickname;
+    }
 
     void AgeOfAnimals() {
         for (int i = 0 ; i < GetNbr(); i++) {

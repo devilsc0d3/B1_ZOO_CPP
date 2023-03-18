@@ -6,7 +6,6 @@
 #include <cmath>
 #include "Habitat.h"
 #include "Tiger.h"
-#include "Time.h"
 
 using namespace std;
 
@@ -17,18 +16,17 @@ class Zoo{
     int nbrVisitor;
     int nbrPet;
     int nbrHabitat;
-    int numberOfVisiTor;
+    int numberOfVisitor;
     float seed;
     float meal;
     Habitat* hen = new Habitat(10,4);
     Habitat* eagle = new Habitat(4,1);
     Habitat* tiger = new Habitat(2,1);
-    Time* time;
 
 
 public:
     Zoo(string m_name, float m_money):name(m_name), money(m_money) {
-        AddTiger4years();
+        tiger->addTiger("roger");
         hen->addHen();
         eagle->addEagle();
         nbrPet = 4;
@@ -41,8 +39,7 @@ public:
     }
 
     void Stats() {
-        cout << "info" << tiger->GetNbr() << endl;
-
+        tiger->NameOfAnimals();
         cout << "\n=---------- STATS -----------=" << endl;
         cout << "name : " << name << endl;
         cout << "money : " << money << endl;
@@ -69,8 +66,8 @@ public:
     double getRandomNumber(int) const {
         random_device rd;
         mt19937 gen(rd());
-        double lowerBound = numberOfVisiTor - 0.2*numberOfVisiTor;
-        double upperBound = numberOfVisiTor + 0.2*numberOfVisiTor;
+        double lowerBound = numberOfVisitor - 0.2 * numberOfVisitor;
+        double upperBound = numberOfVisitor + 0.2 * numberOfVisitor;
         uniform_real_distribution<double> dis(lowerBound, upperBound);
         double randomNumber = dis(gen);
         if (fmod(randomNumber, 1.0) != 0) {
@@ -97,35 +94,35 @@ public:
 //    void VisitorforAnimals() {
 //        if (time->getMonth()>=4 && time->getMonth()<=8){
 //            if(habitat->GetNbrTiger()>0){
-//                numberOfVisiTor = 30*habitat->GetNbrTiger();
-//                nbrVisitor += getRandomNumber(numberOfVisiTor);
-//                Visitor(getRandomNumber(numberOfVisiTor));
+//                numberOfVisitor = 30*habitat->GetNbrTiger();
+//                nbrVisitor += getRandomNumber(numberOfVisitor);
+//                Visitor(getRandomNumber(numberOfVisitor));
 //            }
 //            if(habitat->GetNbrEagle()>0) {
-//                numberOfVisiTor = 15*habitat->GetNbrEagle();
-//                nbrVisitor += getRandomNumber(numberOfVisiTor);
-//                Visitor(getRandomNumber(numberOfVisiTor));
+//                numberOfVisitor = 15*habitat->GetNbrEagle();
+//                nbrVisitor += getRandomNumber(numberOfVisitor);
+//                Visitor(getRandomNumber(numberOfVisitor));
 //            }
 //            if(habitat->GetNbrHen()>0) {
-//                numberOfVisiTor = 2*habitat->GetNbrHen();
-//                nbrVisitor += getRandomNumber(numberOfVisiTor);
-//                Visitor(getRandomNumber(numberOfVisiTor));
+//                numberOfVisitor = 2*habitat->GetNbrHen();
+//                nbrVisitor += getRandomNumber(numberOfVisitor);
+//                Visitor(getRandomNumber(numberOfVisitor));
 //            }
 //        } else if ((time->getMonth()<4 || time->getMonth()>8)){
 //            if(habitat->GetNbrTiger()>0){
-//                numberOfVisiTor = 5*habitat->GetNbrTiger();
-//                nbrVisitor += getRandomNumber(numberOfVisiTor);
-//                Visitor(getRandomNumber(numberOfVisiTor));
+//                numberOfVisitor = 5*habitat->GetNbrTiger();
+//                nbrVisitor += getRandomNumber(numberOfVisitor);
+//                Visitor(getRandomNumber(numberOfVisitor));
 //            }
 //            if(habitat->GetNbrEagle()>0) {
-//                numberOfVisiTor = 7*habitat->GetNbrEagle();
-//                nbrVisitor += getRandomNumber(numberOfVisiTor);
-//                Visitor(getRandomNumber(numberOfVisiTor));
+//                numberOfVisitor = 7*habitat->GetNbrEagle();
+//                nbrVisitor += getRandomNumber(numberOfVisitor);
+//                Visitor(getRandomNumber(numberOfVisitor));
 //            }
 //            if(habitat->GetNbrHen()>0) {
-//                numberOfVisiTor = 0.5*habitat->GetNbrHen();
-//                nbrVisitor += getRandomNumber(numberOfVisiTor);
-//                Visitor(getRandomNumber(numberOfVisiTor));
+//                numberOfVisitor = 0.5*habitat->GetNbrHen();
+//                nbrVisitor += getRandomNumber(numberOfVisitor);
+//                Visitor(getRandomNumber(numberOfVisitor));
 //            }
 //        }
 //    };
@@ -205,7 +202,7 @@ public:
         if (money > price) {
             money -= price;
             nbrPet++;
-            tiger->addTiger();
+            tiger->addTiger(tiger->SetAName());
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
@@ -217,7 +214,7 @@ public:
         if (money > price) {
             money -= price;
             nbrPet++;
-            tiger->addTiger();
+            tiger->addTiger(tiger->SetAName());
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
@@ -229,7 +226,7 @@ public:
         if (money > price) {
             money -= price;
             nbrPet++;
-            tiger->addTiger();
+            tiger->addTiger(tiger->SetAName());
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
@@ -459,4 +456,4 @@ public:
 };
 
 
-#endif //B;1_CPP_ZOO_ZOO_H
+#endif //B1_CPP_ZOO_ZOO_H
