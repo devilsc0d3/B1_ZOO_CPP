@@ -48,6 +48,7 @@ public:
             zoo->VisitorforAnimals();
             zoo->eventExceptional();
             time->skip();
+
             cout << time->toString() << endl;
         } else if (choice == 3) {
             cout << "You chose to give up cowardly." << endl;

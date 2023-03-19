@@ -31,8 +31,7 @@ class Zoo{
 
 public:
 
-    Zoo(string m_name, float m_money, Time* timePassed):name(std::move(m_name)), money(m_money), timePassed(
-            reinterpret_cast<Time *>(time)) {
+    Zoo(string m_name, float m_money, Time* m_timePassed):name(std::move(m_name)), money(m_money), timePassed(m_timePassed) {
         tiger->addTiger("roger");
         hen->addHen("Marine");
         eagle->addEagle("Gertrude");
@@ -46,6 +45,7 @@ public:
     }
 
     void Stats() {
+        cout << timePassed->getMonth() << endl;
 //        tiger->NameOfAnimals("tiger :");
 //        hen->NameOfAnimals("hen :");
 //        eagle->NameOfAnimals("eagle :");
@@ -71,9 +71,11 @@ public:
         GrillingZoo();
         kidnapping();
         loophole();
-//        if (timePassed->getYears() == 10) {
-//            cout << "Congrats !!! "<< "name" << "celebrates these 20 years" << endl;
-//        }
+        if (timePassed->getYears() == 1) {
+            cout << "Congrats !!! "<< "name" << "celebrates these 20 years" << endl;
+            exit(0);
+
+        }
     }
 
     void loophole() {
