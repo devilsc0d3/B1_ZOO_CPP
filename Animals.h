@@ -1,7 +1,3 @@
-//
-// Created by Utilisateur on 08/03/2023.
-//
-
 #ifndef B1_CPP_ZOO_ANIMALS_H
 #define B1_CPP_ZOO_ANIMALS_H
 #include <iostream>
@@ -16,13 +12,10 @@ class Animals {
     int genre;
     int food;
     int quantityFood;
-
-    int maturity;
+    int powerSex;
     int dayBeforeHunger;
     int beginReproduction;
     int endReproduction;
-
-    int life;
 public:
     Animals(string m_name,int m_genre,std::tuple<int, int>  m_age, int m_food, int m_quantity) : name(m_name), age(m_age), food(m_food), genre(m_genre), quantityFood(m_quantity){
     }
@@ -39,7 +32,6 @@ public:
         return get<1>(age);
     }
 
-
     void TheTime() {
         if (get<1>(age) % 12 == 0) {
             get<0>(age) += 1;
@@ -49,12 +41,12 @@ public:
 
         if (get<0>(age) == 25) {
             cout << "mort" << endl;
+            this->~Animals();
         }
 
     }
 
-
-
+    ~Animals() {}
 };
 
 

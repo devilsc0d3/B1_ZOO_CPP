@@ -1,7 +1,3 @@
-//
-// Created by Utilisateur on 27/02/2023.
-//
-
 #ifndef B1_CPP_ZOO_TIME_H
 #define B1_CPP_ZOO_TIME_H
 
@@ -22,6 +18,7 @@ public:
         if (month == 1) {
             year += 1;
         }
+
     }
 
     string toString() const {
@@ -32,6 +29,10 @@ public:
 
     int getMonth() {
         return month;
+    }
+
+    int getYears() {
+        return year;
     }
 };
 

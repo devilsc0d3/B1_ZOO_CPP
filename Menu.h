@@ -4,9 +4,8 @@
 
 #include <iostream>
 #include <string>
-
 #include "Zoo.h"
-#include "Time.h"
+#include "time.h"
 #include "MenuMarket.h"
 
 using namespace std;
@@ -45,9 +44,8 @@ public:
             showMarket();
         } else if (choice == 2) {
             cout << "You have chosen to skip the month." << endl;
-            zoo->RefreshVisitor();
             zoo->subvention();
-            zoo->VisitorforAnimals();
+            zoo->eventExceptional();
             time->skip();
             cout << time->toString() << endl;
         } else if (choice == 3) {
@@ -147,9 +145,9 @@ public:
         if (choice == 1) {
             marketGenreHen();
         } else if (choice == 2) {
-            marketGenreTiger();
-        } else if (choice == 3) {
             marketGenreEagle();
+        } else if (choice == 3) {
+            marketGenreTiger();
         } else if (choice == 4) {
             showMarket();
         } else {
@@ -366,6 +364,7 @@ public:
             marketChoicesSell();
         }
     }
+
 };
 
 #endif //B1_CPP_ZOO_MENU_H

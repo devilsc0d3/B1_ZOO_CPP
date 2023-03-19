@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Zoo.h"
 #include "Menu.h"
-#include "Time.h"
 
 using namespace std;
 
@@ -22,9 +21,9 @@ float Level() {
 
 int main()
 {
+    Time time;
     Zoo* zoo = new Zoo("Try-Zoo-Mix", Level());
 
-    Time time;
     Menu menu(zoo, &time);
     menu.show();
 
