@@ -22,7 +22,7 @@ class Zoo{
     int nbrHabitat;
     int numberOfVisitor;
     float seed;
-    float meal;
+    float meat;
     Habitat* hen = new Habitat(10,4);
     Habitat* eagle = new Habitat(4,1);
     Habitat* tiger = new Habitat(2,1);
@@ -37,11 +37,11 @@ public:
         hen->addHen("Marine");
         eagle->addEagle("Gertrude");
 
-        nbrPet = 4;
+        nbrPet = 3;
         nbrMaxVisitor = 200;
         nbrVisitor = 0;
         seed = 0;
-        meal = 0;
+        meat = 0;
         nbrHabitat = 0;
     }
 
@@ -57,7 +57,7 @@ public:
         cout << "name : " << name << endl;
         cout << "money : " << money << endl;
         cout << "seed in kg : " << seed << endl;
-        cout << "meal in kg : " << meal << endl;
+        cout << "meat in kg : " << meat << endl;
         cout << "number of pets : " << nbrPet << endl;
         cout << "number of habitat : " << nbrHabitat << endl;
         cout << "maximum number of visitors per month : " << nbrMaxVisitor << endl;
@@ -71,6 +71,8 @@ public:
         GrillingZoo();
         kidnapping();
         loophole();
+        harmful();
+        corruptedMeat();
        if (timePassed->getYears() == 10) {
            cout << "Congrats !!! "<< "name" << "celebrates these 20 years" << endl;
        }
@@ -129,6 +131,24 @@ public:
                 }
                 cout << "Too bad" << endl;
             }
+        }
+    }
+
+    void harmful(){
+        srand(time(nullptr));
+        int random_num = rand() % 100 + 1;
+        if (random_num <=20){
+            int perte = seed * 0.1;
+            seed -= perte;
+        }
+    }
+
+    void corruptedMeat(){
+        srand(time(nullptr));
+        int random_num = rand() % 100 + 1;
+        if (random_num <=10){
+            int perte = meat * 0.2;
+            meat -= perte;
         }
     }
 
@@ -268,7 +288,7 @@ public:
         cin >> kilos;
         if (kilos * price < money) {
             money -= kilos * price;
-            meal += kilos;
+            meat += kilos;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
         }
