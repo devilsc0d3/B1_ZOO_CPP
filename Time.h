@@ -12,19 +12,16 @@ class Time {
     int day;
 
 public:
-    Time() : year(0), month(1), day(0) {}
+    Time() : year(0), month(1), day(1) {}
 
     void skip() {
-        month = (month % 12) + 1;
-        if (month == 1) {
-            year += 1;
-        }
-    }
-
-    void skipDay(){
         day = (day % 31) + 1;
         if (day == 1) {
             month += 1;
+        }
+        if ((month % 12) + 1 == 1) {
+            month = 1;
+            year += 1;
         }
     }
 
