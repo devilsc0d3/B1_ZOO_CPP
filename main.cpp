@@ -22,7 +22,7 @@ float Level() {
 int main()
 {
     Time time;
-    Zoo* zoo = new Zoo("Try-Zoo-Mix", Level());
+    Zoo* zoo = new Zoo("Try-Zoo-Mix", Level(), &time);
 
     Menu menu(zoo, &time);
     menu.show();

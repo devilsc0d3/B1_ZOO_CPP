@@ -45,6 +45,7 @@ public:
         } else if (choice == 2) {
             cout << "You have chosen to skip the month." << endl;
             zoo->subvention();
+            zoo->VisitorforAnimals();
             zoo->eventExceptional();
             time->skip();
             cout << time->toString() << endl;

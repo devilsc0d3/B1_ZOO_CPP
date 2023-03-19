@@ -20,7 +20,7 @@ class Zoo{
     int nbrVisitor;
     int nbrPet;
     int nbrHabitat;
-    int numberOfVisitor{};
+    int numberOfVisitor;
     float seed;
     float meal;
     Habitat* hen = new Habitat(10,4);
@@ -30,7 +30,9 @@ class Zoo{
     Time* timePassed;
 
 public:
-    Zoo(string m_name, float m_money):name(std::move(m_name)), money(m_money) {
+
+    Zoo(string m_name, float m_money, Time* timePassed):name(std::move(m_name)), money(m_money), timePassed(
+            reinterpret_cast<Time *>(time)) {
         tiger->addTiger("roger");
         hen->addHen("Marine");
         eagle->addEagle("Gertrude");
@@ -50,6 +52,7 @@ public:
 //        cout << tiger->GetCapacity() << endl;
 //        cout << eagle->GetCapacity() << endl;
 //        cout << hen->GetCapacity() << endl;
+
         cout << "\n=---------- STATS -----------=" << endl;
         cout << "name : " << name << endl;
         cout << "money : " << money << endl;
@@ -74,7 +77,7 @@ public:
     }
 
     void loophole() {
-       hen->GetArray().push_back(std::move(tiger->GetArray().back()));
+       hen->GetArray().push_back(move(tiger->GetArray().back()));
        tiger->GetArray().pop_back();
        // detruit tout les poulet
     }
@@ -166,37 +169,37 @@ public:
     }
 
     void VisitorforAnimals() {
-        if (time->getMonth()>=4 && time->getMonth()<=8){
-            if(tiger->GetNbrTiger()>0){
-                numberOfVisiTor = 30*tiger->GetNbrTiger();
-                nbrVisitor += getRandomNumber(numberOfVisiTor);
-                Visitor(getRandomNumber(numberOfVisiTor));
+        if (timePassed->getMonth()>=4 && timePassed->getMonth()<=8){
+            if(tiger->GetNbr()>0){
+                numberOfVisitor = 30*tiger->GetNbr();
+                nbrVisitor += getRandomNumber(numberOfVisitor);
+                Visitor(getRandomNumber(numberOfVisitor));
             }
-            if(eagle->GetNbrEagle()>0) {
-                numberOfVisiTor = 15*eagle->GetNbrEagle();
-                nbrVisitor += getRandomNumber(numberOfVisiTor);
-                Visitor(getRandomNumber(numberOfVisiTor));
+            if(eagle->GetNbr()>0) {
+                numberOfVisitor = 15*eagle->GetNbr();
+                nbrVisitor += getRandomNumber(numberOfVisitor);
+                Visitor(getRandomNumber(numberOfVisitor));
             }
-            if(hen->GetNbrHen()>0) {
-                numberOfVisiTor = 2*hen->GetNbrHen();
-                nbrVisitor += getRandomNumber(numberOfVisiTor);
-                Visitor(getRandomNumber(numberOfVisiTor));
+            if(hen->GetNbr()>0) {
+                numberOfVisitor = 2*hen->GetNbr();
+                nbrVisitor += getRandomNumber(numberOfVisitor);
+                Visitor(getRandomNumber(numberOfVisitor));
             }
-        } else if ((time->getMonth()<4 || time->getMonth()>8)){
-            if(tiger->GetNbrTiger()>0){
-                numberOfVisiTor = 5*tiger->GetNbrTiger();
-                nbrVisitor += getRandomNumber(numberOfVisiTor);
-                Visitor(getRandomNumber(numberOfVisiTor));
+        } else if ((timePassed->getMonth()<4 || timePassed->getMonth()>8)){
+            if(tiger->GetNbr()>0){
+                numberOfVisitor = 5*tiger->GetNbr();
+                nbrVisitor += getRandomNumber(numberOfVisitor);
+                Visitor(getRandomNumber(numberOfVisitor));
             }
-            if(eagle->GetNbrEagle()>0) {
-                numberOfVisiTor = 7*eagle->GetNbrEagle();
-                nbrVisitor += getRandomNumber(numberOfVisiTor);
-                Visitor(getRandomNumber(numberOfVisiTor));
+            if(eagle->GetNbr()>0) {
+                numberOfVisitor = 7*eagle->GetNbr();
+                nbrVisitor += getRandomNumber(numberOfVisitor);
+                Visitor(getRandomNumber(numberOfVisitor));
             }
-            if(hen->GetNbrHen()>0) {
-                numberOfVisiTor = 0.5*hen->GetNbrHen();
-                nbrVisitor += getRandomNumber(numberOfVisiTor);
-                Visitor(getRandomNumber(numberOfVisiTor));
+            if(hen->GetNbr()>0) {
+                numberOfVisitor = 0.5*hen->GetNbr();
+                nbrVisitor += getRandomNumber(numberOfVisitor);
+                Visitor(getRandomNumber(numberOfVisitor));
             }
         }
     };
