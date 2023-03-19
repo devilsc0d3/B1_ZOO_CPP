@@ -71,9 +71,9 @@ public:
         GrillingZoo();
         kidnapping();
         loophole();
-//        if (timePassed->getYears() == 10) {
-//            cout << "Congrats !!! "<< "name" << "celebrates these 20 years" << endl;
-//        }
+       if (timePassed->getYears() == 10) {
+           cout << "Congrats !!! "<< "name" << "celebrates these 20 years" << endl;
+       }
     }
 
     void loophole() {
@@ -82,29 +82,6 @@ public:
        // detruit tout les poulet
     }
 
-//SUBVENTION
-    void subvention(){
-        if (tiger->GetNbr()>0){
-            money += (tiger->GetNbr()*3650);
-        }
-        if(eagle->GetNbr()>0) {
-            money += (eagle->GetNbr()*182.5);
-        }
-    }
-
-    //------------------------------------------- VISITOR ------------------------------------------------------//
-    double getRandomNumber(int) const {
-        random_device rd;
-        mt19937 gen(rd());
-        double lowerBound = numberOfVisitor - 0.2 * numberOfVisitor;
-        double upperBound = numberOfVisitor + 0.2 * numberOfVisitor;
-        uniform_real_distribution<double> dis(lowerBound, upperBound);
-        double randomNumber = dis(gen);
-        if (fmod(randomNumber, 1.0) != 0) {
-            randomNumber = round(randomNumber);
-        }
-        return randomNumber;
-    }
 
     void GrillingZoo(){
         srand(time(nullptr));
@@ -155,7 +132,31 @@ public:
         }
     }
 
-    void Visitor(int visitorNumber) {
+    //SUBVENTION
+    void subvention(){
+        if (tiger->GetNbr()>0){
+            money += (tiger->GetNbr()*3650);
+        }
+        if(eagle->GetNbr()>0) {
+            money += (eagle->GetNbr()*182.5);
+        }
+    }
+
+    //------------------------------------------- VISITOR ------------------------------------------------------//
+    double getRandomNumber(int) const {
+        random_device rd;
+        mt19937 gen(rd());
+        double lowerBound = numberOfVisitor - 0.2 * numberOfVisitor;
+        double upperBound = numberOfVisitor + 0.2 * numberOfVisitor;
+        uniform_real_distribution<double> dis(lowerBound, upperBound);
+        double randomNumber = dis(gen);
+        if (fmod(randomNumber, 1.0) != 0) {
+            randomNumber = round(randomNumber);
+        }
+        return randomNumber;
+    }
+
+   void Visitor(int visitorNumber) {
         if (visitorNumber % 2 == 0) {
             money += (visitorNumber / 2 * 17);
             money += (visitorNumber / 2 * 13);
