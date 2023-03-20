@@ -74,7 +74,7 @@ public:
 
     void end() {
         if (timePassed->getYears() == 10) {
-            cout << "Congrats !!! "<< "name" << "celebrates these 20 years" << endl;
+            cout << "Congrats !!! "<< name << "celebrates these 10 years" << endl;
             cout << "1.continue or 2.exit" << endl;
             int response;
             cin >> response;
