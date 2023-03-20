@@ -46,12 +46,6 @@ public:
     }
 
     void Stats() {
-        tiger->NameOfAnimals("tiger :");
-//        hen->NameOfAnimals("hen :");
-//        eagle->NameOfAnimals("eagle :");
-//        cout << tiger->GetCapacity() << endl;
-//        cout << eagle->GetCapacity() << endl;
-//        cout << hen->GetCapacity() << endl;
 
         cout << "\n=---------- STATS -----------=" << endl;
         cout << "name : " << name << endl;
@@ -65,27 +59,68 @@ public:
         cout << "=----------------------------=\n" << endl;
     }
 
+
     //event
 
     void eventExceptional() {
+        overpopulation();
         GrillingZoo();
         kidnapping();
-        //loophole();
-        if (timePassed->getYears() == 1) {
-            cout << "Congrats !!! "<< "name" << "celebrates these 20 years" << endl;
-            exit(0);
-
-        }
+//        loophole();
+        end();
         harmful();
         corruptedMeat();
     }
 
-    void loophole() {
-       hen->GetArray().push_back(move(tiger->GetArray().back()));
-       tiger->GetArray().pop_back();
-       // detruit tout les poulet
+    void end() {
+        if (timePassed->getYears() == 10) {
+            cout << "Congrats !!! "<< "name" << "celebrates these 20 years" << endl;
+            cout << "1.continue or 2.exit" << endl;
+            int response;
+            cin >> response;
+            if (response != 1) {
+                exit(0);
+            }
+        }
     }
 
+    void loophole() {
+        srand(time(nullptr));
+        int random_num = rand() % 100 + 1;
+        if (random_num == 1) {
+            hen->GetArray().push_back(move(tiger->GetArray().back()));
+            tiger->GetArray().pop_back();
+            // detruit tout les poulet
+        }
+    }
+
+
+    void overpopulation(){
+        srand(time(nullptr));
+        int random_num;
+        if (tiger->GetNbr() > tiger->GetCapacity()) {
+            random_num = rand() % 100 + 1;
+            if (random_num >= 50) {
+                tiger->GetArray().pop_back();
+            }
+        }
+        if (eagle->GetNbr() > eagle->GetCapacity()) {
+            random_num = rand() % 100 + 1;
+            if (random_num >= 50) {
+                eagle->GetArray().pop_back();
+            }
+        }
+        if (hen->GetNbr() > hen->GetCapacity()) {
+            random_num = rand() % 100 + 1;
+            if (random_num >= 50) {
+                for (int i = 0 ; i < 4 ; i++) {
+                    if (!hen->GetArray().empty()) {
+                        hen->GetArray().pop_back();
+                    }
+                }
+            }
+        }
+    }
 
     void GrillingZoo(){
         srand(time(nullptr));

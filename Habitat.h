@@ -35,6 +35,7 @@ public:
         return animals.size();
     };
 
+
     [[nodiscard]] int GetCapacity() const {
         return capacity;
     };
@@ -67,6 +68,7 @@ public:
             cout << type << i << " :" << animals[i]->GetName() << endl;
         }
     }
+
 };
 
 #endif //B1_CPP_ZOO_HABITAT_H

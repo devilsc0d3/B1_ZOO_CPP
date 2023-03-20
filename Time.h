@@ -19,7 +19,7 @@ public:
         if (day == 1) {
             month += 1;
         }
-        if ((month % 12) + 1 == 1) {
+        if (month -12 == 1) {
             month = 1;
             year += 1;
         }
