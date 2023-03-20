@@ -360,6 +360,7 @@ public:
         } else if (choice == 4) {
         } else if (choice == 5) {
         } else if (choice == 6) {
+            zoo->SellTiger();
         } else if (choice == 7) {
             showMarket();
         } else {

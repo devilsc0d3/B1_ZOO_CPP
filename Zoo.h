@@ -10,6 +10,7 @@
 #include <cstdlib>
 #include <ctime>
 #include "Time.h"
+#include "Animals.h"
 
 using namespace std;
 
@@ -45,7 +46,7 @@ public:
     }
 
     void Stats() {
-//        tiger->NameOfAnimals("tiger :");
+        tiger->NameOfAnimals("tiger :");
 //        hen->NameOfAnimals("hen :");
 //        eagle->NameOfAnimals("eagle :");
 //        cout << tiger->GetCapacity() << endl;
@@ -437,52 +438,37 @@ public:
         cout << "argent : " << money << endl;
     };
 
-    /* void SellTiger() {
-        cout << "argent : " << money << endl;
-        if (hen->GetCapacity() > 1 || (hen->GetCapacity() >= 10 && hen->GetNbrAnimals() == 0)) {
-            money += 1500;
-            nbrPet--;
-            cout << "you got a good deal !" << endl;
-        }  else if (eagle->GetCapacity() == 0) {
-            cout << "Crii crii crii, there is no more habitat" << endl;
+    void SellTiger() {
+        cout << tiger->GetNbr() << endl;
+        cout << "Argent : " << money << endl;
+        if (tiger->GetNbr() > 0) {
+            for (int i = 0; i < tiger->GetNbr(); i++) {
+                cout << i << " Nom : " << tiger->GetArray()[i]->GetName() << ", Age : " << tiger->GetArray()[i]->GetMonth() << " months ," << tiger->GetArray()[i]->GetYears() << " years" << endl;
+            }
+            cout << "Entrez le numéro du tigre que vous souhaitez vendre : ";
+            int num;
+            cin >> num;
+            if (num < 0 || num > tiger->GetNbr()) {
+                cout << "Numéro invalide." << endl;
+            } else {
+                int year = tiger->GetArray()[num-1]->GetYears();
+                if ((year >= 0) && (year < 4)) {
+                    money += 1500;
+                } else if ((year >= 4) && (year < 14)) {
+                    money += 60000;
+                } else if (year >= 14) {
+                    money += 10000;
+                } else {
+                    cout << "Impossible de vendre un tigre de moins de 6 mois." << endl;
+                    return;
+                }
+                cout << "Vous avez vendu " << tiger->GetArray()[num-1]->GetName() << " pour " << money << " dollars." << endl;
+            }
         } else {
-            cout << "NO, NO to animals on the street !!!" << endl;
+            cout << "Crii crii crii, il n'y a plus de tigre." << endl;
         }
-
-        cout << "argent : " << money << endl;
+    cout << "argent : " << money << endl;
     };
-
-    void SellEagle() {
-        cout << "argent : " << money << endl;
-        if (hen->GetCapacity() > 1 || (hen->GetCapacity() >= 10 && hen->GetNbrAnimals() == 0)) {
-            money += 500;
-            nbrPet--;
-            cout << "you got a good deal !" << endl;
-        }  else if (eagle->GetCapacity() == 0) {
-            cout << "Crii crii crii, there is no more habitat" << endl;
-        } else {
-            cout << "NO, NO to animals on the street !!!" << endl;
-        }
-
-        cout << "argent : " << money << endl;
-    };
-
-     void SellHen() {
-         cout << "argent : " << money << endl;
-         if (hen->GetCapacity() > 1 || (hen->GetCapacity() >= 10 && hen->GetNbrAnimals() == 0)) {
-             money += 10;
-             nbrPet--;
-             hen->SetCapacity(-10);
-             cout << "you got a good deal !" << endl;
-         }  else if (eagle->GetCapacity() == 0) {
-             cout << "Crii crii crii, there is no more habitat" << endl;
-         } else {
-             cout << "NO, NO to animals on the street !!!" << endl;
-         }
-
-         cout << "argent : " << money << endl;
-     };
- */
 };
 
 
