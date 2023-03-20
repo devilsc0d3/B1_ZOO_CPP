@@ -70,7 +70,7 @@ public:
     void eventExceptional() {
         GrillingZoo();
         kidnapping();
-        loophole();
+        //loophole();
         if (timePassed->getYears() == 1) {
             cout << "Congrats !!! "<< "name" << "celebrates these 20 years" << endl;
             exit(0);
@@ -407,6 +407,7 @@ public:
         } else {
             cout << "NO, NO to animals on the street !!!" << endl;
         }
+        cout << "money : " << money << endl;
     };
 
     void SellHabitatEagle() {
@@ -420,10 +421,10 @@ public:
         } else {
             cout << "NO, NO to animals on the street !!!" << endl;
         }
+        cout << "money : " << money << endl;
     };
 
     void SellHabitatHen() {
-        cout << "argent : " << money << endl;
         if (hen->GetCapacity() > 1 || (hen->GetCapacity() >= 10 && hen->GetNbr() == 0)) {
             money += 50;
             nbrHabitat--;
@@ -434,41 +435,87 @@ public:
         } else {
             cout << "NO, NO to animals on the street !!!" << endl;
         }
-
-        cout << "argent : " << money << endl;
+        cout << "money : " << money << endl;
     };
 
     void SellTiger() {
-        cout << tiger->GetNbr() << endl;
-        cout << "Argent : " << money << endl;
         if (tiger->GetNbr() > 0) {
             for (int i = 0; i < tiger->GetNbr(); i++) {
-                cout << i << " Nom : " << tiger->GetArray()[i]->GetName() << ", Age : " << tiger->GetArray()[i]->GetMonth() << " months ," << tiger->GetArray()[i]->GetYears() << " years" << endl;
+                cout << i << " Nom : " << tiger->GetArray()[i]->GetName() << ", Age : " << tiger->GetArray()[i]->GetMonth() << " months and " << tiger->GetArray()[i]->GetYears() << " years" << endl;
             }
-            cout << "Entrez le numéro du tigre que vous souhaitez vendre : ";
+            cout << "Enter the number of the tiger you want to sell : ";
             int num;
             cin >> num;
             if (num < 0 || num > tiger->GetNbr()) {
-                cout << "Numéro invalide." << endl;
+                cout << "Invalid number." << endl;
             } else {
-                int year = tiger->GetArray()[num-1]->GetYears();
+                int year = tiger->GetArray()[num]->GetYears();
                 if ((year >= 0) && (year < 4)) {
                     money += 1500;
                 } else if ((year >= 4) && (year < 14)) {
                     money += 60000;
                 } else if (year >= 14) {
                     money += 10000;
-                } else {
-                    cout << "Impossible de vendre un tigre de moins de 6 mois." << endl;
-                    return;
                 }
-                cout << "Vous avez vendu " << tiger->GetArray()[num-1]->GetName() << " pour " << money << " dollars." << endl;
+                cout << "You sold " << tiger->GetArray()[num]->GetName()  << " !" << endl;
             }
         } else {
-            cout << "Crii crii crii, il n'y a plus de tigre." << endl;
+            cout << "Crii crii crii, there is no tiger." << endl;
         }
-    cout << "argent : " << money << endl;
+        cout << "money : " << money << endl;
     };
+
+    void SellEagle() {
+        if (eagle->GetNbr() > 0) {
+            for (int i = 0; i < eagle->GetNbr(); i++) {
+                cout << i << " Name : " << eagle->GetArray()[i]->GetName() << ", Age : " << eagle->GetArray()[i]->GetMonth() << " months and " << eagle->GetArray()[i]->GetYears() << " years" << endl;
+            }
+            cout << "Enter the number of the eagle you want to sell : ";
+            int num;
+            cin >> num;
+            if (num < 0 || num > eagle->GetNbr()) {
+                cout << "Invalid number." << endl;
+            } else {
+                int year = eagle->GetArray()[num]->GetYears();
+                if ((year >= 0) && (year < 4)) {
+                    money += 500;
+                } else if ((year >= 4) && (year < 14)) {
+                    money += 2000;
+                } else if (year >= 14) {
+                    money += 400;
+                }
+                cout << "You sold " << eagle->GetArray()[num]->GetName() << " !" << endl;
+            }
+        } else {
+            cout << "Crii crii crii, there is no eagle." << endl;
+        }
+        cout << "money : " << money << endl;
+    }
+
+    void SellHen() {
+        if (hen->GetNbr() > 0) {
+            for (int i = 0; i < hen->GetNbr(); i++) {
+                cout << i << " Name : " << hen->GetArray()[i]->GetName() << ", Genre : " << hen->GetArray()[i]->GetGenre() << endl;
+            }
+            cout << "Enter the number of the hen you want to sell : ";
+            int num;
+            cin >> num;
+            if (num < 0 || num > hen->GetNbr()) {
+                cout << "Invalid number." << endl;
+            } else {
+                int genre = hen->GetArray()[num]->GetGenre();
+                if (genre == 0) {
+                    money += 10;
+                } else if (genre == 1) {
+                    money += 20;
+                }
+                cout << "You sold " << hen->GetArray()[num]->GetName() << " !" << endl;
+            }
+        } else {
+            cout << "Crii crii crii, there is no hen." << endl;
+        }
+        cout << "money : " << money << endl;
+    }
 };
 
 

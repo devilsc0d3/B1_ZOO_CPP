@@ -358,7 +358,9 @@ public:
         } else if (choice == 3) {
             zoo->SellHabitatTiger();
         } else if (choice == 4) {
+            zoo->SellHen();
         } else if (choice == 5) {
+            zoo->SellEagle();
         } else if (choice == 6) {
             zoo->SellTiger();
         } else if (choice == 7) {
