@@ -486,10 +486,13 @@ public:
             } else {
                 int year = tiger->GetArray()[num]->GetYears();
                 if ((year >= 0) && (year < 4)) {
+                    nbrPet--;
                     money += 1500;
                 } else if ((year >= 4) && (year < 14)) {
+                    nbrPet--;
                     money += 60000;
                 } else if (year >= 14) {
+                    nbrPet--;
                     money += 10000;
                 }
                 cout << "You sold " << tiger->GetArray()[num]->GetName()  << " !" << endl;
@@ -513,10 +516,13 @@ public:
             } else {
                 int year = eagle->GetArray()[num]->GetYears();
                 if ((year >= 0) && (year < 4)) {
+                    nbrPet--;
                     money += 500;
                 } else if ((year >= 4) && (year < 14)) {
+                    nbrPet--;
                     money += 2000;
                 } else if (year >= 14) {
+                    nbrPet--;
                     money += 400;
                 }
                 cout << "You sold " << eagle->GetArray()[num]->GetName() << " !" << endl;
@@ -540,8 +546,10 @@ public:
             } else {
                 int genre = hen->GetArray()[num]->GetGenre();
                 if (genre == 0) {
+                    nbrPet--;
                     money += 10;
                 } else if (genre == 1) {
+                    nbrPet--;
                     money += 20;
                 }
                 cout << "You sold " << hen->GetArray()[num]->GetName() << " !" << endl;

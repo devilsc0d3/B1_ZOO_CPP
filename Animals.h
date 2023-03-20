@@ -3,7 +3,6 @@
 #include <iostream>
 #include <tuple>
 #include "time.h"
-#include "Hen.h"
 
 using namespace  std;
 
@@ -39,18 +38,18 @@ public:
     }
 
 
-    virtual void TheTime() {
+    void TheTime() {
         if (get<1>(age) % 12 == 0) {
             get<0>(age) += 1;
             get<1>(age) = 0;
         }
         get<1>(age) += 1;
 
-        Hen* hen_ptr = dynamic_cast<Hen*>(this);
+//        Hen* hen_ptr = dynamic_cast<Hen*>(this);
         int max_age = 25;
-        if (hen_ptr != nullptr) {
-            max_age = 15;
-        }
+//        if (hen_ptr != nullptr) {
+//            max_age = 15;
+//        }
 
         if (get<0>(age) == max_age) {
             cout << "mort" << endl;
