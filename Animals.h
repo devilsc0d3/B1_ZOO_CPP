@@ -12,7 +12,7 @@ class Animals {
     int genre;
     int food;
     int quantityFood;
-    int powerSex;
+    bool powerSex;
     int dayBeforeHunger;
     int beginReproduction;
     int endReproduction;

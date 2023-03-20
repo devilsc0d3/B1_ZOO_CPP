@@ -44,11 +44,14 @@ public:
             showMarket();
         } else if (choice == 2) {
             cout << "You have chosen to skip the month." << endl;
+            for (int i = 0 ; i < 31 ; i++) {
+                time->skip();
+            }
+
             zoo->subvention();
             zoo->RefreshVisitor();
             zoo->VisitorforAnimals();
             zoo->eventExceptional();
-            time->skip();
 
             cout << time->toString() << endl;
         } else if (choice == 3) {
