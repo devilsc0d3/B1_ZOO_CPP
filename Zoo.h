@@ -75,19 +75,19 @@ public:
 
     void Ration() {
 //        Todo faire dans les animaux eux meme
-        if (jTiger == 1) {
+        if (jTiger == 0) {
             for (int i = 0; i < tiger->GetNbr(); i++) {
                 meat += tiger->GetArray()[i]->FeedMe(meat);
             }
             jTiger = 2;
         }
-        if (jEagle == 1) {
+        if (jEagle == 0) {
             for (int i = 0; i < tiger->GetNbr(); i++) {
                 meat += eagle->GetArray()[i]->FeedMe(meat);
             }
             jEagle = 10;
         }
-        if (jHen == 1) {
+        if (jHen == 0) {
             for (int i = 0; i < hen->GetNbr(); i++) {
                 seed += hen->GetArray()[i]->FeedMe(seed);
             }
