@@ -12,6 +12,20 @@ public:
     void coupling(string name){
         fidelity = std::move(name);
     }
+
+    string bigcocot() {
+        return "Yyyaaaaahhh";
+    }
+
+    double FeedMe(double meat) {
+        if (meat >= 5) {
+            return -5;
+        } else {
+            //pop
+            cout << bigcocot() << endl;
+            return 0;
+        }
+    }
 };
 
 

@@ -15,12 +15,13 @@ public:
         return "RRRRooaaahh";
     };
 
-    void FeedMe(int meat) {
+    double FeedMe(double meat) {
         if (meat >= 12) {
-            meat -= 12;
+            return -12;
         } else {
             //pop
             cout << roar() << endl;
+            return 0;
         }
     }
 };
