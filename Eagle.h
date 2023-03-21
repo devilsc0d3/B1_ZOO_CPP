@@ -5,6 +5,7 @@
 #include <utility>
 
 class Eagle: public Animals {
+    int max_age = 25;
     string fidelity;
 public:
     Eagle(string m_name, int m_genre,std::tuple<int, int>  m_age,int m_food = 1,int m_quantity = 12): Animals(std::move(m_name),m_genre, m_age, m_food, m_quantity){}
@@ -24,6 +25,12 @@ public:
             //pop
             cout << bigcocot() << endl;
             return 0;
+        }
+    }
+
+    void theDead() {
+        if (this->GetYears() >= max_age) {
+            cout << "mort" << endl;
         }
     }
 };
