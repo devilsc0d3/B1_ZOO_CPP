@@ -15,6 +15,7 @@ private:
     int choice{};
     Zoo* zoo;
     Time* time;
+    int genre;
     bool quit = false;
 
 public:
@@ -259,15 +260,19 @@ public:
     }
 
     void marketChoicesGenreAnimalTiger() {
-        cout << "Enter your choice (1-4): ";
+        cout << "Enter your choice (1-3): ";
         cin >> choice;
         marketTypeGenreAnimalTiger();
     }
 
     void marketTypeGenreAnimalTiger() {
+        cout << "genre : " << genre << endl;
+
         if (choice == 1) {
+            genre = choice;
             marketAgeAnimalTiger();
         } else if (choice == 2) {
+            genre = choice;
             marketAgeAnimalTiger();
         } else if (choice == 3) {
             showMarket();
