@@ -10,6 +10,19 @@ public:
     Tiger(string m_name, int m_genre,std::tuple<int, int>  m_age,int m_food = 1,int m_quantity = 12): Animals(std::move(m_name),m_genre, m_age, m_food, m_quantity){
 
     }
+
+    string roar() {
+        return "RRRRooaaahh";
+    };
+
+    void FeedMe(int meat) {
+        if (meat >= 12) {
+            meat -= 12;
+        } else {
+            //pop
+            cout << roar() << endl;
+        }
+    }
 };
 
 

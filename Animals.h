@@ -17,8 +17,9 @@ class Animals {
     int beginReproduction;
     int endReproduction;
 public:
+    virtual void FeedMe(int meat){}
 
-    Animals(string m_name,int m_genre,std::tuple<int, int>  m_age, int m_food, int m_quantity) : name(m_name), age(m_age), food(m_food), genre(m_genre), quantityFood(m_quantity){
+        Animals(string m_name,int m_genre,std::tuple<int, int>  m_age, int m_food, int m_quantity) : name(m_name), age(m_age), food(m_food), genre(m_genre), quantityFood(m_quantity){
     }
 
     string GetName() {

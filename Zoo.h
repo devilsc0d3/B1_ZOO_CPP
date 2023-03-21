@@ -24,6 +24,9 @@ class Zoo{
     int numberOfVisitor;
     float seed;
     float meat;
+    int jTiger = 2;
+    int jEagle = 10;
+    int jHen = 2;
     Habitat* hen = new Habitat(10,4);
     Habitat* eagle = new Habitat(4,1);
     Habitat* tiger = new Habitat(2,1);
@@ -58,8 +61,6 @@ public:
         cout << "average number of visitors per month : " << nbrVisitor << endl;
         cout << "=----------------------------=\n" << endl;
     }
-
-
     //event
 
     void eventExceptional() {
@@ -70,6 +71,35 @@ public:
         end();
         harmful();
         corruptedMeat();
+    }
+
+    void Ration() {
+//        Todo faire dans les animaux eux meme
+        if (jTiger == 1) {
+            for (int i = 0; i < tiger->GetNbr(); i++) {
+                tiger->GetArray()[i]->FeedMe(meat);
+            }
+            jTiger = 2;
+        }
+//        for (int i = 0 ; i < eagle->GetNbr() ; i++) {
+//            for (int i = 0; i < tiger->GetNbr(); i++) {
+//                if (meat < 0) {
+//                    money -= 5;
+//                    meat = 0;
+//                } else {
+//                    meat -= 0.3;
+//                }
+//            }
+//            jEagle = 10;
+//        }
+//        for (int i = 0 ; i < hen->GetNbr() ; i++) {
+//
+//        }
+
+        jTiger -= 1;
+        jEagle -= 1;
+        jHen -= 1;
+
     }
 
     void end() {

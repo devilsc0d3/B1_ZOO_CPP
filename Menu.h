@@ -45,6 +45,7 @@ public:
         } else if (choice == 2) {
             cout << "You have chosen to skip the month." << endl;
             for (int i = 0 ; i < 31 ; i++) {
+                zoo->Ration();
                 time->skip();
             }
 
