@@ -22,6 +22,7 @@ class Zoo{
     int nbrPet;
     int nbrHabitat;
     int numberOfVisitor;
+    int totalVisitor;
     float seed;
     float meat;
     int jTiger = 2;
@@ -41,7 +42,7 @@ public:
         eagle->addEagle("Simpley");
 
         nbrPet = 3;
-        nbrMaxVisitor = 200;
+        nbrMaxVisitor = 100;
         nbrVisitor = 0;
         seed = 0;
         meat = 0;
@@ -261,39 +262,58 @@ public:
             if(tiger->GetNbr()>0){
                 numberOfVisitor = 30*tiger->GetNbr();
                 nbrVisitor += getRandomNumber(numberOfVisitor);
-                Visitor(getRandomNumber(numberOfVisitor));
+                totalVisitor += nbrVisitor;
             }
             if(eagle->GetNbr()>0) {
                 numberOfVisitor = 15*eagle->GetNbr();
                 nbrVisitor += getRandomNumber(numberOfVisitor);
-                Visitor(getRandomNumber(numberOfVisitor));
+                totalVisitor += nbrVisitor;
             }
             if(hen->GetNbr()>0) {
                 numberOfVisitor = 2*hen->GetNbr();
                 nbrVisitor += getRandomNumber(numberOfVisitor);
-                Visitor(getRandomNumber(numberOfVisitor));
+                totalVisitor += nbrVisitor;
             }
+            if (nbrVisitor > nbrMaxVisitor) {
+                nbrVisitor = nbrMaxVisitor;
+            }
+            Visitor(getRandomNumber(nbrVisitor));
         } else if ((timePassed->getMonth()<4 || timePassed->getMonth()>8)){
             if(tiger->GetNbr()>0){
                 numberOfVisitor = 5*tiger->GetNbr();
                 nbrVisitor += getRandomNumber(numberOfVisitor);
-                Visitor(getRandomNumber(numberOfVisitor));
+                totalVisitor += nbrVisitor;
             }
             if(eagle->GetNbr()>0) {
                 numberOfVisitor = 7*eagle->GetNbr();
                 nbrVisitor += getRandomNumber(numberOfVisitor);
-                Visitor(getRandomNumber(numberOfVisitor));
+                totalVisitor += nbrVisitor;
             }
             if(hen->GetNbr()>0) {
                 numberOfVisitor = 0.5*hen->GetNbr();
                 nbrVisitor += getRandomNumber(numberOfVisitor);
-                Visitor(getRandomNumber(numberOfVisitor));
+                totalVisitor += nbrVisitor;
             }
+            if (nbrVisitor > nbrMaxVisitor) {
+                nbrVisitor = nbrMaxVisitor;
+            }
+            Visitor(getRandomNumber(nbrVisitor));
         }
     };
 
     void RefreshVisitor() {
         nbrVisitor = 0;
+    }
+
+    void addExpand() {
+        float price = 4000;
+        if (money > price) {
+            money -= price;
+            nbrMaxVisitor += 100;
+            cout << "you got a good deal !" << endl;
+        } else {
+            cout << "NO Money, You're too poor !!!" << endl;
+        }
     }
 
     //------------------------------------------- BUY ------------------------------------------------------//

@@ -75,13 +75,14 @@ public:
             cout << "   2. Animals" << endl;
             cout << "   3. Food" << endl;
             cout << "   4. Sell" << endl;
-            cout << "   5. Cancel\n" << endl;
+            cout << "   5. Zoo expand" << endl;
+            cout << "   6. Cancel\n" << endl;
             marketChoices();
         }
     }
 
     void marketChoices() {
-        cout << "Enter your choice (1-5): ";
+        cout << "Enter your choice (1-6): ";
         cin >> choice;
         marketType();
     }
@@ -96,10 +97,12 @@ public:
             marketFood();
         } else if (choice == 4) {
             marketSell();
-        } else if (choice == 5) {
+        }  else if (choice == 5) {
+            marketExpand();
+        }else if (choice == 6) {
             show();
         } else {
-            cout << "Invalid choice. Please enter a number between 1 and 5." << endl;
+            cout << "Invalid choice. Please enter a number between 1 and 6." << endl;
             marketChoices();
         }
     }
@@ -372,6 +375,30 @@ public:
         } else {
             cout << "Invalid choice. Please enter a number between 1 and 7." << endl;
             marketChoicesSell();
+        }
+    }
+
+    void marketExpand() {
+        cout << "\nMarket Food :" << endl;
+        cout << "   1. Expand" << endl;
+        cout << "   2. Cancel\n" << endl;
+        marketChoicesExpand();
+    }
+
+    void marketChoicesExpand() {
+        cout << "Enter your choice (1-2): ";
+        cin >> choice;
+        marketTypeExpand();
+    }
+
+    void marketTypeExpand() {
+        if (choice == 1) {
+            zoo->addExpand();
+        } else if (choice == 2) {
+            showMarket();
+        } else {
+            cout << "Invalid choice. Please enter a number between 1 and 2." << endl;
+            marketChoicesExpand();
         }
     }
 
