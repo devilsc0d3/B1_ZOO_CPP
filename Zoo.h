@@ -37,10 +37,17 @@ class Zoo{
 public:
 
     Zoo(string m_name, float m_money, Time* m_timePassed):name(std::move(m_name)), money(m_money), timePassed(m_timePassed) {
-        tiger->addTiger("Grincheux",1);
-        tiger->addTiger("Atchoum",0);
-        hen->addHen("Prof");
-        eagle->addEagle("Simpley",1);
+        tiger->addTiger("roger",1);
+        tiger->addTiger("moli",0);
+        tiger->addTiger("roger",1);
+        tiger->addTiger("varti",0);
+
+        hen->addHen("Marine");
+
+        eagle->addEagle("Gertrude",1);
+        eagle->addEagle("Gertrude",0);
+        eagle->addEagle("Gertrude",1);
+        eagle->addEagle("Gertrude",0);
 
         nbrPet = 3;
         nbrMaxVisitor = 200;

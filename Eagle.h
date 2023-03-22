@@ -28,8 +28,10 @@ public:
     }
 
     double FeedMe(double meat) {
-        if (meat >= 5) {
-            return -5;
+        if (meat >= 0.25 && this->GetGenre() == 1) {
+            return 0.25;
+        } else if (meat >= 0.3 && this->GetGenre() == 0) {
+            return 0.3;
         } else {
             //pop
             cout << bigcocot() << endl;
