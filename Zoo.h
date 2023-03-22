@@ -38,6 +38,7 @@ public:
 
     Zoo(string m_name, float m_money, Time* m_timePassed):name(std::move(m_name)), money(m_money), timePassed(m_timePassed) {
         tiger->addTiger("Grincheux",1);
+        tiger->addTiger("Atchoum",0);
         hen->addHen("Prof");
         eagle->addEagle("Simpley",1);
 
@@ -75,22 +76,22 @@ public:
     }
 
     void Ration() {
-        eagle->GetArray()[0]->gestation();
-//        Todo faire dans les animaux eux meme
+
+//        eagle->GetArray()[0]->gestation();
         if (jTiger == 0) {
-            for (int i = 0; i < tiger->GetNbr(); i++) {
+            for (int i = 0; i < tiger->GetNbr()-1; i++) {
                 meat += tiger->GetArray()[i]->FeedMe(meat);
             }
             jTiger = 2;
         }
         if (jEagle == 0) {
-            for (int i = 0; i < tiger->GetNbr(); i++) {
+            for (int i = 0; i < tiger->GetNbr()-1; i++) {
                 meat += eagle->GetArray()[i]->FeedMe(meat);
             }
             jEagle = 10;
         }
         if (jHen == 0) {
-            for (int i = 0; i < hen->GetNbr(); i++) {
+            for (int i = 0; i < hen->GetNbr()-1; i++) {
                 seed += hen->GetArray()[i]->FeedMe(seed);
             }
             jHen = 2;
