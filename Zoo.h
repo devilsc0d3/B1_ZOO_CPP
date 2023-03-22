@@ -82,25 +82,62 @@ public:
         corruptedMeat();
     }
 
-    void Ration() {
 
-//        eagle->GetArray()[0]->gestation();
-        if (jTiger == 0) {
-            for (int i = 0; i < tiger->GetNbr()-1; i++) {
-                meat += tiger->GetArray()[i]->FeedMe(meat);
+    double FeedTiger() {
+        for (int i = 0; i < tiger->GetNbr()-1; i++) {
+            if (meat >= 12 && tiger->GetArray()[i]->GetGenre() == 1) {
+                return -12;
+            } else if (meat >= 10 && tiger->GetArray()[i]->GetGenre() == 0) {
+                return -10;
+            } else {
+                tiger->GetArray().erase(tiger->GetArray().begin() + i);
+                cout << "RRRRooaaahh" << endl;
+                return 0;
             }
+        }
+    }
+
+    double FeedHen() {
+        for (int i = 0; i < hen->GetNbr()-1; i++) {
+            if (meat >= 12 && hen->GetArray()[i]->GetGenre() == 1) {
+                return -12;
+            } else if (meat >= 10 && hen->GetArray()[i]->GetGenre() == 0) {
+                return -10;
+            } else {
+                //pop
+                cout << "RRRRooaaahh" << endl;
+                return 0;
+            }
+        }
+    }
+
+    double FeedEagle() {
+        for (int i = 0; i < eagle->GetNbr()-1; i++) {
+            if (meat >= 0.18 && eagle->GetArray()[i]->GetGenre() == 1) {
+                return -0.18;
+            } else if (meat >= 0.15 && eagle->GetArray()[i]->GetGenre() == 0) {
+                return -0.15;
+            } else {
+                eagle->GetArray().erase(eagle->GetArray().begin() + i);
+                cout << "Yaaaaah" << endl;
+                return 0;
+            }
+        }
+    }
+
+
+
+    void Ration() {
+        if (jTiger == 0) {
+            meat += FeedTiger();
             jTiger = 2;
         }
         if (jEagle == 0) {
-            for (int i = 0; i < tiger->GetNbr()-1; i++) {
-                meat += eagle->GetArray()[i]->FeedMe(meat);
-            }
+            meat += FeedEagle();
             jEagle = 10;
         }
         if (jHen == 0) {
-            for (int i = 0; i < hen->GetNbr()-1; i++) {
-                seed += hen->GetArray()[i]->FeedMe(seed);
-            }
+            seed += FeedHen();
             jHen = 2;
         }
         jTiger -= 1;

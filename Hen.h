@@ -14,17 +14,6 @@ public:
         return "cocococooooooot";
     }
 
-    double FeedMe(double seed) {
-        if (seed >= 0.15){
-            return -0.15;
-        } else {
-            //pop
-            seed -= 1;
-            cout << cocot() << endl;
-            return 0;
-        }
-    }
-
     void theDead() {
         if (this->GetYears() >= max_age) {
             cout << "mort" << endl;
