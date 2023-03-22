@@ -23,8 +23,8 @@ class Zoo{
     int nbrHabitat;
     int numberOfVisitor;
     int totalVisitor;
-    float seed;
-    float meat;
+    double seed;
+    double meat;
     int jTiger = 2;
     int jEagle = 10;
     int jHen = 2;
@@ -76,31 +76,27 @@ public:
 
     void Ration() {
 //        Todo faire dans les animaux eux meme
-        if (jTiger == 1) {
+        if (jTiger == 0) {
             for (int i = 0; i < tiger->GetNbr(); i++) {
-                tiger->GetArray()[i]->FeedMe(meat);
+                meat += tiger->GetArray()[i]->FeedMe(meat);
             }
             jTiger = 2;
         }
-//        for (int i = 0 ; i < eagle->GetNbr() ; i++) {
-//            for (int i = 0; i < tiger->GetNbr(); i++) {
-//                if (meat < 0) {
-//                    money -= 5;
-//                    meat = 0;
-//                } else {
-//                    meat -= 0.3;
-//                }
-//            }
-//            jEagle = 10;
-//        }
-//        for (int i = 0 ; i < hen->GetNbr() ; i++) {
-//
-//        }
-
+        if (jEagle == 0) {
+            for (int i = 0; i < tiger->GetNbr(); i++) {
+                meat += eagle->GetArray()[i]->FeedMe(meat);
+            }
+            jEagle = 10;
+        }
+        if (jHen == 0) {
+            for (int i = 0; i < hen->GetNbr(); i++) {
+                seed += hen->GetArray()[i]->FeedMe(seed);
+            }
+            jHen = 2;
+        }
         jTiger -= 1;
         jEagle -= 1;
         jHen -= 1;
-
     }
 
     void end() {

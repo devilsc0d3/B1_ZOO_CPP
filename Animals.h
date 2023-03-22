@@ -17,10 +17,13 @@ class Animals {
     int beginReproduction;
     int endReproduction;
 public:
-    virtual void FeedMe(int meat){}
+    Animals(string m_name,int m_genre,std::tuple<int, int>  m_age, int m_food, int m_quantity) : name(m_name), age(m_age), food(m_food), genre(m_genre), quantityFood(m_quantity){}
 
-        Animals(string m_name,int m_genre,std::tuple<int, int>  m_age, int m_food, int m_quantity) : name(m_name), age(m_age), food(m_food), genre(m_genre), quantityFood(m_quantity){
-    }
+
+    virtual double FeedMe(double food){}
+
+
+    virtual void theDead(){}
 
     string GetName() {
         return name;
@@ -45,18 +48,7 @@ public:
             get<1>(age) = 0;
         }
         get<1>(age) += 1;
-
-//        Hen* hen_ptr = dynamic_cast<Hen*>(this);
-        int max_age = 25;
-//        if (hen_ptr != nullptr) {
-//            max_age = 15;
-//        }
-
-        if (get<0>(age) == max_age) {
-            cout << "mort" << endl;
-            this->~Animals();
-        }
-
+        theDead();
     }
 
     ~Animals() {}
