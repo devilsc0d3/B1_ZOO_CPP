@@ -36,9 +36,9 @@ class Zoo{
 public:
 
     Zoo(string m_name, float m_money, Time* m_timePassed):name(std::move(m_name)), money(m_money), timePassed(m_timePassed) {
-        tiger->addTiger("roger");
+        tiger->addTiger("roger",1);
         hen->addHen("Marine");
-        eagle->addEagle("Gertrude");
+        eagle->addEagle("Gertrude",1);
 
         nbrPet = 3;
         nbrMaxVisitor = 200;
@@ -74,6 +74,7 @@ public:
     }
 
     void Ration() {
+        eagle->GetArray()[0]->gestation();
 //        Todo faire dans les animaux eux meme
         if (jTiger == 0) {
             for (int i = 0; i < tiger->GetNbr(); i++) {
@@ -358,36 +359,36 @@ public:
     }
 
     //ANIMALS - TIGER
-    void AddTiger6month() {
+    void AddTiger6month(int genre) {
         float price = 3000;
         if (money > price) {
             money -= price;
             nbrPet++;
-            tiger->addTiger(tiger->SetAName());
+            tiger->addTiger(tiger->SetAName(),genre);
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
         }
     };
 
-    void AddTiger4years() {
+    void AddTiger4years(int genre) {
         float price = 120000;
         if (money > price) {
             money -= price;
             nbrPet++;
-            tiger->addTiger(tiger->SetAName());
+            tiger->addTiger(tiger->SetAName(),genre);
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
         }
     };
 
-    void AddTiger14years() {
+    void AddTiger14years(int genre) {
         float price = 60000;
         if (money > price) {
             money -= price;
             nbrPet++;
-            tiger->addTiger(tiger->SetAName());
+            tiger->addTiger(tiger->SetAName(),genre);
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
@@ -395,36 +396,36 @@ public:
     };
 
     //ANIMALS - EAGLE
-    void AddEagle6month() {
+    void AddEagle6month(int genre) {
         float price = 1000;
         if (money > price) {
             money -= price;
             nbrPet++;
             cout << "you got a good deal !" << endl;
-            eagle->addEagle(eagle->SetAName());
+            eagle->addEagle(eagle->SetAName(),genre);
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
         }
     };
 
-    void AddEagle4years() {
+    void AddEagle4years(int genre) {
         float price = 4000;
         if (money > price) {
             money -= price;
             nbrPet++;
-            eagle->addEagle(eagle->SetAName());
+            eagle->addEagle(eagle->SetAName(),genre);
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
         }
     };
 
-    void AddEagle14years() {
+    void AddEagle14years(int genre) {
         float price = 2000;
         if (money > price) {
             money -= price;
             nbrPet++;
-            eagle->addEagle(eagle->SetAName());
+            eagle->addEagle(eagle->SetAName(),genre);
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
