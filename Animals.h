@@ -43,7 +43,6 @@ public:
         return genre;
     }
 
-
     void TheTime() {
         if (get<1>(age) % 12 == 0) {
             get<0>(age) += 1;
