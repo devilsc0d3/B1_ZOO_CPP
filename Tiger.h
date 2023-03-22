@@ -15,7 +15,7 @@ public:
     string roar() {
         return "RRRRooaaahh";
     };
-
+    
 
     void theDead() {
         if (this->GetYears() >= max_age) {

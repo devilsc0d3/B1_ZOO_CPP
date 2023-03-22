@@ -37,10 +37,10 @@ class Zoo{
 public:
 
     Zoo(string m_name, float m_money, Time* m_timePassed):name(std::move(m_name)), money(m_money), timePassed(m_timePassed) {
-        tiger->addTiger("roger",1);
-        tiger->addTiger("moli",0);
-        tiger->addTiger("roger",1);
-        tiger->addTiger("varti",0);
+        tiger->addTiger("roger",1,tuple<int, int>{8, 6});
+        tiger->addTiger("moli",0,tuple<int, int>{8, 6});
+        tiger->addTiger("roger",1,tuple<int, int>{8, 6});
+        tiger->addTiger("varti",0,tuple<int, int>{8, 6});
 
         hen->addHen("Marine");
 
@@ -59,6 +59,10 @@ public:
 
     void Stats() {
 
+        for (int i = 0 ; i < tiger->GetNbr() ; i++) {
+            cout << tiger->GetArray()[i]->GetYears() << "et" << tiger->GetArray()[i]->GetMonth() << endl;
+        }
+
         cout << "\n=---------- STATS -----------=" << endl;
         cout << "name : " << name << endl;
         cout << "money : " << money << endl;
@@ -76,12 +80,24 @@ public:
         overpopulation();
         GrillingZoo();
         kidnapping();
-//        loophole();
+//      loophole();
         end();
         harmful();
         corruptedMeat();
+        ageUpdate();
     }
 
+    void ageUpdate() {
+        for (int i = 0; i < tiger->GetNbr()-1; i++) {
+            tiger->GetArray()[i]->TheTime();
+        }
+        for (int i = 0; i < eagle->GetNbr()-1; i++) {
+            eagle->GetArray()[i]->TheTime();
+        }
+        for (int i = 0; i < hen->GetNbr()-1; i++) {
+            hen->GetArray()[i]->TheTime();
+        }
+    }
 
     double FeedTiger() {
         for (int i = 0; i < tiger->GetNbr()-1; i++) {
@@ -429,7 +445,8 @@ public:
         if (money > price) {
             money -= price;
             nbrPet++;
-            tiger->addTiger(tiger->SetAName(),genre);
+            tiger->addTiger(tiger->SetAName(),genre,tuple<int, int>{0, 6});
+
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
@@ -441,7 +458,7 @@ public:
         if (money > price) {
             money -= price;
             nbrPet++;
-            tiger->addTiger(tiger->SetAName(),genre);
+            tiger->addTiger(tiger->SetAName(),genre,tuple<int, int>{4, 0});
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;
@@ -453,7 +470,7 @@ public:
         if (money > price) {
             money -= price;
             nbrPet++;
-            tiger->addTiger(tiger->SetAName(),genre);
+            tiger->addTiger(tiger->SetAName(),genre,tuple<int, int>{14, 0});
             cout << "you got a good deal !" << endl;
         } else {
             cout << "NO Money, You're too poor !!!" << endl;

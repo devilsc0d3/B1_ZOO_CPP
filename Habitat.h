@@ -27,8 +27,8 @@ public:
         animals.push_back(new Hen(std::move(nickname),1,std::make_tuple(0, 0)));
     }
 
-    void addTiger(string nickname,int genre){
-        animals.push_back(new Tiger(std::move(nickname),genre,std::make_tuple(0, 0)));
+    void addTiger(string nickname,int genre,tuple<int, int>age){
+        animals.push_back(new Tiger(std::move(nickname),genre,age));
     }
 
     int GetNbr() {
