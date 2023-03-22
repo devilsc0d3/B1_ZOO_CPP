@@ -27,18 +27,6 @@ public:
         return "Yyyaaaaahhh";
     }
 
-    double FeedMe(double meat) {
-        if (meat >= 0.25 && this->GetGenre() == 1) {
-            return 0.25;
-        } else if (meat >= 0.3 && this->GetGenre() == 0) {
-            return 0.3;
-        } else {
-            //pop
-            cout << bigcocot() << endl;
-            return 0;
-        }
-    }
-
     void theDead() {
         if (this->GetYears() >= max_age) {
             cout << "mort" << endl;

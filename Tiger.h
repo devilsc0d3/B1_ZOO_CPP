@@ -16,17 +16,6 @@ public:
         return "RRRRooaaahh";
     };
 
-    double FeedMe(double meat) {
-        if (meat >= 12 && this->GetGenre() == 1) {
-            return -12;
-        } else if (meat >= 10 && this->GetGenre() == 0) {
-            return -10;
-        } else {
-            //pop
-            cout << roar() << endl;
-            return 0;
-        }
-    }
 
     void theDead() {
         if (this->GetYears() >= max_age) {
