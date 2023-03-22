@@ -22,8 +22,10 @@ public:
 
     virtual double FeedMe(double food){}
 
-
     virtual void theDead(){}
+
+    virtual void gestation(){}
+
 
     string GetName() {
         return name;

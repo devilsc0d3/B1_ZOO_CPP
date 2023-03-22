@@ -1,4 +1,3 @@
-
 #ifndef B1_CPP_ZOO_MENU_H
 #define B1_CPP_ZOO_MENU_H
 
@@ -184,11 +183,11 @@ public:
 
     void marketTypeAgeAnimalTiger() {
         if (choice == 1) {
-            zoo->AddTiger6month();
+            zoo->AddTiger6month(genre);
         } else if (choice == 2) {
-            zoo->AddTiger4years();
+            zoo->AddTiger4years(genre);
         } else if (choice == 3) {
-            zoo->AddTiger14years();
+            zoo->AddTiger14years(genre);
         } else if (choice == 4) {
             showMarket();
         } else {
@@ -214,11 +213,11 @@ public:
 
     void marketTypeAgeAnimalEagle() {
         if (choice == 1) {
-            zoo->AddEagle6month();
+            zoo->AddEagle6month(genre);
         } else if (choice == 2) {
-            zoo->AddEagle4years();
+            zoo->AddEagle4years(genre);
         } else if (choice == 3) {
-            zoo->AddEagle14years();
+            zoo->AddEagle14years(genre);
         } else if (choice == 4) {
             showMarket();
         } else {
@@ -269,13 +268,12 @@ public:
     }
 
     void marketTypeGenreAnimalTiger() {
-        cout << "genre : " << genre << endl;
 
         if (choice == 1) {
-            genre = choice;
+            genre = 1;
             marketAgeAnimalTiger();
         } else if (choice == 2) {
-            genre = choice;
+            genre = 0;
             marketAgeAnimalTiger();
         } else if (choice == 3) {
             showMarket();
@@ -301,8 +299,10 @@ public:
 
     void marketTypeGenreAnimalEagle() {
         if (choice == 1) {
+            genre = 1;
             marketAgeAnimalEagle();
         } else if (choice == 2) {
+            genre = 0;
             marketAgeAnimalEagle();
         } else if (choice == 3) {
             showMarket();
