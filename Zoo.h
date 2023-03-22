@@ -104,7 +104,7 @@ public:
     }
 
     double FeedTiger() {
-        for (int i = 0; i < tiger->GetNbr()-1; i++) {
+        for (int i = 0; i < tiger->GetNbr(); i++) {
             if (meat >= 12 && tiger->GetArray()[i]->GetGenre() == 1) {
                 return -12;
             } else if (meat >= 10 && tiger->GetArray()[i]->GetGenre() == 0) {
@@ -118,21 +118,21 @@ public:
     }
 
     double FeedHen() {
-        for (int i = 0; i < hen->GetNbr()-1; i++) {
-            if (meat >= 12 && hen->GetArray()[i]->GetGenre() == 1) {
+        for (int i = 0; i < hen->GetNbr(); i++) {
+            if (seed >= 12 && hen->GetArray()[i]->GetGenre() == 1) {
                 return -12;
-            } else if (meat >= 10 && hen->GetArray()[i]->GetGenre() == 0) {
+            } else if (seed >= 10 && hen->GetArray()[i]->GetGenre() == 0) {
                 return -10;
             } else {
-                //pop
-                cout << "RRRRooaaahh" << endl;
+                hen->GetArray().erase(hen->GetArray().begin() + i);
+                cout << "cocococoooot" << endl;
                 return 0;
             }
         }
     }
 
     double FeedEagle() {
-        for (int i = 0; i < eagle->GetNbr()-1; i++) {
+        for (int i = 0; i < eagle->GetNbr(); i++) {
             if (meat >= 0.18 && eagle->GetArray()[i]->GetGenre() == 1) {
                 return -0.18;
             } else if (meat >= 0.15 && eagle->GetArray()[i]->GetGenre() == 0) {
