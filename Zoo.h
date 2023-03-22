@@ -28,9 +28,9 @@ class Zoo{
     int jTiger = 2;
     int jEagle = 10;
     int jHen = 2;
-    Habitat* hen = new Habitat(10,4);
+    Habitat* hen = new Habitat(20,4);
     Habitat* eagle = new Habitat(4,1);
-    Habitat* tiger = new Habitat(2,1);
+    Habitat* tiger = new Habitat(4,1);
     vector<Habitat*> veterinary;
     Time* timePassed;
 
@@ -49,7 +49,7 @@ public:
         eagle->addEagle("Gertrude",1);
         eagle->addEagle("Gertrude",0);
 
-        nbrPet = 3;
+        nbrPet = 19;
         nbrMaxVisitor = 200;
         nbrVisitor = 0;
         seed = 0;
@@ -262,40 +262,20 @@ public:
         }
     }
 
-    void VisitorforAnimals() {
-        if (timePassed->getMonth()>=4 && timePassed->getMonth()<=8){
-            if(tiger->GetNbr()>0){
-                numberOfVisitor = 30*tiger->GetNbr();
+    void HighSeasonVisitor() {
+        if (timePassed->getMonth() >= 4 && timePassed->getMonth() <= 8) {
+            if (tiger->GetNbr() > 0) {
+                numberOfVisitor = 30 * tiger->GetNbr();
                 nbrVisitor += getRandomNumber(numberOfVisitor);
                 totalVisitor += nbrVisitor;
             }
-            if(eagle->GetNbr()>0) {
-                numberOfVisitor = 15*eagle->GetNbr();
+            if (eagle->GetNbr() > 0) {
+                numberOfVisitor = 15 * eagle->GetNbr();
                 nbrVisitor += getRandomNumber(numberOfVisitor);
                 totalVisitor += nbrVisitor;
             }
-            if(hen->GetNbr()>0) {
-                numberOfVisitor = 2*hen->GetNbr();
-                nbrVisitor += getRandomNumber(numberOfVisitor);
-                totalVisitor += nbrVisitor;
-            }
-            if (nbrVisitor > nbrMaxVisitor) {
-                nbrVisitor = nbrMaxVisitor;
-            }
-            Visitor(getRandomNumber(nbrVisitor));
-        } else if ((timePassed->getMonth()<4 || timePassed->getMonth()>8)){
-            if(tiger->GetNbr()>0){
-                numberOfVisitor = 5*tiger->GetNbr();
-                nbrVisitor += getRandomNumber(numberOfVisitor);
-                totalVisitor += nbrVisitor;
-            }
-            if(eagle->GetNbr()>0) {
-                numberOfVisitor = 7*eagle->GetNbr();
-                nbrVisitor += getRandomNumber(numberOfVisitor);
-                totalVisitor += nbrVisitor;
-            }
-            if(hen->GetNbr()>0) {
-                numberOfVisitor = 0.5*hen->GetNbr();
+            if (hen->GetNbr() > 0) {
+                numberOfVisitor = 2 * hen->GetNbr();
                 nbrVisitor += getRandomNumber(numberOfVisitor);
                 totalVisitor += nbrVisitor;
             }
@@ -304,316 +284,349 @@ public:
             }
             Visitor(getRandomNumber(nbrVisitor));
         }
-    };
-
-    void RefreshVisitor() {
-        nbrVisitor = 0;
     }
-
-    void addExpand() {
-        float price = 4000;
-        if (money > price) {
-            money -= price;
-            nbrMaxVisitor += 100;
-            cout << "you got a good deal !" << endl;
-        } else {
-            cout << "NO Money, You're too poor !!!" << endl;
-        }
-    }
-
-    //------------------------------------------- BUY ------------------------------------------------------//
-    //HABITAT
-    void AddHabitatEagle() {
-        float price = 2000;
-        if (money > price) {
-            money -= price;
-            nbrHabitat++;
-            eagle->SetCapacity(4);
-            cout << "you got a good deal !" << endl;
-        } else {
-        cout << "NO Money, You're too poor !!!" << endl;
-        }
-    };
-
-    void AddHabitatHen() {
-        float price = 2000;
-        if (money > price) {
-            money -= price;
-            nbrHabitat++;
-            hen->SetCapacity(10);
-            cout << "you got a good deal !" << endl;
-        } else {
-        cout << "NO Money, You're too poor !!!" << endl;
-        }
-    };
-
-    void AddHabitatTiger() {
-        float price = 2000;
-        if (money > price) {
-            money -= price;
-            nbrHabitat++;
-            tiger->SetCapacity(2);
-            cout << "you got a good deal !" << endl;
-        } else {
-        cout << "NO Money, You're too poor !!!" << endl;
-        }
-    };
-
-    //FOOD
-    void addSeed() {
-        float kilos;
-        float price = 2.5;
-        cout << "How many kilos do you want sir ?" << endl;
-        cin >> kilos;
-        if (kilos * price < money) {
-            money -= kilos * price;
-            seed += kilos;
-        } else {
-            cout << "NO Money, You're too poor !!!" << endl;
-        }
-
-    }
-    void addMeal() {
-        float kilos;
-        float price = 5;
-        cout << "How many kilos do you want sir ?" << endl;
-        cin >> kilos;
-        if (kilos * price < money) {
-            money -= kilos * price;
-            meat += kilos;
-        } else {
-            cout << "NO Money, You're too poor !!!" << endl;
-        }
-    }
-
-    //ANIMALS - TIGER
-    void AddTiger6month(int genre) {
-        float price = 3000;
-        if (money > price) {
-            money -= price;
-            nbrPet++;
-            tiger->addTiger(tiger->SetAName(),genre);
-            cout << "you got a good deal !" << endl;
-        } else {
-            cout << "NO Money, You're too poor !!!" << endl;
-        }
-    };
-
-    void AddTiger4years(int genre) {
-        float price = 120000;
-        if (money > price) {
-            money -= price;
-            nbrPet++;
-            tiger->addTiger(tiger->SetAName(),genre);
-            cout << "you got a good deal !" << endl;
-        } else {
-            cout << "NO Money, You're too poor !!!" << endl;
-        }
-    };
-
-    void AddTiger14years(int genre) {
-        float price = 60000;
-        if (money > price) {
-            money -= price;
-            nbrPet++;
-            tiger->addTiger(tiger->SetAName(),genre);
-            cout << "you got a good deal !" << endl;
-        } else {
-            cout << "NO Money, You're too poor !!!" << endl;
-        }
-    };
-
-    //ANIMALS - EAGLE
-    void AddEagle6month(int genre) {
-        float price = 1000;
-        if (money > price) {
-            money -= price;
-            nbrPet++;
-            cout << "you got a good deal !" << endl;
-            eagle->addEagle(eagle->SetAName(),genre);
-        } else {
-            cout << "NO Money, You're too poor !!!" << endl;
-        }
-    };
-
-    void AddEagle4years(int genre) {
-        float price = 4000;
-        if (money > price) {
-            money -= price;
-            nbrPet++;
-            eagle->addEagle(eagle->SetAName(),genre);
-            cout << "you got a good deal !" << endl;
-        } else {
-            cout << "NO Money, You're too poor !!!" << endl;
-        }
-    };
-
-    void AddEagle14years(int genre) {
-        float price = 2000;
-        if (money > price) {
-            money -= price;
-            nbrPet++;
-            eagle->addEagle(eagle->SetAName(),genre);
-            cout << "you got a good deal !" << endl;
-        } else {
-            cout << "NO Money, You're too poor !!!" << endl;
-        }
-    };
-
-    //ANIMALS - HEN
-    void AddHenFemale() {
-        float price = 20;
-        if (money > price) {
-            money -= price;
-            nbrPet++;
-            hen->addHen(hen->SetAName());
-            cout << "you got a good deal !" << endl;
-        } else {
-            cout << "NO Money, You're too poor !!!" << endl;
-        }
-    };
-
-    void AddHenMale() {
-        float price = 100;
-        if (money > price) {
-            money -= price;
-            nbrPet++;
-            hen->addHen(hen->SetAName());
-            cout << "you got a good deal !" << endl;
-        } else {
-            cout << "NO Money, You're too poor !!!" << endl;
-        }
-    };
-
-    //SELL - HABITAT
-    void SellHabitatTiger() {
-        if (tiger->GetCapacity() > 1 || (tiger->GetCapacity() >= 2 && tiger->GetNbr() == 0)) {
-            money += 500;
-            nbrHabitat--;
-            tiger->SetCapacity(-2);
-            cout << "you got a good deal !" << endl;
-        } else if (eagle->GetCapacity() == 0) {
-            cout << "Cri cri cri, there is no more habitat" << endl;
-        } else {
-            cout << "NO, NO to animals on the street !!!" << endl;
-        }
-        cout << "money : " << money << endl;
-    };
-
-    void SellHabitatEagle() {
-        if (eagle->GetCapacity() > 4 || (eagle->GetCapacity() >= 4 && eagle->GetNbr() == 0)) {
-            money += 500;
-            nbrHabitat--;
-            eagle->SetCapacity(-4);
-            cout << "you got a good deal !" << endl;
-        } else if (eagle->GetCapacity() == 0) {
-            cout << "Crii crii crii, there is no more habitat" << endl;
-        } else {
-            cout << "NO, NO to animals on the street !!!" << endl;
-        }
-        cout << "money : " << money << endl;
-    };
-
-    void SellHabitatHen() {
-        if (hen->GetCapacity() > 1 || (hen->GetCapacity() >= 10 && hen->GetNbr() == 0)) {
-            money += 50;
-            nbrHabitat--;
-            hen->SetCapacity(-10);
-            cout << "you got a good deal !" << endl;
-        }  else if (eagle->GetCapacity() == 0) {
-            cout << "Crii crii crii, there is no more habitat" << endl;
-        } else {
-            cout << "NO, NO to animals on the street !!!" << endl;
-        }
-        cout << "money : " << money << endl;
-    };
-
-    void SellTiger() {
-        if (tiger->GetNbr() > 0) {
-            for (int i = 0; i < tiger->GetNbr(); i++) {
-                cout << i << " Nom : " << tiger->GetArray()[i]->GetName() << ", Age : " << tiger->GetArray()[i]->GetMonth() << " months and " << tiger->GetArray()[i]->GetYears() << " years" << endl;
-            }
-            cout << "Enter the number of the tiger you want to sell : ";
-            int num;
-            cin >> num;
-            if (num < 0 || num > tiger->GetNbr()) {
-                cout << "Invalid number." << endl;
-            } else {
-                int year = tiger->GetArray()[num]->GetYears();
-                if ((year >= 0) && (year < 4)) {
-                    nbrPet--;
-                    money += 1500;
-                } else if ((year >= 4) && (year < 14)) {
-                    nbrPet--;
-                    money += 60000;
-                } else if (year >= 14) {
-                    nbrPet--;
-                    money += 10000;
+        void LowSeasonVisitor() {
+            if ((timePassed->getMonth() < 4 || timePassed->getMonth() > 8)) {
+                if (tiger->GetNbr() > 0) {
+                    numberOfVisitor = 5 * tiger->GetNbr();
+                    nbrVisitor += getRandomNumber(numberOfVisitor);
+                    totalVisitor += nbrVisitor;
                 }
-                cout << "You sold " << tiger->GetArray()[num]->GetName()  << " !" << endl;
-            }
-        } else {
-            cout << "Crii crii crii, there is no tiger." << endl;
-        }
-        cout << "money : " << money << endl;
-    };
-
-    void SellEagle() {
-        if (eagle->GetNbr() > 0) {
-            for (int i = 0; i < eagle->GetNbr(); i++) {
-                cout << i << " Name : " << eagle->GetArray()[i]->GetName() << ", Age : " << eagle->GetArray()[i]->GetMonth() << " months and " << eagle->GetArray()[i]->GetYears() << " years" << endl;
-            }
-            cout << "Enter the number of the eagle you want to sell : ";
-            int num;
-            cin >> num;
-            if (num < 0 || num > eagle->GetNbr()) {
-                cout << "Invalid number." << endl;
-            } else {
-                int year = eagle->GetArray()[num]->GetYears();
-                if ((year >= 0) && (year < 4)) {
-                    nbrPet--;
-                    money += 500;
-                } else if ((year >= 4) && (year < 14)) {
-                    nbrPet--;
-                    money += 2000;
-                } else if (year >= 14) {
-                    nbrPet--;
-                    money += 400;
+                if (eagle->GetNbr() > 0) {
+                    numberOfVisitor = 7 * eagle->GetNbr();
+                    nbrVisitor += getRandomNumber(numberOfVisitor);
+                    totalVisitor += nbrVisitor;
                 }
-                cout << "You sold " << eagle->GetArray()[num]->GetName() << " !" << endl;
-            }
-        } else {
-            cout << "Crii crii crii, there is no eagle." << endl;
-        }
-        cout << "money : " << money << endl;
-    }
-
-    void SellHen() {
-        if (hen->GetNbr() > 0) {
-            for (int i = 0; i < hen->GetNbr(); i++) {
-                cout << i << " Name : " << hen->GetArray()[i]->GetName() << ", Genre : " << hen->GetArray()[i]->GetGenre() << endl;
-            }
-            cout << "Enter the number of the hen you want to sell : ";
-            int num;
-            cin >> num;
-            if (num < 0 || num > hen->GetNbr()) {
-                cout << "Invalid number." << endl;
-            } else {
-                int genre = hen->GetArray()[num]->GetGenre();
-                if (genre == 0) {
-                    nbrPet--;
-                    money += 10;
-                } else if (genre == 1) {
-                    nbrPet--;
-                    money += 20;
+                if (hen->GetNbr() > 0) {
+                    numberOfVisitor = 0.5 * hen->GetNbr();
+                    nbrVisitor += getRandomNumber(numberOfVisitor);
+                    totalVisitor += nbrVisitor;
                 }
-                cout << "You sold " << hen->GetArray()[num]->GetName() << " !" << endl;
+                if (nbrVisitor > nbrMaxVisitor) {
+                    nbrVisitor = nbrMaxVisitor;
+                }
+                Visitor(getRandomNumber(nbrVisitor));
             }
-        } else {
-            cout << "Crii crii crii, there is no hen." << endl;
         }
-        cout << "money : " << money << endl;
-    }
+
+        void VisitorforAnimals() {
+            HighSeasonVisitor();
+            LowSeasonVisitor();
+        }
+
+        void RefreshVisitor() {
+            nbrVisitor = 0;
+        }
+
+        void addExpand() {
+            float price = 4000;
+            if (money > price) {
+                money -= price;
+                nbrMaxVisitor += 100;
+                cout << "you got a good deal !" << endl;
+            } else {
+                cout << "NO Money, You're too poor !!!" << endl;
+            }
+        }
+
+        //------------------------------------------- BUY ------------------------------------------------------//
+        //HABITAT
+        void AddHabitatEagle() {
+            float price = 2000;
+            if (money > price) {
+                money -= price;
+                nbrHabitat++;
+                eagle->SetCapacity(4);
+                cout << "you got a good deal !" << endl;
+            } else {
+                cout << "NO Money, You're too poor !!!" << endl;
+            }
+        };
+
+        void AddHabitatHen() {
+            float price = 2000;
+            if (money > price) {
+                money -= price;
+                nbrHabitat++;
+                hen->SetCapacity(10);
+                cout << "you got a good deal !" << endl;
+            } else {
+                cout << "NO Money, You're too poor !!!" << endl;
+            }
+        };
+
+        void AddHabitatTiger() {
+            float price = 2000;
+            if (money > price) {
+                money -= price;
+                nbrHabitat++;
+                tiger->SetCapacity(2);
+                cout << "you got a good deal !" << endl;
+            } else {
+                cout << "NO Money, You're too poor !!!" << endl;
+            }
+        };
+
+        //FOOD
+        void addSeed() {
+            float kilos;
+            float price = 2.5;
+            cout << "How many kilos do you want sir ?" << endl;
+            cin >> kilos;
+            if (kilos * price < money) {
+                money -= kilos * price;
+                seed += kilos;
+            } else {
+                cout << "NO Money, You're too poor !!!" << endl;
+            }
+
+        }
+        void addMeal() {
+            float kilos;
+            float price = 5;
+            cout << "How many kilos do you want sir ?" << endl;
+            cin >> kilos;
+            if (kilos * price < money) {
+                money -= kilos * price;
+                meat += kilos;
+            } else {
+                cout << "NO Money, You're too poor !!!" << endl;
+            }
+        }
+
+        //ANIMALS - TIGER
+        void AddTiger6month(int genre) {
+            float price = 3000;
+            if (money > price) {
+                money -= price;
+                nbrPet++;
+                tiger->addTiger(tiger->SetAName(), genre);
+                cout << "you got a good deal !" << endl;
+            } else {
+                cout << "NO Money, You're too poor !!!" << endl;
+            }
+        };
+
+        void AddTiger4years(int genre) {
+            float price = 120000;
+            if (money > price) {
+                money -= price;
+                nbrPet++;
+                tiger->addTiger(tiger->SetAName(), genre);
+                cout << "you got a good deal !" << endl;
+            } else {
+                cout << "NO Money, You're too poor !!!" << endl;
+            }
+        };
+
+        void AddTiger14years(int genre) {
+            float price = 60000;
+            if (money > price) {
+                money -= price;
+                nbrPet++;
+                tiger->addTiger(tiger->SetAName(), genre);
+                cout << "you got a good deal !" << endl;
+            } else {
+                cout << "NO Money, You're too poor !!!" << endl;
+            }
+        };
+
+        //ANIMALS - EAGLE
+        void AddEagle6month(int genre) {
+            float price = 1000;
+            if (money > price) {
+                money -= price;
+                nbrPet++;
+                cout << "you got a good deal !" << endl;
+                eagle->addEagle(eagle->SetAName(), genre);
+            } else {
+                cout << "NO Money, You're too poor !!!" << endl;
+            }
+        };
+
+        void AddEagle4years(int genre) {
+            float price = 4000;
+            if (money > price) {
+                money -= price;
+                nbrPet++;
+                eagle->addEagle(eagle->SetAName(), genre);
+                cout << "you got a good deal !" << endl;
+            } else {
+                cout << "NO Money, You're too poor !!!" << endl;
+            }
+        };
+
+        void AddEagle14years(int genre) {
+            float price = 2000;
+            if (money > price) {
+                money -= price;
+                nbrPet++;
+                eagle->addEagle(eagle->SetAName(), genre);
+                cout << "you got a good deal !" << endl;
+            } else {
+                cout << "NO Money, You're too poor !!!" << endl;
+            }
+        };
+
+        //ANIMALS - HEN
+        void AddHenFemale() {
+            float price = 20;
+            if (money > price) {
+                money -= price;
+                nbrPet++;
+                hen->addHen(hen->SetAName());
+                cout << "you got a good deal !" << endl;
+            } else {
+                cout << "NO Money, You're too poor !!!" << endl;
+            }
+        };
+
+        void AddHenMale() {
+            float price = 100;
+            if (money > price) {
+                money -= price;
+                nbrPet++;
+                hen->addHen(hen->SetAName());
+                cout << "you got a good deal !" << endl;
+            } else {
+                cout << "NO Money, You're too poor !!!" << endl;
+            }
+        };
+
+        //SELL - HABITAT
+        void SellHabitatTiger() {
+            if (tiger->GetCapacity() > 1 || (tiger->GetCapacity() >= 2 && tiger->GetNbr() == 0)) {
+                money += 500;
+                nbrHabitat--;
+                tiger->SetCapacity(-2);
+                cout << "you got a good deal !" << endl;
+            } else if (eagle->GetCapacity() == 0) {
+                cout << "Cri cri cri, there is no more habitat" << endl;
+            } else {
+                cout << "NO, NO to animals on the street !!!" << endl;
+            }
+            cout << "money : " << money << endl;
+        };
+
+        void SellHabitatEagle() {
+            if (eagle->GetCapacity() > 4 || (eagle->GetCapacity() >= 4 && eagle->GetNbr() == 0)) {
+                money += 500;
+                nbrHabitat--;
+                eagle->SetCapacity(-4);
+                cout << "you got a good deal !" << endl;
+            } else if (eagle->GetCapacity() == 0) {
+                cout << "Crii crii crii, there is no more habitat" << endl;
+            } else {
+                cout << "NO, NO to animals on the street !!!" << endl;
+            }
+            cout << "money : " << money << endl;
+        };
+
+        void SellHabitatHen() {
+            if (hen->GetCapacity() > 1 || (hen->GetCapacity() >= 10 && hen->GetNbr() == 0)) {
+                money += 50;
+                nbrHabitat--;
+                hen->SetCapacity(-10);
+                cout << "you got a good deal !" << endl;
+            } else if (eagle->GetCapacity() == 0) {
+                cout << "Crii crii crii, there is no more habitat" << endl;
+            } else {
+                cout << "NO, NO to animals on the street !!!" << endl;
+            }
+            cout << "money : " << money << endl;
+        };
+
+        void SellTiger() {
+            if (tiger->GetNbr() > 0) {
+                for (int i = 0; i < tiger->GetNbr(); i++) {
+                    cout << i << " Nom : " << tiger->GetArray()[i]->GetName() << ", Age : "
+                         << tiger->GetArray()[i]->GetMonth() << " months and " << tiger->GetArray()[i]->GetYears()
+                         << " years" << endl;
+                }
+                cout << "Enter the number of the tiger you want to sell : ";
+                int num;
+                cin >> num;
+                if (num < 0 || num > tiger->GetNbr()) {
+                    cout << "Invalid number." << endl;
+                } else {
+                    int year = tiger->GetArray()[num]->GetYears();
+                    if ((year >= 0) && (year < 4)) {
+                        nbrPet--;
+                        money += 1500;
+                    } else if ((year >= 4) && (year < 14)) {
+                        nbrPet--;
+                        money += 60000;
+                    } else if (year >= 14) {
+                        nbrPet--;
+                        money += 10000;
+                    }
+                    cout << "You sold " << tiger->GetArray()[num]->GetName() << " !" << endl;
+                }
+            } else {
+                cout << "Crii crii crii, there is no tiger." << endl;
+            }
+            cout << "money : " << money << endl;
+        };
+
+        void SellEagle() {
+            if (eagle->GetNbr() > 0) {
+                for (int i = 0; i < eagle->GetNbr(); i++) {
+                    cout << i << " Name : " << eagle->GetArray()[i]->GetName() << ", Age : "
+                         << eagle->GetArray()[i]->GetMonth() << " months and " << eagle->GetArray()[i]->GetYears()
+                         << " years" << endl;
+                }
+                cout << "Enter the number of the eagle you want to sell : ";
+                int num;
+                cin >> num;
+                if (num < 0 || num > eagle->GetNbr()) {
+                    cout << "Invalid number." << endl;
+                } else {
+                    int year = eagle->GetArray()[num]->GetYears();
+                    if ((year >= 0) && (year < 4)) {
+                        nbrPet--;
+                        money += 500;
+                    } else if ((year >= 4) && (year < 14)) {
+                        nbrPet--;
+                        money += 2000;
+                    } else if (year >= 14) {
+                        nbrPet--;
+                        money += 400;
+                    }
+                    cout << "You sold " << eagle->GetArray()[num]->GetName() << " !" << endl;
+                }
+            } else {
+                cout << "Crii crii crii, there is no eagle." << endl;
+            }
+            cout << "money : " << money << endl;
+        }
+
+        void SellHen() {
+            if (hen->GetNbr() > 0) {
+                for (int i = 0; i < hen->GetNbr(); i++) {
+                    cout << i << " Name : " << hen->GetArray()[i]->GetName() << ", Genre : "
+                         << hen->GetArray()[i]->GetGenre() << endl;
+                }
+                cout << "Enter the number of the hen you want to sell : ";
+                int num;
+                cin >> num;
+                if (num < 0 || num > hen->GetNbr()) {
+                    cout << "Invalid number." << endl;
+                } else {
+                    int genre = hen->GetArray()[num]->GetGenre();
+                    if (genre == 0) {
+                        nbrPet--;
+                        money += 10;
+                    } else if (genre == 1) {
+                        nbrPet--;
+                        money += 20;
+                    }
+                    cout << "You sold " << hen->GetArray()[num]->GetName() << " !" << endl;
+                }
+            } else {
+                cout << "Crii crii crii, there is no hen." << endl;
+            }
+            cout << "money : " << money << endl;
+        }
 };
 
 
