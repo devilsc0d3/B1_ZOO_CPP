@@ -28,6 +28,8 @@ public:
             cout << "mort" << endl;
         }
     }
+
+    ~Eagle() {};
 };
 
 

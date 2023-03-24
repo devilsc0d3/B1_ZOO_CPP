@@ -18,6 +18,8 @@ public:
             cout << "mort" << endl;
         }
     }
+
+    ~Tiger() {}
 };
 
 

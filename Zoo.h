@@ -41,6 +41,7 @@ public:
         tiger->addTiger("roger",1,tuple<int, int>{8, 6});
         tiger->addTiger("varti",0,tuple<int, int>{8, 6});
 
+        hen->addHen("Mascote",3,tuple<int, int>{8, 6});
         hen->addHen("Marine",1,tuple<int, int>{8, 6});
         hen->addHen("Marine",0,tuple<int, int>{8, 6});
         hen->addHen("Marine",0,tuple<int, int>{8, 6});
@@ -136,7 +137,7 @@ public:
 
 
     void FeedHen() {
-        int i = 0;
+        int i = 1;
         while (i < hen->GetNbr()) {
             if (seed >= 12 && hen->GetArray()[i]->GetGenre() == 1) {
                 seed -= 12;
@@ -156,7 +157,7 @@ public:
 
     void FeedEagle() {
         int i = 0;
-        while (i < eagle->GetNbr()-1) {
+        while (i < eagle->GetNbr()) {
             if (meat >= 0.18 && eagle->GetArray()[i]->GetGenre() == 1) {
                 meat -= 0.18;
                 i++;
