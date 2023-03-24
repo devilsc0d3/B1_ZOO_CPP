@@ -7,6 +7,7 @@
 class Eagle: public Animals {
     int max_age = 25;
     string fidelity;
+    int disease_time = 5;
     int gestation_time = 45;
 
 public:
@@ -20,11 +21,14 @@ public:
         gestation_time--;
         if (gestation_time == 0) {
             cout << "a new animal !"<< endl;
+            //create animals
+            gestation_time = 45;
         }
     }
 
-    string bigcocot() {
-        return "Yyyaaaaahhh";
+    double sickness() {
+        int deadOrNo = rand() % 5 + 1;
+        return deadOrNo;
     }
 
     void theDead() {
@@ -32,6 +36,8 @@ public:
             cout << "mort" << endl;
         }
     }
+
+    ~Eagle() {};
 };
 
 

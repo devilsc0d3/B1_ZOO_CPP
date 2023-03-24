@@ -37,19 +37,29 @@ class Zoo{
 public:
 
     Zoo(string m_name, float m_money, Time* m_timePassed):name(std::move(m_name)), money(m_money), timePassed(m_timePassed) {
-        tiger->addTiger("roger",1);
-        tiger->addTiger("moli",0);
-        tiger->addTiger("roger",1);
-        tiger->addTiger("varti",0);
+        tiger->addTiger("roger",1,tuple<int, int>{8, 6});
+        tiger->addTiger("moli",0,tuple<int, int>{8, 6});
+        tiger->addTiger("roger",1,tuple<int, int>{8, 6});
+        tiger->addTiger("varti",0,tuple<int, int>{8, 6});
 
-        hen->addHen("Marine");
+        hen->addHen("Mascote",3,tuple<int, int>{8, 6});
+        hen->addHen("Marine",1,tuple<int, int>{8, 6});
+        hen->addHen("Marine",0,tuple<int, int>{8, 6});
+        hen->addHen("Marine",0,tuple<int, int>{8, 6});
+        hen->addHen("Marine",0,tuple<int, int>{8, 6});
+        hen->addHen("Marine",0,tuple<int, int>{8, 6});
+        hen->addHen("Marine",0,tuple<int, int>{8, 6});
+        hen->addHen("Marine",0,tuple<int, int>{8, 6});
+        hen->addHen("Marine",0,tuple<int, int>{8, 6});
+        hen->addHen("Marine",0,tuple<int, int>{8, 6});
+        hen->addHen("Marine",0,tuple<int, int>{8, 6});
 
-        eagle->addEagle("Gertrude",1);
-        eagle->addEagle("Gertrude",0);
-        eagle->addEagle("Gertrude",1);
-        eagle->addEagle("Gertrude",0);
+        eagle->addEagle("Gertrude",1,tuple<int, int>{8, 6});
+        eagle->addEagle("mama",0,tuple<int, int>{8, 6});
+        eagle->addEagle("basque",1,tuple<int, int>{8, 6});
+        eagle->addEagle("gerard",0,tuple<int, int>{8, 6});
 
-        nbrPet = 19;
+        nbrPet = 10 + 4 + 4;
         nbrMaxVisitor = 200;
         nbrVisitor = 0;
         seed = 0;
@@ -58,6 +68,10 @@ public:
     }
 
     void Stats() {
+
+        cout << "Pnbr" << hen->GetNbr() << endl;
+        cout << "Enbr" << eagle->GetNbr() << endl;
+        cout << "Tnbr" << tiger->GetNbr() << endl;
 
         cout << "\n=---------- STATS -----------=" << endl;
         cout << "name : " << name << endl;
@@ -73,71 +87,105 @@ public:
     //event
 
     void eventExceptional() {
-        overpopulation();
         GrillingZoo();
         kidnapping();
-//        loophole();
+//      loophole();
         end();
         harmful();
         corruptedMeat();
     }
 
+    void monthly() {
+        ageUpdate();
 
-    double FeedTiger() {
-        for (int i = 0; i < tiger->GetNbr()-1; i++) {
+        subvention();
+        RefreshVisitor();
+        VisitorforAnimals();
+        overpopulation();
+
+        eventExceptional();
+    }
+
+    void ageUpdate() {
+        for (int i = 0; i < tiger->GetNbr(); i++) {
+            tiger->GetArray()[i]->TheTime();
+        }
+        for (int i = 0; i < eagle->GetNbr(); i++) {
+            eagle->GetArray()[i]->TheTime();
+        }
+        for (int i = 0; i < hen->GetNbr(); i++) {
+            hen->GetArray()[i]->TheTime();
+        }
+    }
+
+    void FeedTiger() {
+        int i = 0;
+        while (i < tiger->GetNbr()) {
             if (meat >= 12 && tiger->GetArray()[i]->GetGenre() == 1) {
-                return -12;
+                meat -= 12;
+                i++;
             } else if (meat >= 10 && tiger->GetArray()[i]->GetGenre() == 0) {
-                return -10;
+                meat -= 10;
+                i++;
             } else {
+                delete tiger->GetArray()[i];
                 tiger->GetArray().erase(tiger->GetArray().begin() + i);
+                nbrPet--;
                 cout << "RRRRooaaahh" << endl;
                 return 0;
             }
         }
     }
 
-    double FeedHen() {
-        for (int i = 0; i < hen->GetNbr()-1; i++) {
-            if (meat >= 12 && hen->GetArray()[i]->GetGenre() == 1) {
-                return -12;
-            } else if (meat >= 10 && hen->GetArray()[i]->GetGenre() == 0) {
-                return -10;
+
+    void FeedHen() {
+        int i = 1;
+        while (i < hen->GetNbr()) {
+            if (seed >= 12 && hen->GetArray()[i]->GetGenre() == 1) {
+                seed -= 12;
+                i++;
+            } else if (seed >= 10 && hen->GetArray()[i]->GetGenre() == 0) {
+                seed -= 10;
+                i++;
             } else {
-                //pop
-                cout << "RRRRooaaahh" << endl;
-                return 0;
+                delete hen->GetArray()[i];
+                hen->GetArray().erase(hen->GetArray().begin() + i);
+                nbrPet--;
+                cout << "cococoooot" << endl;
             }
         }
     }
 
-    double FeedEagle() {
-        for (int i = 0; i < eagle->GetNbr()-1; i++) {
+
+    void FeedEagle() {
+        int i = 0;
+        while (i < eagle->GetNbr()) {
             if (meat >= 0.18 && eagle->GetArray()[i]->GetGenre() == 1) {
-                return -0.18;
+                meat -= 0.18;
+                i++;
             } else if (meat >= 0.15 && eagle->GetArray()[i]->GetGenre() == 0) {
-                return -0.15;
+                meat -= 0.15;
+                i++;
             } else {
+                nbrPet--;
+                delete eagle->GetArray()[i];
                 eagle->GetArray().erase(eagle->GetArray().begin() + i);
                 cout << "Yaaaaah" << endl;
-                return 0;
             }
         }
     }
-
-
 
     void Ration() {
         if (jTiger == 0) {
-            meat += FeedTiger();
+            FeedTiger();
             jTiger = 2;
         }
         if (jEagle == 0) {
-            meat += FeedEagle();
+            FeedEagle();
             jEagle = 10;
         }
         if (jHen == 0) {
-            seed += FeedHen();
+            FeedHen();
             jHen = 2;
         }
         jTiger -= 1;
@@ -431,104 +479,105 @@ public:
             }
         }
 
-        //ANIMALS - TIGER
-        void AddTiger6month(int genre) {
-            float price = 3000;
-            if (money > price) {
-                money -= price;
-                nbrPet++;
-                tiger->addTiger(tiger->SetAName(), genre);
-                cout << "you got a good deal !" << endl;
-            } else {
-                cout << "NO Money, You're too poor !!!" << endl;
-            }
-        };
+    //ANIMALS - TIGER
+    void AddTiger6month(int genre) {
+        float price = 3000;
+        if (money > price) {
+            money -= price;
+            nbrPet++;
+            tiger->addTiger(tiger->SetAName(),genre,tuple<int, int>{0, 6});
 
-        void AddTiger4years(int genre) {
-            float price = 120000;
-            if (money > price) {
-                money -= price;
-                nbrPet++;
-                tiger->addTiger(tiger->SetAName(), genre);
-                cout << "you got a good deal !" << endl;
-            } else {
-                cout << "NO Money, You're too poor !!!" << endl;
-            }
-        };
+            cout << "you got a good deal !" << endl;
+        } else {
+            cout << "NO Money, You're too poor !!!" << endl;
+        }
+    };
 
-        void AddTiger14years(int genre) {
-            float price = 60000;
-            if (money > price) {
-                money -= price;
-                nbrPet++;
-                tiger->addTiger(tiger->SetAName(), genre);
-                cout << "you got a good deal !" << endl;
-            } else {
-                cout << "NO Money, You're too poor !!!" << endl;
-            }
-        };
+    void AddTiger4years(int genre) {
+        float price = 120000;
+        if (money > price) {
+            money -= price;
+            nbrPet++;
+            tiger->addTiger(tiger->SetAName(),genre,tuple<int, int>{4, 0});
+            cout << "you got a good deal !" << endl;
+        } else {
+            cout << "NO Money, You're too poor !!!" << endl;
+        }
+    };
 
-        //ANIMALS - EAGLE
-        void AddEagle6month(int genre) {
-            float price = 1000;
-            if (money > price) {
-                money -= price;
-                nbrPet++;
-                cout << "you got a good deal !" << endl;
-                eagle->addEagle(eagle->SetAName(), genre);
-            } else {
-                cout << "NO Money, You're too poor !!!" << endl;
-            }
-        };
+    void AddTiger14years(int genre) {
+        float price = 60000;
+        if (money > price) {
+            money -= price;
+            nbrPet++;
+            tiger->addTiger(tiger->SetAName(),genre,tuple<int, int>{14, 0});
+            cout << "you got a good deal !" << endl;
+        } else {
+            cout << "NO Money, You're too poor !!!" << endl;
+        }
+    };
 
-        void AddEagle4years(int genre) {
-            float price = 4000;
-            if (money > price) {
-                money -= price;
-                nbrPet++;
-                eagle->addEagle(eagle->SetAName(), genre);
-                cout << "you got a good deal !" << endl;
-            } else {
-                cout << "NO Money, You're too poor !!!" << endl;
-            }
-        };
+    //ANIMALS - EAGLE
+    void AddEagle6month(int genre) {
+        float price = 1000;
+        if (money > price) {
+            money -= price;
+            nbrPet++;
+            cout << "you got a good deal !" << endl;
+            eagle->addEagle(eagle->SetAName(),genre,tuple<int, int>{0, 6});
+        } else {
+            cout << "NO Money, You're too poor !!!" << endl;
+        }
+    };
 
-        void AddEagle14years(int genre) {
-            float price = 2000;
-            if (money > price) {
-                money -= price;
-                nbrPet++;
-                eagle->addEagle(eagle->SetAName(), genre);
-                cout << "you got a good deal !" << endl;
-            } else {
-                cout << "NO Money, You're too poor !!!" << endl;
-            }
-        };
+    void AddEagle4years(int genre) {
+        float price = 4000;
+        if (money > price) {
+            money -= price;
+            nbrPet++;
+            eagle->addEagle(eagle->SetAName(),genre,tuple<int, int>{4, 0});
+            cout << "you got a good deal !" << endl;
+        } else {
+            cout << "NO Money, You're too poor !!!" << endl;
+        }
+    };
 
-        //ANIMALS - HEN
-        void AddHenFemale() {
-            float price = 20;
-            if (money > price) {
-                money -= price;
-                nbrPet++;
-                hen->addHen(hen->SetAName());
-                cout << "you got a good deal !" << endl;
-            } else {
-                cout << "NO Money, You're too poor !!!" << endl;
-            }
-        };
+    void AddEagle14years(int genre) {
+        float price = 2000;
+        if (money > price) {
+            money -= price;
+            nbrPet++;
+            eagle->addEagle(eagle->SetAName(),genre,tuple<int, int>{14, 0});
+            cout << "you got a good deal !" << endl;
+        } else {
+            cout << "NO Money, You're too poor !!!" << endl;
+        }
+    };
 
-        void AddHenMale() {
-            float price = 100;
-            if (money > price) {
-                money -= price;
-                nbrPet++;
-                hen->addHen(hen->SetAName());
-                cout << "you got a good deal !" << endl;
-            } else {
-                cout << "NO Money, You're too poor !!!" << endl;
-            }
-        };
+    //ANIMALS - HEN
+    void AddHenFemale() {
+        float price = 20;
+        if (money > price) {
+            money -= price;
+            nbrPet++;
+            hen->addHen(hen->SetAName(),0,tuple<int, int>{0, 6});
+            cout << "you got a good deal !" << endl;
+        } else {
+            cout << "NO Money, You're too poor !!!" << endl;
+        }
+    };
+
+    void AddHenMale() {
+        float price = 100;
+        if (money > price) {
+            money -= price;
+            nbrPet++;
+            hen->addHen(hen->SetAName(),1,tuple<int, int>{0, 6});
+            cout << "you got a good deal !" << endl;
+        } else {
+            cout << "NO Money, You're too poor !!!" << endl;
+        }
+    };
 
         //SELL - HABITAT
         void SellHabitatTiger() {

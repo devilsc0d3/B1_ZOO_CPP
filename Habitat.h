@@ -19,16 +19,16 @@ class Habitat {
 public:
     Habitat( int m_capacity, int m_probabilityOfDisease):capacity(m_capacity), probabilityOfDisease(m_probabilityOfDisease) {}
 
-    void addEagle(string nickname,int genre){
-        animals.push_back(new Eagle(std::move(nickname),genre,std::make_tuple(0, 0)));
+    void addEagle(string nickname,int genre,tuple<int, int>age){
+        animals.push_back(new Eagle(std::move(nickname),genre,age));
     }
 
-    void addHen(string nickname){
-        animals.push_back(new Hen(std::move(nickname),1,std::make_tuple(0, 0)));
+    void addHen(string nickname,int genre,tuple<int, int>age){
+        animals.push_back(new Hen(std::move(nickname),genre,age));
     }
 
-    void addTiger(string nickname,int genre){
-        animals.push_back(new Tiger(std::move(nickname),genre,std::make_tuple(0, 0)));
+    void addTiger(string nickname,int genre,tuple<int, int>age){
+        animals.push_back(new Tiger(std::move(nickname),genre,age));
     }
 
     int GetNbr() {

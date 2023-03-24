@@ -5,7 +5,6 @@
 #include <string>
 #include "Zoo.h"
 #include "time.h"
-#include "MenuMarket.h"
 
 using namespace std;
 
@@ -14,7 +13,7 @@ private:
     int choice{};
     Zoo* zoo;
     Time* time;
-    int genre;
+    int genre{};
     bool quit = false;
 
 public:
@@ -49,10 +48,7 @@ public:
                 time->skip();
             }
 
-            zoo->subvention();
-            zoo->RefreshVisitor();
-            zoo->VisitorforAnimals();
-            zoo->eventExceptional();
+            zoo->monthly();
 
             cout << time->toString() << endl;
         } else if (choice == 3) {

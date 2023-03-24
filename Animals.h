@@ -9,6 +9,7 @@ using namespace  std;
 class Animals {
     string name;
     tuple <int,int> age;
+    bool disease = false;
     int genre;
     int food;
     int quantityFood;
@@ -50,7 +51,7 @@ public:
         theDead();
     }
 
-    ~Animals() {}
+    virtual ~Animals() {}
 };
 
 
