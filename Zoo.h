@@ -33,7 +33,6 @@ class Zoo{
     Habitat* tiger = new Habitat(2,1);
     vector<Habitat*> veterinary;
     Time* timePassed;
-
 public:
 
     Zoo(string m_name, float m_money, Time* m_timePassed):name(std::move(m_name)), money(m_money), timePassed(m_timePassed) {
@@ -54,11 +53,11 @@ public:
         hen->addHen("Marine",0,tuple<int, int>{8, 6});
 
         eagle->addEagle("Gertrude",1,tuple<int, int>{8, 6});
-        eagle->addEagle("Gertrude",0,tuple<int, int>{8, 6});
-        eagle->addEagle("Gertrude",1,tuple<int, int>{8, 6});
-        eagle->addEagle("Gertrude",0,tuple<int, int>{8, 6});
+        eagle->addEagle("mama",0,tuple<int, int>{8, 6});
+        eagle->addEagle("basque",1,tuple<int, int>{8, 6});
+        eagle->addEagle("gerard",0,tuple<int, int>{8, 6});
 
-        nbrPet = 3;
+        nbrPet = 10 + 4 + 4;
         nbrMaxVisitor = 200;
         nbrVisitor = 0;
         seed = 0;
@@ -67,6 +66,11 @@ public:
     }
 
     void Stats() {
+
+        cout << "Pnbr" << hen->GetNbr() << endl;
+        cout << "Enbr" << eagle->GetNbr() << endl;
+        cout << "Tnbr" << tiger->GetNbr() << endl;
+
         cout << "\n=---------- STATS -----------=" << endl;
         cout << "name : " << name << endl;
         cout << "money : " << money << endl;
@@ -81,83 +85,100 @@ public:
     //event
 
     void eventExceptional() {
-        overpopulation();
         GrillingZoo();
         kidnapping();
 //      loophole();
         end();
         harmful();
         corruptedMeat();
+    }
+
+    void monthly() {
         ageUpdate();
+
+        subvention();
+        RefreshVisitor();
+        VisitorforAnimals();
+        overpopulation();
+
+        eventExceptional();
     }
 
     void ageUpdate() {
-        for (int i = 0; i < tiger->GetNbr()-1; i++) {
+        for (int i = 0; i < tiger->GetNbr(); i++) {
             tiger->GetArray()[i]->TheTime();
         }
-        for (int i = 0; i < eagle->GetNbr()-1; i++) {
+        for (int i = 0; i < eagle->GetNbr(); i++) {
             eagle->GetArray()[i]->TheTime();
         }
-        for (int i = 0; i < hen->GetNbr()-1; i++) {
+        for (int i = 0; i < hen->GetNbr(); i++) {
             hen->GetArray()[i]->TheTime();
         }
     }
 
-    double FeedTiger() {
-        for (int i = 0; i < tiger->GetNbr(); i++) {
+    void FeedTiger() {
+        int i = 0;
+        while (i <= tiger->GetNbr()-1) {
             if (meat >= 12 && tiger->GetArray()[i]->GetGenre() == 1) {
-                return -12;
+                meat -= 12;
+                i++;
             } else if (meat >= 10 && tiger->GetArray()[i]->GetGenre() == 0) {
-                return -10;
+                meat -= 10;
+                i++;
             } else {
                 tiger->GetArray().erase(tiger->GetArray().begin() + i);
+                nbrPet--;
                 cout << "RRRRooaaahh" << endl;
-                return 0;
             }
         }
     }
 
-    double FeedHen() {
-        for (int i = 0; i < hen->GetNbr(); i++) {
-            if (seed >= 12 && hen->GetArray()[i]->GetGenre() == 1) {
-                return -12;
-            } else if (seed >= 10 && hen->GetArray()[i]->GetGenre() == 0) {
-                return -10;
+
+    void FeedHen() {
+        int i = 0;
+        while (i < hen->GetNbr()-1) {
+            if (meat >= 12 && hen->GetArray()[i]->GetGenre() == 1) {
+                seed -= 12;
+                i++;
+            } else if (meat >= 10 && hen->GetArray()[i]->GetGenre() == 0) {
+                seed -= 10;
+                i++;
             } else {
                 hen->GetArray().erase(hen->GetArray().begin() + i);
-                cout << "cocococoooot" << endl;
-                return 0;
+                nbrPet--;
+                cout << "cococoooot" << endl;
             }
         }
     }
 
-    double FeedEagle() {
-        for (int i = 0; i < eagle->GetNbr(); i++) {
+    void FeedEagle() {
+        int i = 0;
+        while (i <= eagle->GetNbr()-1) {
             if (meat >= 0.18 && eagle->GetArray()[i]->GetGenre() == 1) {
-                return -0.18;
+                meat -= 0.18;
+                i++;
             } else if (meat >= 0.15 && eagle->GetArray()[i]->GetGenre() == 0) {
-                return -0.15;
+                meat -= 0.15;
+                i++;
             } else {
+                nbrPet--;
                 eagle->GetArray().erase(eagle->GetArray().begin() + i);
                 cout << "Yaaaaah" << endl;
-                return 0;
             }
         }
     }
-
-
 
     void Ration() {
         if (jTiger == 0) {
-            meat += FeedTiger();
+            FeedTiger();
             jTiger = 2;
         }
         if (jEagle == 0) {
-            meat += FeedEagle();
+            FeedEagle();
             jEagle = 10;
         }
         if (jHen == 0) {
-            seed += FeedHen();
+            FeedHen();
             jHen = 2;
         }
         jTiger -= 1;

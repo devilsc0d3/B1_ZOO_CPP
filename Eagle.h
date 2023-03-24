@@ -23,10 +23,6 @@ public:
         }
     }
 
-    string bigcocot() {
-        return "Yyyaaaaahhh";
-    }
-
     void theDead() {
         if (this->GetYears() >= max_age) {
             cout << "mort" << endl;
