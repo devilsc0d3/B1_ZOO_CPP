@@ -50,7 +50,7 @@ public:
         theDead();
     }
 
-    ~Animals() {}
+    virtual ~Animals() {}
 };
 
 

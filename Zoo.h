@@ -118,7 +118,7 @@ public:
 
     void FeedTiger() {
         int i = 0;
-        while (i <= tiger->GetNbr()-1) {
+        while (i < tiger->GetNbr()) {
             if (meat >= 12 && tiger->GetArray()[i]->GetGenre() == 1) {
                 meat -= 12;
                 i++;
@@ -126,6 +126,7 @@ public:
                 meat -= 10;
                 i++;
             } else {
+                delete tiger->GetArray()[i];
                 tiger->GetArray().erase(tiger->GetArray().begin() + i);
                 nbrPet--;
                 cout << "RRRRooaaahh" << endl;
@@ -136,14 +137,15 @@ public:
 
     void FeedHen() {
         int i = 0;
-        while (i < hen->GetNbr()-1) {
-            if (meat >= 12 && hen->GetArray()[i]->GetGenre() == 1) {
+        while (i < hen->GetNbr()) {
+            if (seed >= 12 && hen->GetArray()[i]->GetGenre() == 1) {
                 seed -= 12;
                 i++;
-            } else if (meat >= 10 && hen->GetArray()[i]->GetGenre() == 0) {
+            } else if (seed >= 10 && hen->GetArray()[i]->GetGenre() == 0) {
                 seed -= 10;
                 i++;
             } else {
+                delete hen->GetArray()[i];
                 hen->GetArray().erase(hen->GetArray().begin() + i);
                 nbrPet--;
                 cout << "cococoooot" << endl;
@@ -151,9 +153,10 @@ public:
         }
     }
 
+
     void FeedEagle() {
         int i = 0;
-        while (i <= eagle->GetNbr()-1) {
+        while (i < eagle->GetNbr()-1) {
             if (meat >= 0.18 && eagle->GetArray()[i]->GetGenre() == 1) {
                 meat -= 0.18;
                 i++;
@@ -162,6 +165,7 @@ public:
                 i++;
             } else {
                 nbrPet--;
+                delete eagle->GetArray()[i];
                 eagle->GetArray().erase(eagle->GetArray().begin() + i);
                 cout << "Yaaaaah" << endl;
             }
