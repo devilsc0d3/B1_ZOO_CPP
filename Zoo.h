@@ -132,7 +132,6 @@ public:
                 tiger->GetArray().erase(tiger->GetArray().begin() + i);
                 nbrPet--;
                 cout << "RRRRooaaahh" << endl;
-                return 0;
             }
         }
     }
