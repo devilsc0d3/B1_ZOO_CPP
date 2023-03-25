@@ -47,10 +47,7 @@ public:
                 zoo->Ration();
                 time->skip();
             }
-
             zoo->monthly();
-
-            cout << time->toString() << endl;
         } else if (choice == 3) {
             cout << "You chose to give up cowardly." << endl;
             quit = true;

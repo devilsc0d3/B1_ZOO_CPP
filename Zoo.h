@@ -101,6 +101,7 @@ public:
         subvention();
         RefreshVisitor();
         VisitorforAnimals();
+        restaurant();
         overpopulation();
 
         eventExceptional();
@@ -309,6 +310,31 @@ public:
         }
     }
 
+    void restaurant(){
+        int nbrClientVisitors = (int) round(nbrVisitor * 0.4);
+        if ((meat - (nbrClientVisitors * 0.5) > 0) && (seed - (nbrClientVisitors * 0.5) > 0)){
+            VisitorRestaurant(nbrClientVisitors);
+        } else {
+            cout << "\nRestaurant close this month ! \n" << endl;
+        }
+    }
+
+    void VisitorRestaurant(int visitorNumber) {
+        if (visitorNumber % 2 == 0) {
+            money += (visitorNumber / 2 * 15);
+            money += (visitorNumber / 2 * 10);
+            meat -= (visitorNumber * 0.5);
+            seed -= (visitorNumber * 0.5);
+        } else {
+            meat -= (visitorNumber * 0.5);
+            seed -= (visitorNumber * 0.5);
+            visitorNumber -= 1;
+            money += (visitorNumber / 2 * 15);
+            money += (visitorNumber / 2 * 10);
+            money += 15;
+        }
+    }
+
     //SUBVENTION
     void subvention(){
         if (tiger->GetNbr()>0){
@@ -337,7 +363,6 @@ public:
         if (visitorNumber % 2 == 0) {
             money += (visitorNumber / 2 * 17);
             money += (visitorNumber / 2 * 13);
-            money += 55;
         } else {
             visitorNumber -= 1;
             money += (visitorNumber / 2 * 17);
