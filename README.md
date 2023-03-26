@@ -1,5 +1,9 @@
 # Order
 ***
+link of diagrams : https://drive.google.com/file/d/1wLf55mAjfB5g97tQznFKKdO5QlDADpDI/view?usp=share_link
+
+this project was created with software Clion.
+***
 
 ### Objectives
 The ZOO project consists of making a zoo simulator in C++ that works on a turn-by-turn basis. 
