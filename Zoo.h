@@ -28,6 +28,7 @@ class Zoo{
     int jTiger = 2;
     int jEagle = 10;
     int jHen = 2;
+    int reputation = 1;
     Habitat* hen = new Habitat(20,4);
     Habitat* eagle = new Habitat(4,1);
     Habitat* tiger = new Habitat(4,1);
@@ -62,18 +63,13 @@ public:
         nbrPet = 10 + 4 + 4;
         nbrMaxVisitor = 200;
         nbrVisitor = 0;
-        seed = 0;
-        meat = 0;
+        seed = 5000;
+        meat = 500000;
         nbrHabitat = 0;
     }
 
     void Stats() {
-
-        cout << "Pnbr" << hen->GetNbr() << endl;
-        cout << "Enbr" << eagle->GetNbr() << endl;
-        cout << "Tnbr" << tiger->GetNbr() << endl;
-
-        cout << "\n=---------- STATS -----------=" << endl;
+        cout << "\n=--------------------------- STATS --------=" << endl;
         cout << "name : " << name << endl;
         cout << "money : " << money << endl;
         cout << "seed in kg : " << seed << endl;
@@ -82,7 +78,7 @@ public:
         cout << "number of habitat : " << nbrHabitat << endl;
         cout << "maximum number of visitors per month : " << nbrMaxVisitor << endl;
         cout << "average number of visitors per month : " << nbrVisitor << endl;
-        cout << "=----------------------------=\n" << endl;
+        cout << "=------------------------------------------=\n" << endl;
     }
     //event
 
@@ -93,6 +89,20 @@ public:
         end();
         harmful();
         corruptedMeat();
+        endYear();
+    }
+
+    void endYear() {
+        if (timePassed->getMonth() == 1) {
+            int prime = 1000 + reputation * 5;
+            money += prime;
+            reputation++;
+            cout << "Happy New Year!"<< endl;
+            cout << "Good job, you have a prime of :" << prime << " TZM(Try-zoo-mix)"<< endl;
+            tigerSick(30);
+            HenSick();
+            EagleSick();
+        }
     }
 
     void monthly() {
@@ -141,11 +151,11 @@ public:
     void FeedHen() {
         int i = 1;
         while (i < hen->GetNbr()) {
-            if (seed >= 12 && hen->GetArray()[i]->GetGenre() == 1) {
-                seed -= 12;
+            if (seed >= 0.18 && hen->GetArray()[i]->GetGenre() == 1) {
+                seed -= 0.18;
                 i++;
-            } else if (seed >= 10 && hen->GetArray()[i]->GetGenre() == 0) {
-                seed -= 10;
+            } else if (seed >= 0.15 && hen->GetArray()[i]->GetGenre() == 0) {
+                seed -= 0.15;
                 i++;
             } else {
                 delete hen->GetArray()[i];
@@ -219,6 +229,11 @@ public:
     void overpopulation(){
         srand(time(nullptr));
         int random_num;
+
+        tigerSick(20);
+        HenSick();
+        EagleSick();
+
         if (tiger->GetNbr() > tiger->GetCapacity()) {
             random_num = rand() % 100 + 1;
             if (random_num >= 50) {
@@ -307,6 +322,50 @@ public:
         if (random_num <=10){
             int perte = meat * 0.2;
             meat -= perte;
+        }
+    }
+
+    static int Sick() {
+        srand(time(nullptr));
+        return rand() % 100 + 1;
+    }
+
+    void tigerSick(int tigerProbability) {
+        if (Sick() <= tigerProbability && tiger->GetNbr() > 0) {
+            tiger->GetArray()[0]->setSickness(true);
+            cout << "A tiger feels bad" << endl;
+        }
+    }
+
+    void EagleSick(){
+        if (Sick() <= 10  && eagle->GetNbr() > 0) {
+            eagle->GetArray()[0]->setSickness(true);
+            cout << "An eagle feels bad" << endl;
+        }
+    }
+
+    void HenSick() {
+        if (Sick() <= 5 && hen->GetNbr() > 1) {
+            hen->GetArray()[1]->setSickness(true);
+            cout << "A hen feels bad" << endl;
+        }
+    }
+
+    void sickTime() {
+        for (int i = 0 ; i < tiger->GetNbr() ; i++) {
+            if (tiger->GetArray()[i]->getSick()) {
+                tiger->GetArray()[i]->setDaySick();
+            }
+        }
+        for (int i = 0 ; i < eagle->GetNbr() ; i++) {
+            if (eagle->GetArray()[i]->getSick()) {
+                eagle->GetArray()[i]->setDaySick();
+            }
+        }
+        for (int i = 1 ; i < hen->GetNbr() ; i++) {
+            if (hen->GetArray()[i]->getSick()) {
+                hen->GetArray()[i]->setDaySick();
+            }
         }
     }
 

@@ -7,7 +7,7 @@
 class Eagle: public Animals {
     int max_age = 25;
     string fidelity;
-    int disease_time = 5;
+    int daySick = 30;
     int gestation_time = 45;
 
 public:
@@ -26,9 +26,13 @@ public:
         }
     }
 
-    double sickness() {
-        int deadOrNo = rand() % 5 + 1;
-        return deadOrNo;
+    void setDaySick() {
+        daySick--;
+        if (daySick == 0) {
+            setSickness(false);
+            daySick = 15;
+            cout << "Eagle healed"<< endl;
+        }
     }
 
     void theDead() {

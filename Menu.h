@@ -46,6 +46,7 @@ public:
             for (int i = 0 ; i < 31 ; i++) {
                 zoo->Ration();
                 time->skip();
+                zoo->sickTime();
             }
             zoo->monthly();
         } else if (choice == 3) {
