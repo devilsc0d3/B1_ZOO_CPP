@@ -47,7 +47,7 @@ We can say that this is a probability characteristic that must trigger an action
         -restaurant
         -overpopulation
 
-# Amelioration
+# update
 ***
     -Add QT
     -Langage
