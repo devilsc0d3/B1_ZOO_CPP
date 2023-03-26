@@ -40,31 +40,31 @@ public:
     Zoo(string m_name, float m_money, Time* m_timePassed):name(std::move(m_name)), money(m_money), timePassed(m_timePassed) {
         tiger->addTiger("roger",1,tuple<int, int>{8, 6});
         tiger->addTiger("moli",0,tuple<int, int>{8, 6});
-        tiger->addTiger("roger",1,tuple<int, int>{8, 6});
+        tiger->addTiger("joelle",1,tuple<int, int>{8, 6});
         tiger->addTiger("varti",0,tuple<int, int>{8, 6});
 
-        hen->addHen("Mascote",3,tuple<int, int>{8, 6});
-        hen->addHen("Marine",1,tuple<int, int>{8, 6});
-        hen->addHen("Marine",0,tuple<int, int>{8, 6});
-        hen->addHen("Marine",0,tuple<int, int>{8, 6});
-        hen->addHen("Marine",0,tuple<int, int>{8, 6});
-        hen->addHen("Marine",0,tuple<int, int>{8, 6});
-        hen->addHen("Marine",0,tuple<int, int>{8, 6});
-        hen->addHen("Marine",0,tuple<int, int>{8, 6});
-        hen->addHen("Marine",0,tuple<int, int>{8, 6});
-        hen->addHen("Marine",0,tuple<int, int>{8, 6});
+        hen->addHen("Mascote(fixproblem)",-1,tuple<int, int>{-999, -999});
+        hen->addHen("jean marie",1,tuple<int, int>{8, 6});
+        hen->addHen("joie",0,tuple<int, int>{8, 6});
+        hen->addHen("julie",0,tuple<int, int>{8, 6});
+        hen->addHen("juliette",0,tuple<int, int>{8, 6});
+        hen->addHen("daniele",0,tuple<int, int>{8, 6});
+        hen->addHen("dominique",0,tuple<int, int>{8, 6});
+        hen->addHen("denise",0,tuple<int, int>{8, 6});
+        hen->addHen("laurie",0,tuple<int, int>{8, 6});
+        hen->addHen("laurine",0,tuple<int, int>{8, 6});
         hen->addHen("Marine",0,tuple<int, int>{8, 6});
 
         eagle->addEagle("Gertrude",1,tuple<int, int>{8, 6});
         eagle->addEagle("mama",0,tuple<int, int>{8, 6});
         eagle->addEagle("basque",1,tuple<int, int>{8, 6});
-        eagle->addEagle("gerard",0,tuple<int, int>{8, 6});
+        eagle->addEagle("barbara",0,tuple<int, int>{8, 6});
 
         nbrPet = 10 + 4 + 4;
         nbrMaxVisitor = 200;
         nbrVisitor = 0;
-        seed = 5000;
-        meat = 500000;
+        seed = 0;
+        meat = 0;
         nbrHabitat = 0;
     }
 
@@ -142,7 +142,7 @@ public:
                 delete tiger->GetArray()[i];
                 tiger->GetArray().erase(tiger->GetArray().begin() + i);
                 nbrPet--;
-                cout << "RRRRooaaahh" << endl;
+                cout << "RRRRooaaahh, " << tiger->GetArray()[i]->GetName() << " is dead !" << endl;
             }
         }
     }
@@ -161,7 +161,7 @@ public:
                 delete hen->GetArray()[i];
                 hen->GetArray().erase(hen->GetArray().begin() + i);
                 nbrPet--;
-                cout << "cococoooot" << endl;
+                cout << "cococoooot, " << hen->GetArray()[i]->GetName() << " is dead !" << endl;
             }
         }
     }
@@ -180,7 +180,7 @@ public:
                 nbrPet--;
                 delete eagle->GetArray()[i];
                 eagle->GetArray().erase(eagle->GetArray().begin() + i);
-                cout << "Yaaaaah" << endl;
+                cout << "Yaaaaah, " << eagle->GetArray()[i]->GetName() << " is dead !" << endl;
             }
         }
     }
@@ -274,7 +274,6 @@ public:
             }
             else if (random_habitat == 3 && hen->GetCapacity() >= 10) {
                 hen->SetCapacity(-10);
-
                 cout << "hen habitat..." << endl;
             }
         }
@@ -729,6 +728,8 @@ public:
                         nbrPet--;
                         money += 10000;
                     }
+                    delete tiger->GetArray()[num];
+                    tiger->GetArray().erase(tiger->GetArray().begin() + num);
                     cout << "You sold " << tiger->GetArray()[num]->GetName() << " !" << endl;
                 }
             } else {
@@ -761,6 +762,8 @@ public:
                         nbrPet--;
                         money += 400;
                     }
+                    delete eagle->GetArray()[num];
+                    eagle->GetArray().erase(eagle->GetArray().begin() + num);
                     cout << "You sold " << eagle->GetArray()[num]->GetName() << " !" << endl;
                 }
             } else {
@@ -789,6 +792,8 @@ public:
                         nbrPet--;
                         money += 20;
                     }
+                    delete hen->GetArray()[num];
+                    hen->GetArray().erase(hen->GetArray().begin() + num);
                     cout << "You sold " << hen->GetArray()[num]->GetName() << " !" << endl;
                 }
             } else {
