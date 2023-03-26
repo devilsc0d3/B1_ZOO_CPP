@@ -142,7 +142,7 @@ public:
                 delete tiger->GetArray()[i];
                 tiger->GetArray().erase(tiger->GetArray().begin() + i);
                 nbrPet--;
-                cout << "RRRRooaaahh, " << tiger->GetArray()[i]->GetName() << " is dead !" << endl;
+                cout << "RRRRooaaahh, a tiger is dead !" << endl;
             }
         }
     }
@@ -161,7 +161,7 @@ public:
                 delete hen->GetArray()[i];
                 hen->GetArray().erase(hen->GetArray().begin() + i);
                 nbrPet--;
-                cout << "cococoooot, " << hen->GetArray()[i]->GetName() << " is dead !" << endl;
+                cout << "cococoooot,a hen is dead !" << endl;
             }
         }
     }
@@ -180,7 +180,7 @@ public:
                 nbrPet--;
                 delete eagle->GetArray()[i];
                 eagle->GetArray().erase(eagle->GetArray().begin() + i);
-                cout << "Yaaaaah, " << eagle->GetArray()[i]->GetName() << " is dead !" << endl;
+                cout << "Yaaaaah,an eagle is dead !" << endl;
             }
         }
     }

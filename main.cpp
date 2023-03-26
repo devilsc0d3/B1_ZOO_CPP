@@ -1,6 +1,6 @@
 #include <iostream>
-#include "Zoo.h"
-#include "Menu.h"
+#include "headers/Zoo.h"
+#include "headers/Menu.h"
 
 using namespace std;
 
