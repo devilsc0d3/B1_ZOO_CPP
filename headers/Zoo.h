@@ -90,6 +90,7 @@ public:
         harmful();
         corruptedMeat();
         endYear();
+        fallIntoTiger();
     }
 
     void endYear() {
@@ -390,6 +391,16 @@ public:
             money += (visitorNumber / 2 * 15);
             money += (visitorNumber / 2 * 10);
             money += 15;
+        }
+    }
+
+    void fallIntoTiger() {
+        srand(time(nullptr));
+        int random_num = rand() % 100 + 1;
+        if (random_num == 1) {
+            cout << "Little Timothy fell into the tiger cage. You lose 50 000 money. \n" << endl;
+            nbrVisitor--;
+            money -= 50000;
         }
     }
 
