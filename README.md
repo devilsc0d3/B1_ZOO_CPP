@@ -14,7 +14,6 @@ We can say that this is a probability characteristic that must trigger an action
 
 # Feature
 ***
-
     - Zoo
     - Menu
         - Market
@@ -31,12 +30,15 @@ We can say that this is a probability characteristic that must trigger an action
         -Hen
     - Habitat
         -Capacity
-        -Illness
     - Events
+        - Illness
+        - dead
+        - birth
+        - Death child
         - GrillingZoo
         - kidnapping
         - loophole
-        - end
+        - end 10 years old
         - harmful
         - corruptedMeat
         - endYear
@@ -57,6 +59,7 @@ We can say that this is a probability characteristic that must trigger an action
     -Purchase in large quantities
     -Strike / inflation
     -Hawker
+    -coupling
 
 # Installation
 ***
