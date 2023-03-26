@@ -55,6 +55,7 @@ public:
         hen->addHen("laurie",0,tuple<int, int>{8, 6});
         hen->addHen("laurine",0,tuple<int, int>{8, 6});
         hen->addHen("Marine",0,tuple<int, int>{8, 6});
+        hen->addHen("aline",0,tuple<int, int>{8, 6});
 
         eagle->addEagle("Gertrude",1,tuple<int, int>{8, 6});
         eagle->addEagle("mama",0,tuple<int, int>{8, 6});
@@ -65,11 +66,11 @@ public:
 //        veterinary.push_back(new Tiger("momo",0,tuple<int, int>{8, 8}));
 
 
-        nbrPet = 10 + 4 + 4;
+        nbrPet = 11 + 4 + 4;
         nbrMaxVisitor = 200;
         nbrVisitor = 0;
         seed = 0;
-        meat = 50000;
+        meat = 0;
         nbrHabitat = 0;
     }
 
