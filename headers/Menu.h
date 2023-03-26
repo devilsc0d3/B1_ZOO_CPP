@@ -47,6 +47,7 @@ public:
                 zoo->Ration();
                 time->skip();
                 zoo->sickTime();
+                zoo->gestation();
             }
             zoo->monthly();
         } else if (choice == 3) {

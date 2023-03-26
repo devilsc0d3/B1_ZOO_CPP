@@ -7,6 +7,7 @@
 #include <cmath>
 #include "Habitat.h"
 #include "Tiger.h"
+#include "Eagle.h"
 #include <cstdlib>
 #include <ctime>
 #include "Time.h"
@@ -32,7 +33,7 @@ class Zoo{
     Habitat* hen = new Habitat(20,4);
     Habitat* eagle = new Habitat(4,1);
     Habitat* tiger = new Habitat(4,1);
-    vector<Habitat*> veterinary;
+    vector<Animals*> veterinary;
     Time* timePassed;
 
 public:
@@ -60,15 +61,21 @@ public:
         eagle->addEagle("basque",1,tuple<int, int>{8, 6});
         eagle->addEagle("barbara",0,tuple<int, int>{8, 6});
 
+        veterinary.push_back(new Tiger("momo",0,tuple<int, int>{8, 8}));
+
+
         nbrPet = 10 + 4 + 4;
         nbrMaxVisitor = 200;
         nbrVisitor = 0;
         seed = 0;
-        meat = 0;
+        meat = 50000;
         nbrHabitat = 0;
     }
 
     void Stats() {
+        if (Eagle* tiger = dynamic_cast<Eagle*>(veterinary[0])) {
+            cout << "uuooooooooooooooooooooooooo" << endl;
+        }
         cout << "\n=--------------------------- STATS --------=" << endl;
         cout << "name : " << name << endl;
         cout << "money : " << money << endl;
@@ -202,6 +209,49 @@ public:
         jTiger -= 1;
         jEagle -= 1;
         jHen -= 1;
+    }
+
+    void gestation() {
+        if (veterinary.size() > 0) {
+            for (int i = 0 ; i < veterinary.size(); i++) {
+                if (veterinary[i]->setDayGestation()) {
+                    if (Tiger* tigers = dynamic_cast<Tiger*>(veterinary[0])) {
+                        TigerGestation(i);
+                    } else {
+                        EagleGestation(i);
+                    }
+                }
+            }
+        }
+    }
+
+    void TigerGestation(int i) {
+        for (int j = 0 ; j < 3; j++) {
+            int genre = rand() % 2;
+            if (rand() % 100 + 1 > 33) {
+                tiger->addTiger(tiger->SetAName(), genre, tuple<int, int>{0, 1});
+                tiger->GetArray().push_back((veterinary[i]));
+                nbrPet++;
+            } else {
+                cout << "ouch!! Death as a child" << endl;
+            }
+        }
+        veterinary.erase(veterinary.begin() + i);
+    }
+
+    void EagleGestation(int i) {
+        for (int j = 0 ; j < 2; j++) {
+            int genre = rand() % 2;
+            if (rand() % 100 + 1 > 50) {
+                eagle->addEagle(eagle->SetAName(), genre, tuple<int, int>{5, 5});
+                eagle->GetArray().push_back((veterinary[i]));
+                nbrPet++;
+            } else {
+                cout << "ouch!! Death as a child" << endl;
+            }
+        }
+        veterinary.erase(veterinary.begin() + i);
+
     }
 
     void end() {

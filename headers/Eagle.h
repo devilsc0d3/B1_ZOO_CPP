@@ -8,7 +8,7 @@ class Eagle: public Animals {
     int max_age = 25;
     string fidelity;
     int daySick = 30;
-    int gestation_time = 45;
+    int gestationTime = 45;
 
 public:
     Eagle(string m_name, int m_genre,std::tuple<int, int>  m_age,int m_food = 1,int m_quantity = 12): Animals(std::move(m_name),m_genre, m_age, m_food, m_quantity){}
@@ -17,13 +17,15 @@ public:
         fidelity = std::move(name);
     }
 
-    void gestation() {
-        gestation_time--;
-        if (gestation_time == 0) {
-            cout << "a new animal !"<< endl;
-            //create animals
-            gestation_time = 45;
+    bool setDayGestation() {
+        gestationTime--;
+        if (gestationTime == 0) {
+            setSickness(false);
+            gestationTime = 45;
+            cout << "A new eagle makes its entrance" << endl;
+            return true;
         }
+        return false;
     }
 
     void setDaySick() {
