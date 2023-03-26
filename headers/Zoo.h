@@ -61,7 +61,8 @@ public:
         eagle->addEagle("basque",1,tuple<int, int>{8, 6});
         eagle->addEagle("barbara",0,tuple<int, int>{8, 6});
 
-        veterinary.push_back(new Tiger("momo",0,tuple<int, int>{8, 8}));
+        // test naissance
+//        veterinary.push_back(new Tiger("momo",0,tuple<int, int>{8, 8}));
 
 
         nbrPet = 10 + 4 + 4;
@@ -73,9 +74,6 @@ public:
     }
 
     void Stats() {
-        if (Eagle* tiger = dynamic_cast<Eagle*>(veterinary[0])) {
-            cout << "uuooooooooooooooooooooooooo" << endl;
-        }
         cout << "\n=--------------------------- STATS --------=" << endl;
         cout << "name : " << name << endl;
         cout << "money : " << money << endl;
