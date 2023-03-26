@@ -6,7 +6,7 @@ using namespace std;
 
 float Level() {
     float choice;
-    cout << "-Level menu-\n1. Easy \n2. Normal \n3. Hard \n\nEnter your choice (1-3): ";
+    cout << "- Level menu -\n1. Easy    - 150 000 TZM -\n2. Normal   - 80 000 TZM -\n3. Hard     - 20 000 TZM -\n\nEnter your choice (1-3): ";
     cin >> choice;
     if (choice == 1) {
         return 150000;
